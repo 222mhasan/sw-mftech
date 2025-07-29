@@ -1,0 +1,63 @@
+[
+  {
+    "id": 1,
+    "title": "React Basics",
+    "link": "https://react.dev/learn",
+    "image": "https://i.ibb.co/9m2nhkvd/data-analysis.gif"
+  },
+  {
+    "id": 2,
+    "title": "JavaScript Guide",
+    "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+  },
+  {
+    "id": 3,
+    "title": "CSS Tricks",
+    "link": "https://css-tricks.com/"
+  },
+  {
+    "id": 4,
+    "title": "Tailwind CSS Docs",
+    "link": "https://tailwindcss.com/docs"
+  },
+  {
+    "id": 5,
+    "title": "Node.js Guide",
+    "link": "https://nodejs.org/en/docs"
+  },
+  {
+    "id": 6,
+    "title": "Express.js Docs",
+    "link": "https://expressjs.com/"
+  },
+  {
+    "id": 7,
+    "title": "React Router Docs",
+    "link": "https://reactrouter.com/en/main"
+  },
+  {
+    "id": 8,
+    "title": "Firebase Docs",
+    "link": "https://firebase.google.com/docs"
+  },
+  {
+    "id": 9,
+    "title": "Next.js Docs",
+    "link": "https://nextjs.org/docs"
+  },
+  {
+    "id": 10,
+    "title": "Redux Toolkit",
+    "link": "https://redux-toolkit.js.org/"
+  },
+  {
+    "id": 11,
+    "title": "TypeScript Docs",
+    "link": "https://www.typescriptlang.org/docs/"
+  },
+  {
+    "id": 12,
+    "title": "GitHub Docs",
+    "link": "https://docs.github.com/"
+  }
+]
