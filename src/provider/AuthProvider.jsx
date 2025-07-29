@@ -8,13 +8,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  setPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-} from "firebase/firestore"; // 👈 Firestore imports
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore"; // 👈 Firestore imports
 
 export const AuthContext = createContext();
 
@@ -57,8 +54,9 @@ const AuthProvider = ({ children }) => {
   // 🔹 Login user
   const userLogin = async (email, password) => {
     setLoading(true);
+    await setPersistence(auth, browserSessionPersistence); // 🔐 Set session-only
     const res = await signInWithEmailAndPassword(auth, email, password);
-    await fetchPinFromFirestore(res.user.uid); // 👈 Get PIN on login
+    await fetchPinFromFirestore(res.user.uid);
     return res;
   };
 

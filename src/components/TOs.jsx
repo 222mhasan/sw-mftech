@@ -1,0 +1,56 @@
+import React, { useEffect, useState } from "react";
+
+const TOs = () => {
+  const [officers, setOfficers] = useState([]);
+  console.log(officers);
+
+  useEffect(() => {
+    fetch("/officers.json")
+      .then((res) => res.json())
+      .then((data) => setOfficers(data));
+  }, []);
+
+  return (
+    <div className="">
+      <h1 className="text-xl font-semibold text-center mb-1 text-black bg-sky-300 font-montserrat">
+        Our Team
+      </h1>
+      <div>
+        <div className="h-96 overflow-x-auto">
+          <table className="table table-pin-rows bg-base-200">
+            <div className=" flex flex-col justify-center ">
+              {officers.map((officer) => (
+                <div className="mx-auto w-fit mb-3" key={officer.id}>
+                  <img
+                    className="w-[150px] rounded-full"
+                    src={officer.image}
+                    alt="image"
+                  />
+                  <div className="text-center">
+                    <h1>{officer.name}</h1>
+                    <p>R/O-{officer.base}</p>
+                  </div>
+                  <hr className="border-1 border-gray-300"/>
+                </div>
+              ))}
+            </div>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TOs;
+
+{
+  /* <div className=" flex flex-col justify-center ">
+  {officers.map((officer) => (
+    <div className="mx-auto w-fit" key={officer.id}>
+      <img className="w-[150px] rounded-full" src={officer.image} alt="image" />
+      <h1>{officer.name}</h1>
+      <p>R/O-{officer.base}</p>
+    </div>
+  ))}
+</div>; */
+}

@@ -19,6 +19,7 @@ const handleSubmit = e =>{
   .then(result =>{
     const user = result.user;
     setUser(user);
+    alert("Login Successful")
     navigate("/nonCrm");
   })
   .catch((error) => {

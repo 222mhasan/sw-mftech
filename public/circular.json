@@ -1,0 +1,50 @@
+[
+  {
+    "id": "01",
+    "title": "ল্যাপটপ লোন সার্কুলার- সংযোজনী",
+    "link": "https://drive.google.com/file/d/1QDjTKwQwbNbjkFXsboSRuWtMYrnqtySq/view?usp=sharing",
+    "description": "Comprehensive guide and documentation for React.js maintained by the React team."
+  },
+  {
+    "id": "02",
+    "title": "ডিভাইস বেনিফিট আবেদন, সুপারিশ, অনুমোদন-এর অপারেশন ম্যানুয়াল",
+    "link": "https://drive.google.com/file/d/1QDjTKwQwbNbjkFXsboSRuWtMYrnqtySq/view?usp=sharing",
+    "description": "Official Tailwind CSS documentation with utility classes, guides, and examples."
+  },
+  {
+    "id": "03",
+    "title": "দাপ্তরিক কাজে ট্যাবের পরিবর্তে স্মার্টফোন ক্রয়ের জন্য সুদ বিহীন লোন প্রদান প্রসঙ্গে।",
+    "link": "https://drive.google.com/file/d/1LZqR2dygcFb5CKd6eG6GlFghfnL8gBGN/view?usp=sharing",
+    "description": "Vite is a fast frontend build tool and development server designed for modern web projects."
+  },
+  {
+    "id": "04",
+    "title": "পরিপত্র স্মার্টফোন লোন",
+    "link": "https://drive.google.com/file/d/118DIk34cWyLwnY1MH7MjEvlCCI7X7Exp/view?usp=sharing",
+    "description": "Authoritative source for web standards including HTML, CSS, JavaScript, and more."
+  },
+  {
+    "id": "05",
+    "title": "ব্র্যাক ইন্টারনেট নীতিমালা",
+    "link": "https://drive.google.com/file/d/1yetX5xiQI2rZEmnKlDqiSeXbbOowIK6z/view?usp=sharing",
+    "description": "Modern JavaScript tutorial covering fundamentals, advanced topics, and best practices."
+  },
+  {
+    "id": "06",
+    "title": "ব্র্যাক মাইক্রোফাইন্যান্স কর্মসূচির টেকনোলজিক্যাল ডিভাইস সংক্রান্ত নীতিমালা",
+    "link": "https://drive.google.com/file/d/1o5-UzermVZ45b5hyVs1_GMgK67RGxfy-/view?usp=sharing",
+    "description": "Modern JavaScript tutorial covering fundamentals, advanced topics, and best practices."
+  },
+  {
+    "id": "07",
+    "title": "নিরাপত্তা পরিপত্র (প্রতারণা ও হয়রানিমূলক ফোন কল ও ইমেল সংক্রান্ত )",
+    "link": "https://drive.google.com/file/d/1WkHdHBJDwCpuwwKIekxxURCisIS7kN49/view?usp=sharing",
+    "description": "Modern JavaScript tutorial covering fundamentals, advanced topics, and best practices."
+  },
+  {
+    "id": "08",
+    "title": "মাইক্রোফাইন্যান্স কর্মসূচির কর্মীদের মোবাইল বিল ও অফিসিয়াল সিম সংক্রান্ত",
+    "link": "https://drive.google.com/file/d/1oyudcDP94p2cytAsAyg4s7sZkgk-BJiL/view?usp=sharing",
+    "description": "Modern JavaScript tutorial covering fundamentals, advanced topics, and best practices."
+  }
+]
