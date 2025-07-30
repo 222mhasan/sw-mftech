@@ -16,7 +16,7 @@ const TOs = () => {
         Our Team
       </h1>
       <div>
-        <div className="h-96 overflow-x-auto">
+        <div className="h-[610px] overflow-x-auto">
           <table className="table table-pin-rows bg-base-200">
             <div className=" flex flex-col justify-center ">
               {officers.map((officer) => (

@@ -54,6 +54,7 @@ const Navbar = () => {
 
   return (
     <div>
+      {/* main Navbar */}
       <div className="navbar bg-base-100 shadow-sm font-poppins">
         <div className="navbar-start">
           <div className="dropdown">
@@ -92,6 +93,22 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-3 ">{links}</ul>
         </div>
+        <div className="drawer-side">
+          <label
+            htmlFor="my-drawer-3"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <ul className="menu bg-base-200 min-h-full w-80 p-4">
+            {/* Sidebar content here */}
+            <li>
+              <a>Sidebar Item 1</a>
+            </li>
+            <li>
+              <a>Sidebar Item 2</a>
+            </li>
+          </ul>
+        </div>
 
         {/* login area  */}
         <div className="navbar-end gap-2">
@@ -100,14 +117,18 @@ const Navbar = () => {
           </div>
 
           {user && user?.email ? (
-            <button onClick={logOut} className="btn btn-info">
+            <button onClick={logOut} className="btn btn-outline btn-error">
               Log Out
             </button>
           ) : (
-            <Link to="/auth/login">login</Link>
+            <Link to="/auth/login"><button className="btn btn-outline btn-info">Login</button></Link>
           )}
         </div>
       </div>
+
+ 
+      
+
     </div>
   );
 };

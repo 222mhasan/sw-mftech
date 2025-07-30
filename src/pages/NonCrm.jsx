@@ -85,21 +85,21 @@ const NonCRM = () => {
 
   // 👉 Main form once PIN is available
   return (
-    <div className="max-w-lg mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Non-CRM Data Entry</h1>
+    <div className="max-w-lg mx-auto p-6 font-poppins">
+      <h1 className="text-2xl font-semibold text-center mb-4">Non-CRM Data Entry</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
           value={user?.displayName || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100"
+          className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
         />
 
         <input
           type="email"
           value={user?.email || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100"
+         className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
         />
 
         <input type="hidden" name="pin" value={userPin || ""} />
@@ -108,7 +108,7 @@ const NonCRM = () => {
           type="text"
           name="phone"
           placeholder="Phone"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
           onChange={handleChange}
           required
@@ -118,7 +118,7 @@ const NonCRM = () => {
           type="text"
           name="designation"
           placeholder="Designation"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.designation}
           onChange={handleChange}
           required
@@ -128,7 +128,7 @@ const NonCRM = () => {
           type="text"
           name="program"
           placeholder="Program"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.program}
           onChange={handleChange}
           required
@@ -137,7 +137,7 @@ const NonCRM = () => {
         <textarea
           name="comments"
           placeholder="Comments"
-          className="textarea textarea-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.comments}
           onChange={handleChange}
         ></textarea>

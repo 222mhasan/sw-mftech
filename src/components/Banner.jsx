@@ -1,9 +1,10 @@
 import React from "react";
+import Slider from "./Slider";
 
 const Banner = () => {
   return (
     <div>
-      <div className="carousel w-full">
+      {/* <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
           <img
             src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
@@ -60,7 +61,8 @@ const Banner = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Slider/>
     </div>
   );
 };

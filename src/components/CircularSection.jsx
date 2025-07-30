@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import Arrow2 from "../images/arrow2.gif";
+import SpecialTasks from "./SpecialTasks";
 
 const CircularSection = () => {
   const [circulars, setCirculars] = useState([]);
@@ -19,6 +20,11 @@ const CircularSection = () => {
 
   return (
     <div>
+      {/* special tasks section start */}
+      <SpecialTasks>
+        
+      </SpecialTasks>
+      {/* special tasks section end */}
       {/* Circulars Section start */}
       <div>
         <h1 className="text-xl font-semibold text-center mb-1 text-black bg-sky-300 font-montserrat">

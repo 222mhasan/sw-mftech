@@ -2,6 +2,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
@@ -9,10 +10,13 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
+    confirmPassword: "",
     pin: "",
   });
-  const navigate = useNavigate();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,10 +25,15 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    const { name, email, password, pin } = formData;
+    const { name, email, password, confirmPassword, pin } = formData;
 
-    if (!name || !email || !password || !pin) {
+    if (!name || !email || !password || !confirmPassword || !pin) {
       setError("All fields are required");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
@@ -47,41 +56,71 @@ const Register = () => {
         <input
           name="name"
           placeholder="Name"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           onChange={handleChange}
         />
         <input
           name="email"
           type="email"
           placeholder="Email"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           onChange={handleChange}
         />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className="input input-bordered w-full"
-          onChange={handleChange}
-        />
+
+        {/* Password Field with Eye Toggle */}
+        <div className="relative">
+          <input
+            name="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+            onChange={handleChange}
+          />
+          <span
+            className="absolute right-3 top-3 text-gray-600 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+
+        {/* Confirm Password Field with Eye Toggle */}
+        <div className="relative">
+          <input
+            name="confirmPassword"
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Re-type Password"
+            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+            onChange={handleChange}
+          />
+          <span
+            className="absolute right-3 top-3 text-gray-600 cursor-pointer"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+          >
+            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+
         <input
           name="pin"
           placeholder="PIN"
-          className="input input-bordered w-full"
+          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           onChange={handleChange}
         />
-        <button className="btn btn-primary w-full">Register</button>
+
+        <button className="btn btn-primary text-lg w-full">Register</button>
+
         {error && <p className="text-red-500">{error}</p>}
-        {/* Already have an account */}
-                <p>
-                  Already have an account ?{" "}
-                  <Link
-                    to="/auth/login"
-                    className="underline text-blue-500 font-semibold text-md"
-                  >
-                    Login Here
-                  </Link>
-                </p>
+
+        <p>
+          Already have an account?{" "}
+          <Link
+            to="/auth/login"
+            className="underline text-blue-500 font-semibold text-md"
+          >
+            Login Here
+          </Link>
+        </p>
       </form>
     </div>
   );
