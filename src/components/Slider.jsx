@@ -1,19 +1,20 @@
 import React, { useEffect, useState, useRef } from "react";
 
 // Import images from src/sliderImage
-import Image1 from "../sliderPhotos/image1.jpg";
-import Image2 from "../sliderPhotos/image2.jpg";
-import Image3 from "../sliderPhotos/image3.jpg";
-import Image4 from "../sliderPhotos/image4.jpg";
-import Image5 from "../sliderPhotos/image5.jpg";
-import Image6 from "../sliderPhotos/image6.jpg";
-import Image7 from "../sliderPhotos/image7.jpg";
-import Image8 from "../sliderPhotos/image8.jpg";
+import Image1 from "/sliderPhotos/image1.jpg";
+import Image2 from "/sliderPhotos/image2.jpg";
+import Image3 from "/sliderPhotos/image3.jpg";
+import Image4 from "/sliderPhotos/image4.jpg";
+import Image5 from "/sliderPhotos/image5.jpg";
+import Image6 from "/sliderPhotos/image6.jpg";
+import Image7 from "/sliderPhotos/image7.jpg";
+import Image8 from "/sliderPhotos/image8.jpg";
 
 const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const timeoutRef = useRef(null);
 
   const resetTimeout = () => {
@@ -21,29 +22,35 @@ const Slider = () => {
   };
 
   useEffect(() => {
-    resetTimeout();
-    timeoutRef.current = setTimeout(() => {
-      goToNext();
-    }, 3000);
+    if (!isHovered) {
+      resetTimeout();
+      timeoutRef.current = setTimeout(() => {
+        goToNext();
+      }, 2000);
+    }
 
     return () => resetTimeout();
-  }, [currentIndex]);
+  }, [currentIndex, isHovered]);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const goToIndex = (index) => {
+    setCurrentIndex(index);
   };
 
   return (
-    <div className="relative w-full h-[300px] overflow-hidden">
-      {/* Images sliding */}
+    <div
+      className="relative w-full h-[300px] overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Image sliding area */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -53,39 +60,50 @@ const Slider = () => {
             key={index}
             src={img}
             alt={`Slide ${index}`}
+            loading="lazy"
             className="w-full h-[300px] object-cover flex-shrink-0"
           />
         ))}
       </div>
 
       {/* Static Text Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col ml-5 mt-10 bg-opacity-30 text-white text-left">
-        <h1 className="text-xl md:text-3xl font-bold">
-          Microfinance Technology
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col  mt-10 ml-2 bg-opacity-30 text-white  px-2">
+        <h1 className="text-base sm:text-xl md:text-3xl font-bold">
+          microfinance Technology
         </h1>
-        <p className="text-lg md:text-2xl mt-2">
+        <p className="text-sm sm:text-lg md:text-2xl mt-0 md:mt-1">
           South-West Zone
         </p>
       </div>
 
-      {/* Left Button */}
+      {/* Navigation Buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
       >
         &#8592;
       </button>
 
-      {/* Right Button */}
       <button
         onClick={goToNext}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
       >
         &#8594;
       </button>
+
+      {/* Dots Indicator */}
+      <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToIndex(index)}
+            className={`w-3 h-3 rounded-full ${
+              index === currentIndex ? "bg-white" : "bg-gray-400"
+            } transition duration-300`}
+          />
+        ))}
+      </div>
     </div>
   );
 };
-
 export default Slider;
-
