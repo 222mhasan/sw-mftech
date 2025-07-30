@@ -15,20 +15,20 @@ const Navbar = () => {
         Home
       </NavLink>
       <NavLink
-        to="/contact"
+        to="/baseLocation"
         className=" px-2  relative hover: text-lg 
           after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 
           after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full "
       >
-        Contact
+        Base Location
       </NavLink>
       <NavLink
-        to="/branch"
+        to="/pdf"
         className=" px-2  relative hover: text-lg 
           after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 
           after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full "
       >
-        Our Team
+        PDF
       </NavLink>
       <NavLink
         to="/monthlyReport"

@@ -1,7 +1,7 @@
 // Register.jsx
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
@@ -38,36 +38,52 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto mt-10">
-      <input
-        name="name"
-        placeholder="Name"
-        className="input input-bordered w-full"
-        onChange={handleChange}
-      />
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        className="input input-bordered w-full"
-        onChange={handleChange}
-      />
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        className="input input-bordered w-full"
-        onChange={handleChange}
-      />
-      <input
-        name="pin"
-        placeholder="PIN"
-        className="input input-bordered w-full"
-        onChange={handleChange}
-      />
-      <button className="btn btn-primary w-full">Register</button>
-      {error && <p className="text-red-500">{error}</p>}
-    </form>
+    <div className="min-h-screen">
+      <h1 className="font-semibold mt-4 text-center text-2xl">Register Here</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 max-w-md mx-auto mt-10 px-1 md:px-0"
+      >
+        <input
+          name="name"
+          placeholder="Name"
+          className="input input-bordered w-full"
+          onChange={handleChange}
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="input input-bordered w-full"
+          onChange={handleChange}
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          className="input input-bordered w-full"
+          onChange={handleChange}
+        />
+        <input
+          name="pin"
+          placeholder="PIN"
+          className="input input-bordered w-full"
+          onChange={handleChange}
+        />
+        <button className="btn btn-primary w-full">Register</button>
+        {error && <p className="text-red-500">{error}</p>}
+        {/* Already have an account */}
+                <p>
+                  Already have an account ?{" "}
+                  <Link
+                    to="/auth/login"
+                    className="underline text-blue-500 font-semibold text-md"
+                  >
+                    Login Here
+                  </Link>
+                </p>
+      </form>
+    </div>
   );
 };
 

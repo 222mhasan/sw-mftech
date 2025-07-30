@@ -7,7 +7,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import Navbar from "./components/Navbar.jsx";
-import Contact from "./pages/Contact.jsx";
 import MonthlyReport from "./pages/MonthlyReport.jsx";
 import AuthLayout from "./layout/AuthLayout.jsx";
 import Login from "./pages/Login.jsx";
@@ -15,6 +14,9 @@ import Register from "./pages/Register.jsx";
 import AuthProvider from "./provider/AuthProvider.jsx";
 import NonCrm from "./pages/NonCrm.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
+import BaseLocation from "./pages/BaseLocation.jsx";
+import PDF from "./components/PDF.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -27,8 +29,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/baseLocation",
+        element: <BaseLocation/>
+      },
+      {
+        path: "/pdf",
+        element: <PDF/>
       },
       {
         path: "/monthlyReport",

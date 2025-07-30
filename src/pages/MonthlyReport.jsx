@@ -15,7 +15,7 @@ const MonthlyReport = () => {
     <div>
      
       <h1 className="text-3xl font-bold text-center my-3">Monthy Report</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
         {monthlyReports.map((item) => (
           <div key={item.id} className="border p-2">
             <div className=" bg-base-100">

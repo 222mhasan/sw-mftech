@@ -30,23 +30,23 @@ const handleSubmit = e =>{
 }
 
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl my-5">Login Here</h1>
       {/* login area */}
       <section className="mx-auto w-fit">
-        <form onSubmit={handleSubmit} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto mt-10 px-1 md:px-0">
           {/* email */}
-          <label className="label">Email</label>
-          <input name="email" type="email" className="input" placeholder="Email" />
+          
+          <input name="email" type="email" className="input input-bordered w-full" placeholder="Email" />
           {/* password */}
-          <label className="label">Password</label>
-          <input name="password" type="password" className="input" placeholder="Password" />
+          
+          <input name="password" type="password" className="input input-bordered w-full" placeholder="Password" />
 
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn btn-primary w-full">Login</button>
         </form>
 
         {/* don't have an account */}
-        <p>
+        <p className="mt-2"> 
           Dont't have an account ?{" "}
           <Link
             to="/auth/register"
