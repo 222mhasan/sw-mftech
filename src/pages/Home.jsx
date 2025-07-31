@@ -1,4 +1,4 @@
-import Banner from "../components/Banner";
+
 import CircularSection from "../components/CircularSection";
 import Slider from "../components/Slider";
 import TOs from "../components/TOs";

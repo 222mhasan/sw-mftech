@@ -6,38 +6,58 @@ import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
+  const closeDrawer = () => {
+    const drawerCheckbox = document.getElementById("my-drawer-3");
+    if (drawerCheckbox) drawerCheckbox.checked = false;
+  };
+
   const links = (
     <>
-      <NavLink
-        to="/"
-        className="px-2 font-poppins relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        to="/baseLocation"
-        className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-      >
-        Base Location
-      </NavLink>
-      <NavLink
-        to="/pdf"
-        className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-      >
-        PDF
-      </NavLink>
-      <NavLink
-        to="/monthlyReport"
-        className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-      >
-        Monthly Report
-      </NavLink>
-      <NavLink
-        to="/nonCRM"
-        className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-      >
-        Non-CRM
-      </NavLink>
+      <li>
+        <NavLink
+          to="/"
+          onClick={closeDrawer}
+          className="px-2 font-poppins relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/baseLocation"
+          onClick={closeDrawer}
+          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          Location
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/pdf"
+          onClick={closeDrawer}
+          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          PDF
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/monthlyReport"
+          onClick={closeDrawer}
+          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          Monthly Report
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/nonCRM"
+          onClick={closeDrawer}
+          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          Non-CRM
+        </NavLink>
+      </li>
     </>
   );
 
@@ -104,7 +124,7 @@ const Navbar = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200 font-poppins text-base pt-10 ">
+        <ul className="menu p-4 w-80 min-h-full bg-base-200 font-poppins text-base pt-10">
           {links}
         </ul>
       </div>

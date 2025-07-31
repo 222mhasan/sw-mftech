@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Banner from "./components/Banner";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
 import NavberDrawer from "./components/NavberDrawer";

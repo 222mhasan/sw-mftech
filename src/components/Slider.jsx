@@ -44,7 +44,7 @@ const Slider = () => {
 
   return (
     <div
-      className="relative w-full h-[300px] overflow-hidden mb-2"
+      className="relative w-full h-[300px] md:h-[400px] overflow-hidden mb-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -59,7 +59,7 @@ const Slider = () => {
             src={img}
             alt={`Slide ${index}`}
             loading="lazy"
-            className="w-full h-[300px] object-cover flex-shrink-0"
+            className="w-full h-[400px] object-cover flex-shrink-0 px-2"
           />
         ))}
       </div>

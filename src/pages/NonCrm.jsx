@@ -101,19 +101,22 @@ const NonCRM = () => {
       <h1 className="text-2xl font-semibold text-center mb-4">
         Non-CRM Data Entry
       </h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 "
+      >
         <input
           type="text"
           value={user?.displayName || ""}
           readOnly
-          className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
         />
 
         <input
           type="email"
           value={user?.email || ""}
           readOnly
-          className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
         />
 
         <input type="hidden" name="pin" value={userPin || ""} />
@@ -123,7 +126,7 @@ const NonCRM = () => {
           name="phone"
           placeholder="01XXXXXXXXX"
           pattern="01[0-9]{9}"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
           onChange={handleChange}
           required
@@ -133,7 +136,7 @@ const NonCRM = () => {
           type="text"
           name="designation"
           placeholder="Designation"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.designation}
           onChange={handleChange}
           required
@@ -143,7 +146,7 @@ const NonCRM = () => {
           type="text"
           name="program"
           placeholder="Program"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.program}
           onChange={handleChange}
           required
@@ -152,14 +155,14 @@ const NonCRM = () => {
         <textarea
           name="comments"
           placeholder="Comments"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.comments}
           onChange={handleChange}
         ></textarea>
 
         <button
           type="submit"
-          className="btn btn-primary w-full"
+          className="btn btn-accent w-full text-md"
           disabled={loading}
         >
           {loading ? "Submitting..." : "Submit"}
