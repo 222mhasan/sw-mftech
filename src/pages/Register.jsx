@@ -49,79 +49,84 @@ const Register = () => {
   return (
     <div className="min-h-screen">
       <h1 className="font-semibold mt-4 text-center text-2xl">Register Here</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 max-w-md mx-auto mt-10 px-1 md:px-0"
-      >
-        <input
-          name="name"
-          placeholder="Name"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-          onChange={handleChange}
-        />
-
-        {/* Password Field with Eye Toggle */}
-        <div className="relative">
+      <section className="mx-auto max-w-lg bg-gray-200  border-gray-400 shadow-xl rounded-md  px-3 py-5 mt-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-2 mx-auto mt-1 md:px-0 bg-gray-200  font-semibold"
+        >
           <input
-            name="password"
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+            name="name"
+            placeholder="Name"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
           />
-          <span
-            className="absolute right-3 top-3 text-gray-600 cursor-pointer"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
-
-        {/* Confirm Password Field with Eye Toggle */}
-        <div className="relative">
           <input
-            name="confirmPassword"
-            type={showConfirmPassword ? "text" : "password"}
-            placeholder="Re-type Password"
-            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
           />
-          <span
-            className="absolute right-3 top-3 text-gray-600 cursor-pointer"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
 
-        <input
-          name="pin"
-          placeholder="PIN"
-          className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-          onChange={handleChange}
-        />
+          {/* Password Field with Eye Toggle */}
+          <div className="relative">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+              onChange={handleChange}
+            />
+            <span
+              className="absolute right-3 top-3 text-gray-600 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
-        <button className="btn btn-primary text-lg w-full">Register</button>
+          {/* Confirm Password Field with Eye Toggle */}
+          <div className="relative">
+            <input
+              name="confirmPassword"
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Re-type Password"
+              className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+              onChange={handleChange}
+            />
+            <span
+              className="absolute right-3 top-3 text-gray-600 cursor-pointer"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            >
+              {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
 
-        {error && <p className="text-red-500">{error}</p>}
+          <input
+            name="pin"
+            type="tel"
+            placeholder="PIN"
+            pattern="\d{4,}" // at least 4 digits
+            inputMode="numeric" // brings up number pad on mobile
+            className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            onChange={handleChange}
+          />
 
-        <p>
-          Already have an account?{" "}
-          <Link
-            to="/auth/login"
-            className="underline text-blue-500 font-semibold text-md"
-          >
-            Login Here
-          </Link>
-        </p>
-      </form>
+          <button className="btn btn-primary text-lg w-full">Register</button>
+
+          {error && <p className="text-red-500">{error}</p>}
+
+          <p>
+            Already have an account?{" "}
+            <Link
+              to="/auth/login"
+              className="underline text-blue-500 font-semibold text-md"
+            >
+              Login Here
+            </Link>
+          </p>
+        </form>
+      </section>
     </div>
   );
 };

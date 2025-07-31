@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const GOOGLE_SHEET_API =
   "https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec";
@@ -35,16 +36,27 @@ const NonCRM = () => {
     };
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec", {
-        method: "POST",
-        mode: "no-cors", // Bypass CORS
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataToSend),
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec",
+        {
+          method: "POST",
+          mode: "no-cors", // Bypass CORS
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
+
+      // alert("✅ Data submitted Successfully !");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Data Sumitted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
       });
 
-      alert("✅ Data submitted Successfully !");
       setFormData({ phone: "", designation: "", program: "", comments: "" });
     } catch (error) {
       setMessage("❌ Submission failed: " + error.message);
@@ -86,7 +98,9 @@ const NonCRM = () => {
   // 👉 Main form once PIN is available
   return (
     <div className="max-w-lg mx-auto p-6 font-poppins">
-      <h1 className="text-2xl font-semibold text-center mb-4">Non-CRM Data Entry</h1>
+      <h1 className="text-2xl font-semibold text-center mb-4">
+        Non-CRM Data Entry
+      </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
@@ -99,15 +113,16 @@ const NonCRM = () => {
           type="email"
           value={user?.email || ""}
           readOnly
-         className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="bg-white text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
         />
 
         <input type="hidden" name="pin" value={userPin || ""} />
 
         <input
-          type="text"
+          type="tel"
           name="phone"
-          placeholder="Phone"
+          placeholder="01XXXXXXXXX"
+          pattern="01[0-9]{9}"
           className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
           onChange={handleChange}

@@ -7,10 +7,10 @@ const BaseLocation = () => {
   const [locations, setLocations] = useState([]);
   console.log(locations);
 
-  useEffect(() => {
+  useEffect(()  => {
     fetch("/officers.json")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data) =>  {
         setLocations(data);
       });
   }, []);

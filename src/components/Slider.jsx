@@ -1,16 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 
-// Import images from src/sliderImage
-import Image1 from "/sliderPhotos/image1.jpg";
-import Image2 from "/sliderPhotos/image2.jpg";
-import Image3 from "/sliderPhotos/image3.jpg";
-import Image4 from "/sliderPhotos/image4.jpg";
-import Image5 from "/sliderPhotos/image5.jpg";
-import Image6 from "/sliderPhotos/image6.jpg";
-import Image7 from "/sliderPhotos/image7.jpg";
-import Image8 from "/sliderPhotos/image8.jpg";
 
-const images = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8];
+import Team1 from "/teamPhoto/team1.jpg"
+import Team2 from "/teamPhoto/team2.jpg"
+import Team3 from "/teamPhoto/team3.jpg"
+import Team4 from "/teamPhoto/team4.png"
+
+
+
+const images = [Team1, Team2, Team3, Team4];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -46,7 +44,7 @@ const Slider = () => {
 
   return (
     <div
-      className="relative w-full h-[300px] overflow-hidden"
+      className="relative w-full h-[300px] overflow-hidden mb-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -67,9 +65,9 @@ const Slider = () => {
       </div>
 
       {/* Static Text Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full flex flex-col  mt-10 ml-2 bg-opacity-30 text-white  px-2">
-        <h1 className="text-base sm:text-xl md:text-3xl font-bold">
-          microfinance Technology
+      <div className="absolute top-0 left-0 w-full h-full flex flex-col  mt-10 ml-2 bg-opacity-30 text-white  px-2 font-dancing-script">
+        <h1 className="text-base sm:text-xl md:text-5xl font-bold">
+          Microfinance Technology
         </h1>
         <p className="text-sm sm:text-lg md:text-2xl mt-0 md:mt-1">
           South-West Zone

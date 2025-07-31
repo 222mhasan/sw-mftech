@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
@@ -18,11 +19,26 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        alert("Login Successful");
+        // sweet alert
+
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        // alert("Login Successful");
         navigate("/nonCrm");
       })
       .catch((error) => {
-        alert("Login Failed: " + error.message);
+        // alert("Login Failed: " + error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: error.message,
+        });
       });
   };
 
@@ -30,10 +46,10 @@ const Login = () => {
     <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl my-5">Login Here</h1>
       {/* login area */}
-      <section className="mx-auto w-fit">
+      <section className="mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 ">
         <form
           onSubmit={handleSubmit}
-          className="space-y-2 max-w-md mx-auto mt-10 px-1 md:px-0"
+          className="space-y-2 max-w-md mx-auto  px-1 md:px-0"
         >
           {/* email */}
 
@@ -41,7 +57,7 @@ const Login = () => {
             required
             name="email"
             type="email"
-            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            className="bg-white rounded-md font-semibold p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             placeholder="Email"
           />
 
@@ -51,7 +67,7 @@ const Login = () => {
             required
             name="password"
             type="password"
-            className="bg-white p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            className="bg-white rounded-md font-semibold p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             placeholder="Password"
           />
 
@@ -59,7 +75,7 @@ const Login = () => {
         </form>
 
         {/* don't have an account */}
-        <p className="mt-2">
+        <p className="mt-2 font-semibold">
           Dont't have an account ?{" "}
           <Link
             to="/auth/register"

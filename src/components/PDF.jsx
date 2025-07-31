@@ -25,7 +25,7 @@ const PDF = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl my-3">All PDF</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Knowledge Sharing File */}

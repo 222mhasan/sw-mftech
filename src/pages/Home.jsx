@@ -1,10 +1,13 @@
+import Banner from "../components/Banner";
 import CircularSection from "../components/CircularSection";
+import Slider from "../components/Slider";
 import TOs from "../components/TOs";
 // import MonthlyReport from "./MonthlyReport";
 
 const Home = () => {
   return (
     <div>
+      <Slider/>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-2 ">
         <div className="border">
           <CircularSection></CircularSection>
