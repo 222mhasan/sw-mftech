@@ -103,7 +103,7 @@ const NonCRM = () => {
       </h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 "
+        className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1"
       >
         <input
           type="text"

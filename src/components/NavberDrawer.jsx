@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import HomeLogo from "../images/home-unscreen.gif";
+// import HomeLogo from "../images/home-unscreen.gif";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import HomeLogo from "../images/Home-logo.svg"
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -28,7 +29,7 @@ const Navbar = () => {
           onClick={closeDrawer}
           className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
         >
-          Location
+          Base Location
         </NavLink>
       </li>
       <li>
@@ -37,7 +38,7 @@ const Navbar = () => {
           onClick={closeDrawer}
           className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
         >
-          PDF
+          Templates
         </NavLink>
       </li>
       <li>

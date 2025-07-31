@@ -9,19 +9,19 @@ import NavberDrawer from "./components/NavberDrawer";
 function App() {
   return (
     <>
-      <div className="px-2 md:mx-30 mx-auto  border ">
-        <div className="text-center my-3 font-semibold font-montserrat">
-          <h1 className="text-3xl    ">
-            MF-Technology
-          </h1>
-          <h2 className="">South-West Zone</h2>
+      <div className="min-h-screen bg-[url('/bg-image.jpg')] bg-cover ">
+        <div className="px-2 md:mx-30 mx-auto">
+          <div className="text-center mb-3 py-3 md:py-5 font-semibold font-montserrat bg-pink-400">
+            <h1 className="text-3xl    ">MF-Technology</h1>
+            <h2 className="">South-West Zone</h2>
+          </div>
+
+          {/* <Navbar/> */}
+          <NavberDrawer />
+
+          <Outlet></Outlet>
+          <Footer />
         </div>
-
-        {/* <Navbar/> */}
-        <NavberDrawer />
-
-        <Outlet></Outlet>
-        <Footer />
       </div>
     </>
   );

@@ -29,7 +29,7 @@ const PDF = () => {
       <h1 className="text-center font-semibold text-2xl my-3">All PDF</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Knowledge Sharing File */}
-        <div className=" lg:border-r-2  p-2">
+        <div className=" lg:border-r-2 border-gray-500  p-2">
           <h2 className="text-xl font-semibold underline  mb-3">
             Knowledge Sharings
           </h2>
@@ -48,7 +48,7 @@ const PDF = () => {
 
         {/* Mail Communication Format */}
         <div>
-          <h2 className="text-xl font-semibold underline  mb-3 p-2 ">
+          <h2 className="text-xl font-semibold underline  my-2">
             Mail Communication
           </h2>
           <div className="pl-1">

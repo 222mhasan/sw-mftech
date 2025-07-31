@@ -46,7 +46,7 @@ const Login = () => {
     <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl my-5">Login Here</h1>
       {/* login area */}
-      <section className="mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 ">
+      <section className="mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1">
         <form
           onSubmit={handleSubmit}
           className="space-y-2 max-w-md mx-auto  px-1 md:px-0"
