@@ -25,7 +25,8 @@ const allowedEmails = [
   "to.pirojpur@brac.net",
   "to.patuakhali@brac.net",
   "to.bhola@brac.net",
-  "to.barguna@brac.net"
+  "to.barguna@brac.net",
+  "parvez.mosaraf@brac.net"
 ];
 
 const Register = () => {
@@ -58,7 +59,7 @@ const Register = () => {
     }
 
     if (!allowedEmails.includes(normalizedEmail)) {
-      setError("Only authorized BRAC emails can register.");
+      setError("Only authorized BRAC Emails can register.");
       return;
     }
 
@@ -138,7 +139,7 @@ const Register = () => {
           <input
             name="pin"
             type="tel"
-            placeholder="PIN (at least 4 digits)"
+            placeholder="PIN "
             pattern="\d{4,}"
             inputMode="numeric"
             className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
