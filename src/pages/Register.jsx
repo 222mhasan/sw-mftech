@@ -4,6 +4,30 @@ import { AuthContext } from "../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+const allowedEmails = [
+  "to.shariatpur@brac.net",
+  "to.madaripur@brac.net",
+  "to.faridpur@brac.net",
+  "to.gopalgonj@brac.net",
+  "to.rajbari@brac.net",
+  "to.bhanga-faridpur@brac.net",
+  "to.khulna@brac.net",
+  "to.bagerhat@brac.net",
+  "to.sathkhira@brac.net",
+  "to.jashore@brac.net",
+  "to.chuadanga@brac.net",
+  "to.jhenaidha@brac.net",
+  "to.kustia@brac.net",
+  "to.narail@brac.net",
+  "to.magura@brac.net",
+  "to.meherpur@brac.net",
+  "to.barishal@brac.net",
+  "to.pirojpur@brac.net",
+  "to.patuakhali@brac.net",
+  "to.bhola@brac.net",
+  "to.barguna@brac.net"
+];
+
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [formData, setFormData] = useState({
@@ -26,9 +50,15 @@ const Register = () => {
     e.preventDefault();
     setError("");
     const { name, email, password, confirmPassword, pin } = formData;
+    const normalizedEmail = email.trim().toLowerCase();
 
     if (!name || !email || !password || !confirmPassword || !pin) {
       setError("All fields are required");
+      return;
+    }
+
+    if (!allowedEmails.includes(normalizedEmail)) {
+      setError("Only authorized BRAC emails can register.");
       return;
     }
 
@@ -38,7 +68,7 @@ const Register = () => {
     }
 
     try {
-      const res = await registerUserWithPin(email, password, pin);
+      const res = await registerUserWithPin(normalizedEmail, password, pin);
       await updateUserProfile(name);
       navigate("/noncrm");
     } catch (err) {
@@ -49,10 +79,10 @@ const Register = () => {
   return (
     <div className="min-h-screen">
       <h1 className="font-semibold mt-4 text-center text-2xl">Register Here</h1>
-      <section className="mx-auto max-w-lg bg-gray-200  border-gray-400 shadow-xl rounded-md  px-3 py-5 mt-4">
+      <section className="mx-auto max-w-lg bg-gray-200 border-gray-400 shadow-xl rounded-md px-3 py-5 mt-4">
         <form
           onSubmit={handleSubmit}
-          className="space-y-2 mx-auto mt-1 md:px-0 bg-gray-200  font-semibold"
+          className="space-y-2 mx-auto mt-1 md:px-0 bg-gray-200 font-semibold"
         >
           <input
             name="name"
@@ -60,21 +90,23 @@ const Register = () => {
             className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
           />
+
           <input
             name="email"
             type="email"
-            placeholder="Email"
-            className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            placeholder="Email (BRAC Only)"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
+            required
           />
 
-          {/* Password Field with Eye Toggle */}
+          {/* Password Field */}
           <div className="relative">
             <input
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="Password"
-              className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+              className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
               onChange={handleChange}
             />
             <span
@@ -85,13 +117,13 @@ const Register = () => {
             </span>
           </div>
 
-          {/* Confirm Password Field with Eye Toggle */}
+          {/* Confirm Password Field */}
           <div className="relative">
             <input
               name="confirmPassword"
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Re-type Password"
-              className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+              className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
               onChange={handleChange}
             />
             <span
@@ -102,13 +134,14 @@ const Register = () => {
             </span>
           </div>
 
+          {/* PIN Field */}
           <input
             name="pin"
             type="tel"
-            placeholder="PIN"
-            pattern="\d{4,}" // at least 4 digits
-            inputMode="numeric" // brings up number pad on mobile
-            className="bg-white p-2 w-full border-b-2 rounded-md  border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            placeholder="PIN (at least 4 digits)"
+            pattern="\d{4,}"
+            inputMode="numeric"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
           />
 
