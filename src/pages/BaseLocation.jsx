@@ -20,8 +20,8 @@ const BaseLocation = () => {
     <div>
       <h1 className="text-3xl font-semibold text-center my-3">Base Location</h1>
       {/* parvez bhai */}
-       <div className="mx-auto w-fit text-center mb-6">
-                <img className="w-[180px]" src={ParvezBhai} alt="Parvez Mosarrof" />
+       <div className="mx-auto w-fit text-center mb-6 bg-gray-200 border-gray-300 border p-5 rounded-md shadow-2xl">
+                <img className="w-[180px] mx-auto" src={ParvezBhai} alt="Parvez Mosarrof" />
                 <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
                 <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
                 <p className="font-semibold">BLC Jessore</p>
