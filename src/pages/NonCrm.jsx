@@ -124,7 +124,7 @@ const NonCRM = () => {
         <input
           type="tel"
           name="phone"
-          placeholder="01XXXXXXXXX"
+          placeholder="Phone Number"
           pattern="01[0-9]{9}"
           className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
