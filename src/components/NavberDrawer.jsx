@@ -33,7 +33,7 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/pdf" onClick={closeDrawer} className={getNavLinkClass}>
+        <NavLink to="/templates" onClick={closeDrawer} className={getNavLinkClass}>
           Templates
         </NavLink>
       </li>

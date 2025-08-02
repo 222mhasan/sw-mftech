@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Hand from "../images/hand.gif";
 import Envelope from "../images/envelope.gif";
 
-const PDF = () => {
+const Templates = () => {
   const [pdfs, setPdfs] = useState([]);
   const [formats, setFormats] = useState([]);
 
@@ -70,4 +70,4 @@ const PDF = () => {
   );
 };
 
-export default PDF;
+export default Templates;

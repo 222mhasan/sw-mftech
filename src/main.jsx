@@ -15,7 +15,7 @@ import AuthProvider from "./provider/AuthProvider.jsx";
 import NonCrm from "./pages/NonCrm.jsx";
 import PrivateRoute from "./routes/PrivateRoute.jsx";
 import BaseLocation from "./pages/BaseLocation.jsx";
-import PDF from "./components/PDF.jsx";
+import Templates from "./components/Templates.jsx";
 
 
 const router = createBrowserRouter([
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <BaseLocation/>
       },
       {
-        path: "/pdf",
-        element: <PDF/>
+        path: "/templates",
+        element: <Templates/>
       },
       {
         path: "/monthlyReport",
