@@ -123,7 +123,7 @@ const Register = () => {
           <input
             name="pin"
             type="tel"
-            placeholder="PIN (at least 4 digits)"
+            placeholder="PIN "
             pattern="\d{4,}"
             inputMode="numeric"
             className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"

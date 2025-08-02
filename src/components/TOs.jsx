@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ParvezBhai from "../images/parvez-bhai.png"
+import ParvezVai from "../images/parvez-bhai.webp"
 
 const TOs = () => {
   const [officers, setOfficers] = useState([]);
@@ -18,7 +18,7 @@ const TOs = () => {
       </h1>
       {/* Parvez Bhai */}
       <div className="mx-auto w-fit text-center mb-4">
-          <img className="w-[180px]" src={ParvezBhai} alt="Parvez Mosarrof" />
+          <img className="w-[180px]" src={ParvezVai} alt="Parvez Mosarrof" />
           <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
           <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
       </div>

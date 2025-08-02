@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 
-
-import Team1 from "/teamPhoto/team1.jpg"
-import Team2 from "/teamPhoto/team2.jpg"
-import Team3 from "/teamPhoto/team3.jpg"
-import Team4 from "/teamPhoto/team4.png"
+import Team1 from "/teamPhoto/team1.webp"
+import Team2 from "/teamPhoto/team2.webp"
+import Team3 from "/teamPhoto/team3.webp"
+import Team4 from "/teamPhoto/team4.webp"
 
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FcCellPhone } from "react-icons/fc";
 import { CgMail } from "react-icons/cg";
 import Mail from "../images/mail.gif"
-import ParvezBhai from "../images/parvez-bhai.png"
+import ParvezBhai from "../images/parvez-bhai.webp"
 
 const BaseLocation = () => {
   const [locations, setLocations] = useState([]);

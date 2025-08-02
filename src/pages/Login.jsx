@@ -58,7 +58,7 @@ const Login = () => {
             name="email"
             type="email"
             className="bg-white rounded-md font-semibold p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-            placeholder="Email"
+            placeholder="Email (BRAC Only)"
           />
 
           {/* password */}
