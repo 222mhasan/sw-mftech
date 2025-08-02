@@ -1,8 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-// import HomeLogo from "../images/home-unscreen.gif";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import HomeLogo from "../images/Home-logo.svg"
+import HomeLogo from "../images/Home-logo.svg";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -12,14 +11,15 @@ const Navbar = () => {
     if (drawerCheckbox) drawerCheckbox.checked = false;
   };
 
+  const getNavLinkClass = ({ isActive }) =>
+    `px-2 relative text-lg after:content-[''] after:absolute after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full ${
+      isActive ? "text-green-600 font-semibold after:w-full" : "after:w-0"
+    }`;
+
   const links = (
     <>
       <li>
-        <NavLink
-          to="/"
-          onClick={closeDrawer}
-          className="px-2 font-poppins relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-        >
+        <NavLink to="/" onClick={closeDrawer} className={getNavLinkClass}>
           Home
         </NavLink>
       </li>
@@ -27,17 +27,13 @@ const Navbar = () => {
         <NavLink
           to="/baseLocation"
           onClick={closeDrawer}
-          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+          className={getNavLinkClass}
         >
           Base Location
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/pdf"
-          onClick={closeDrawer}
-          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-        >
+        <NavLink to="/pdf" onClick={closeDrawer} className={getNavLinkClass}>
           Templates
         </NavLink>
       </li>
@@ -45,17 +41,13 @@ const Navbar = () => {
         <NavLink
           to="/monthlyReport"
           onClick={closeDrawer}
-          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
+          className={getNavLinkClass}
         >
           Monthly Report
         </NavLink>
       </li>
       <li>
-        <NavLink
-          to="/nonCRM"
-          onClick={closeDrawer}
-          className="px-2 relative text-lg after:content-[''] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full"
-        >
+        <NavLink to="/nonCRM" onClick={closeDrawer} className={getNavLinkClass}>
           Non-CRM
         </NavLink>
       </li>
