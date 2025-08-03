@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
+import Forward from "/slider-icon/fast-forward.gif"
+import Backward from "/slider-icon/fast-backward.gif"
 
 import Team1 from "/teamPhoto/team1.webp"
 import Team2 from "/teamPhoto/team2.webp"
 import Team3 from "/teamPhoto/team3.webp"
 import Team4 from "/teamPhoto/team4.webp"
+import Team5 from "/teamPhoto/team5.webp" 
 
 
 
-const images = [Team1, Team2, Team3, Team4];
+const images = [Team1, Team2, Team3, Team4, Team5];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -76,16 +79,16 @@ const Slider = () => {
       {/* Navigation Buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
+        className="absolute left-3 top-1/2 -translate-y-1/2 hover:bg-white bg-gray-200 w-8 bg-opacity-50 text-white p-2 rounded-full z-10"
       >
-        &#8592;
+        <img className="w-14" src={Backward} alt="<" />
       </button>
 
       <button
         onClick={goToNext}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full z-10"
+        className="absolute right-3 top-1/2 -translate-y-1/2 bg-gray-200 hover:bg-white w-8 bg-opacity-50 text-white p-2 rounded-full z-10"
       >
-        &#8594;
+        <img className="w-14" src={Forward} alt=">" />
       </button>
 
       {/* Dots Indicator */}
