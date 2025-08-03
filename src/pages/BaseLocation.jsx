@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { FcCellPhone } from "react-icons/fc";
 import { CgMail } from "react-icons/cg";
-import Mail from "../images/mail.gif"
-import ParvezBhai from "../images/parvez-bhai.webp"
+import Mail from "../images/mail.gif";
+import ParvezBhai from "../images/parvez-bhai.webp";
 
 const BaseLocation = () => {
   const [locations, setLocations] = useState([]);
   console.log(locations);
 
-  useEffect(()  => {
+  useEffect(() => {
     fetch("/officers.json")
       .then((res) => res.json())
-      .then((data) =>  {
+      .then((data) => {
         setLocations(data);
       });
   }, []);
@@ -20,22 +20,20 @@ const BaseLocation = () => {
     <div>
       <h1 className="text-3xl font-semibold text-center my-3">Base Location</h1>
       {/* parvez bhai */}
-       <div className="mx-auto w-fit text-center mb-6 bg-gray-200 border-gray-300 border p-5 rounded-md shadow-2xl">
-                <img className="w-[180px] mx-auto" src={ParvezBhai} alt="Parvez Mosarrof" />
-                <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
-                <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
-                <p className="font-semibold">BLC Jessore</p>
-            </div>
+      <div className="mx-auto w-fit text-center mb-6 bg-gray-200 border-gray-300 border p-5 rounded-md shadow-2xl">
+        <img
+          className="w-[180px] mx-auto"
+          src={ParvezBhai}
+          alt="Parvez Mosarrof"
+        />
+        <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
+        <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
+        <p className="font-semibold">BLC Jessore</p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3  ">
         {locations.map((location) => (
           <div className=" shadow-xl rounded-md text-center" key={location.id}>
-            {/* <img src="" alt="" />
-            <h2 className="text-2xl font-bold text-center">{location.name}</h2>
-            <h3>{location.pin}</h3>
-            <h4>{location.phone}</h4>
-            <h4>{location.email}</h4>
-            <p className="text-lg text-center">R/O-{location.base}</p> */}
             <div className="flex gap-1 bg-base-100 shadow-sm rounded-md">
               <div>
                 <figure>
@@ -51,11 +49,14 @@ const BaseLocation = () => {
                 <h3>PIN-{location.pin}</h3>
                 <h4 className="flex items-center justify-center">
                   <span>
-                    <FcCellPhone   />
+                    <FcCellPhone />
                   </span>
                   {location.phone}
                 </h4>
-                <h4 className="flex items-center text-sm text-blue-600 font-semibold"><img className="w-[20px]" src={Mail} alt="" />{location.email}</h4>
+                <h4 className="flex items-center text-sm text-blue-600 font-semibold">
+                  <img className="w-[20px]" src={Mail} alt="" />
+                  {location.email}
+                </h4>
                 <p>R/O-{location.base}</p>
               </div>
             </div>

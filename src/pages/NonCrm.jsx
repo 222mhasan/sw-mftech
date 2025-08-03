@@ -37,7 +37,7 @@ const NonCRM = () => {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec",
+        "https://script.google.com/macros/s/AKfycbzpQtMe8Zm6wzCOL1DNTGBTkxvOM7AaeTBfGCXgi13a3N5BDBi1Q0E5TJ883mN5eaUXDQ/exec",
         {
           method: "POST",
           mode: "no-cors", // Bypass CORS
@@ -125,11 +125,11 @@ const NonCRM = () => {
           type="tel"
           name="phone"
           placeholder="Phone Number"
-          pattern="01[0-9]{9}"
+          // pattern="01[0-9]{9}"
           className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
           onChange={handleChange}
-          required
+          // required
         />
 
         <input
@@ -175,3 +175,6 @@ const NonCRM = () => {
 };
 
 export default NonCRM;
+
+
+// https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec

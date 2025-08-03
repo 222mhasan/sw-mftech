@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
@@ -35,7 +36,7 @@ const Register = () => {
     }
 
     if (!normalizedEmail.endsWith("@brac.net")) {
-      setError("Only BRAC email addresses (ending in @brac.net) can register.");
+      setError("Please use your Official Email (*****@brac.net)");
       return;
     }
 
@@ -52,6 +53,17 @@ const Register = () => {
     try {
       const res = await registerUserWithPin(normalizedEmail, password, pin);
       await updateUserProfile(name);
+
+      // sweet alert
+
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Registration Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
       navigate("/noncrm");
     } catch (err) {
       setError("Registration failed: " + err.message);
