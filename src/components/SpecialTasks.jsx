@@ -24,7 +24,7 @@ const SpecialTasks = () => {
                 href={task.link}
               >
                 <span>
-                  <FaArrowRight className="font-bold text-xl text-black" />
+                  <FaArrowRight className="font-bold text-lg text-gray-500" />
                 </span>{" "}
                 {task.title}
               </a>

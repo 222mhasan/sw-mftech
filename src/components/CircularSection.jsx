@@ -41,7 +41,7 @@ const CircularSection = () => {
                 href={circular.link}
               >
                 <span>
-                  <FaArrowRight className="font-bold text-xl text-black" />
+                  <FaArrowRight className="font-bold text-lg text-gray-500" />
                 </span>{" "}
                 {circular.title}
               </a>
