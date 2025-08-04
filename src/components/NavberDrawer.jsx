@@ -102,7 +102,9 @@ const Navbar = () => {
         {/* Drawer sidebar for mobile */}
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
+          
           <ul className="menu p-4 w-80 min-h-full bg-base-200 font-poppins text-base pt-10">
+            <NavLink to='/'><img src={HomeLogo} alt="Menu" /></NavLink>
             {links}
           </ul>
         </div>
