@@ -1,16 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
-import Forward from "/slider-icon/fast-forward.gif"
-import Backward from "/slider-icon/fast-backward.gif"
+import Forward from "/slider-icon/fast-forward.gif";
+import Backward from "/slider-icon/fast-backward.gif";
 
-import Team1 from "/teamPhoto/team1.webp"
-import Team2 from "/teamPhoto/team2.webp"
-import Team3 from "/teamPhoto/team3.webp"
-import Team4 from "/teamPhoto/team4.webp"
-import Team5 from "/teamPhoto/team5.webp" 
+import Team1 from "/teamPhoto/team1.webp";
+import Team2 from "/teamPhoto/team2.webp";
 
+import Team4 from "/teamPhoto/team4.webp";
+import Team5 from "/teamPhoto/team5.webp";
 
-
-const images = [Team1, Team2, Team3, Team4, Team5];
+const images = [Team1, Team2, Team4, Team5];
 
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

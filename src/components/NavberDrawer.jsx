@@ -43,7 +43,7 @@ const Navbar = () => {
           onClick={closeDrawer}
           className={getNavLinkClass}
         >
-          Monthly Report
+           Reports
         </NavLink>
       </li>
       <li>
