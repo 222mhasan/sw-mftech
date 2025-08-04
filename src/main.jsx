@@ -6,7 +6,6 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import Navbar from "./components/Navbar.jsx";
 import MonthlyReport from "./pages/MonthlyReport.jsx";
 import AuthLayout from "./layout/AuthLayout.jsx";
 import Login from "./pages/Login.jsx";

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
+
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Slider from "./components/Slider";
@@ -12,7 +12,7 @@ function App() {
       <div className="min-h-screen bg-[url('/bg-image.jpg')] bg-cover ">
         <div className="px-2 md:mx-30 mx-auto">
           {/* Header Area */}
-          <div className="text-center mb-3 py-3 md:py-5 font-semibold font-eagle bg-pink-400 ">
+          <div className="text-center mb-1 py-3 md:py-5 font-semibold font-eagle bg-pink-400 ">
             <h1 className="text-3xl    ">MF-Technology</h1>
             <h2 className="">South-West Zone</h2>
           </div>

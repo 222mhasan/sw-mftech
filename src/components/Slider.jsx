@@ -48,7 +48,7 @@ const Slider = () => {
 
   return (
     <div
-      className="relative w-full h-[300px] md:h-[400px] overflow-hidden mb-2"
+      className="relative w-full h-[300px] md:h-[350px] overflow-hidden mb-2 bg-white py-1"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -63,12 +63,12 @@ const Slider = () => {
         </div>
       ) : (
         <>
-          {/* Fade Images */}
+          {/* Image Fade Transitions */}
           <div className="relative w-full h-full">
             {images.map((img, index) => (
               <div
                 key={index}
-                className={`absolute inset-0 flex justify-center items-center transition-opacity duration-1000 ${
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-1000 ${
                   index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
               >
@@ -76,14 +76,14 @@ const Slider = () => {
                   src={img}
                   alt={`Slide ${index}`}
                   loading="lazy"
-                  className="max-h-full max-w-full object-contain bg-white w-full h-full"
+                  className="object-contain max-w-full max-h-full"
                 />
               </div>
             ))}
           </div>
 
           {/* Text Overlay */}
-          <div className="absolute top-5 left-4 bg-black/40 px-3 py-2 rounded text-white font-dancing-script z-20">
+          <div className="absolute top-5 left-4 bg-black/60 px-3 py-2 rounded text-white font-dancing-script z-20">
             <h1 className="text-base sm:text-xl md:text-3xl font-bold">
               Microfinance Technology
             </h1>
@@ -92,7 +92,7 @@ const Slider = () => {
             </p>
           </div>
 
-          {/* Navigation Buttons */}
+          {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
             className="absolute left-3 top-1/2 -translate-y-1/2 hover:bg-white bg-gray-200 bg-opacity-50 p-1 sm:p-2 rounded-full z-20"

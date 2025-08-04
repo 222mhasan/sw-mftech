@@ -43,13 +43,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <h1 className="text-center font-semibold text-2xl my-5">Login Here</h1>
+    <div className="min-h-screen mt-12">
+      
       {/* login area */}
-      <section className="mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1">
+      <section className="mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md pb-5 px-3 border-1">
+        <h1 className="text-center font-semibold text-2xl my-5">Login Here</h1>
         <form
           onSubmit={handleSubmit}
-          className="space-y-2 max-w-md mx-auto  px-1 md:px-0"
+          className="space-y-2 max-w-md mx-auto px-1 md:px-0"
         >
           {/* email */}
 

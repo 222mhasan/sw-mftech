@@ -71,9 +71,10 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <h1 className="font-semibold mt-4 text-center text-2xl">Register Here</h1>
-      <section className="mx-auto max-w-lg bg-gray-200 border-gray-400 shadow-xl rounded-md px-3 py-5 mt-4 border">
+    <div className="min-h-screen mt-12">
+      
+      <section className="mx-auto max-w-lg bg-gray-200 border-gray-400 shadow-xl rounded-md px-3 py-5 border  ">
+        <h1 className="font-semibold mb-4 text-center text-2xl">Register Here</h1>
         <form
           onSubmit={handleSubmit}
           className="space-y-3 font-semibold bg-gray-200"
