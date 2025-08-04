@@ -47,7 +47,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="sticky top-0 z-50 bg-base-100 shadow-md">
+    <div className="sticky top-0 z-50 bg-gray-100 shadow-md">
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
