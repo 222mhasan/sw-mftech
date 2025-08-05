@@ -44,8 +44,8 @@ const BaseLocation = () => {
               </div>
             ))
           : locations.map((location) => (
-              <div className="shadow-xl rounded-md text-center" key={location.id}>
-                <div className="flex gap-1 bg-base-100 shadow-sm rounded-md">
+              <div className="shadow-xl rounded-md bg-white" key={location.id}>
+                <div className="grid grid-cols-2  gap-1 bg-base-100 shadow-sm rounded-md">
                   <div>
                     <figure>
                       <img
@@ -55,14 +55,14 @@ const BaseLocation = () => {
                       />
                     </figure>
                   </div>
-                  <div className="ml-3 mt-2 text-center">
+                  <div className=" mt-2 text-center ">
                     <h2 className="font-semibold">{location.name}</h2>
                     <h3>PIN-{location.pin}</h3>
                     <h4 className="flex items-center justify-center">
                       <FcCellPhone className="mr-1" />
                       {location.phone}
                     </h4>
-                    <h4 className="flex items-center text-sm text-blue-600 font-semibold">
+                    <h4 className="flex items-center justify-center text-sm text-blue-600 font-semibold">
                       <img className="w-[20px]" src={Mail} alt="" />
                       {location.email}
                     </h4>
