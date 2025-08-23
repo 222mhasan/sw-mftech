@@ -27,7 +27,7 @@ const OurTeam = () => {
 
       {/* 4 Units Section */}
       <section>
-        <div className="flex mt-5 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mt-5 ">
           {/* I&S */}
           <div className="w-fit mx-auto">
             <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
