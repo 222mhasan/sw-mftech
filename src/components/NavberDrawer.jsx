@@ -24,6 +24,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink to="/ourTeam" onClick={closeDrawer} className={getNavLinkClass}>
+          Our Team
+        </NavLink>
+      </li>
+      <li>
         <NavLink to="/baseLocation" onClick={closeDrawer} className={getNavLinkClass}>
           Base Location
         </NavLink>

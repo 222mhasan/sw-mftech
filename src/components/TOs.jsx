@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ParvezVai from "../images/parvez-bhai.webp"
+import ParvezVai from "/ZonalLeads/parvez-bhai.webp"
 
 const TOs = () => {
   const [officers, setOfficers] = useState([]);

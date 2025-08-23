@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Forward from "/slider-icon/fast-forward.gif";
 import Backward from "/slider-icon/fast-backward.gif";
+import { TypeAnimation } from "react-type-animation";
 
 import Team1 from "/teamPhoto/team1.webp";
 import Team2 from "/teamPhoto/team2.webp";
@@ -84,13 +85,29 @@ const Slider = () => {
 
           {/* Text Overlay */}
           <div className="absolute top-5 left-4 bg-black/60 px-3 py-2 rounded text-white font-dancing-script z-20">
-            <h1 className="text-base sm:text-xl md:text-3xl font-bold">
-              Microfinance Technology
-            </h1>
-            <p className="text-sm sm:text-lg md:text-2xl mt-1">
+           
+            <TypeAnimation className="text-white"
+            sequence={[
+              // Same substring at the start will only be typed out once, initially
+              " ",
+              1000, // wait 1s before replacing "Mice" with "Hamsters"
+              " Microfinance",
+              500,
+              " Microfinance Tech",
+              500,
+              " Microfinance Technology",
+              500,
+            ]}
+            wrapper="span"
+            speed={50}
+            style={{ fontSize: "2em", display: "inline-block" }}
+            repeat={Infinity}
+          />
+           <p className="text-sm sm:text-lg md:text-2xl mt-1">
               South-West Zone
             </p>
           </div>
+          
 
           {/* Navigation Arrows */}
           <button

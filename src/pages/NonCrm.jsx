@@ -105,19 +105,19 @@ const NonCRM = () => {
         onSubmit={handleSubmit}
         className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1"
       >
-        <input
+        {/* <input
           type="text"
           value={user?.displayName || ""}
           readOnly
           className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-        />
+        /> */}
 
-        <input
+        {/* <input
           type="email"
           value={user?.email || ""}
           readOnly
           className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-        />
+        /> */}
 
         <input type="hidden" name="pin" value={userPin || ""} />
 
@@ -154,7 +154,7 @@ const NonCRM = () => {
 
         <textarea
           name="comments"
-          placeholder="Comments"
+          placeholder="Problem Details"
           className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.comments}
           onChange={handleChange}
