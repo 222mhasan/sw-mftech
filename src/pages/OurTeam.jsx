@@ -44,7 +44,7 @@ const OurTeam = () => {
                   Paul Purification
                 </h1>
               </div>
-              <Link to="/IS" className="text-center mb-3">
+              <Link to="/ourTeam/IS" className="text-center mb-3">
                 <button className="btn btn-outline btn-info text-black">
                   View Details
                 </button>

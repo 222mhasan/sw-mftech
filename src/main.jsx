@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute><NonCrm/></PrivateRoute>
       },
       {
-        path: "/IS",
+        path: "/ourTeam/IS",
         element: <IS/>
       },
       {

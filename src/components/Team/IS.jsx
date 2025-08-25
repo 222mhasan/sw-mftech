@@ -38,7 +38,7 @@ const IS = () => {
 
       <section className="grid grid-cols-1 md:grid-cols-4 gap-2 my-3">
         {/* South-West start */}
-        <div className="border-2">
+        <div className="border-1 border-gray-400 rounded-sm">
           <h1 className="text-center font-semibold text-lg">South-West</h1>
 
           <div className="px-1">
@@ -76,7 +76,7 @@ const IS = () => {
         {/* South-West end */}
 
         {/* South-East start */}
-        <div className="border-2">
+        <div className="border-1 border-gray-400 rounded-sm">
           <h1 className="text-center font-semibold text-lg">South-East</h1>
           <div className="mx-auto w-fit text-center mb-4">
             <img className="w-[180px]" src={OsmanSarwar} alt="OsmanSarwar" />
@@ -87,7 +87,7 @@ const IS = () => {
         {/* South-East end */}
 
         {/* North-West start */}
-        <div className="border-2">
+        <div className="border-1 border-gray-400 rounded-sm">
           <h1 className="text-center font-semibold text-lg">North-West</h1>
           <div className="mx-auto w-fit text-center mb-4">
             <img className="w-[180px]" src={AzmirMahmood} alt="AzmirMahmood" />
@@ -97,7 +97,7 @@ const IS = () => {
         </div>
         {/* North-West end */}
         {/* North-East start */}
-        <div className="border-2">
+        <div className="border-1 border-gray-400 rounded-sm">
           <h1 className="text-center font-semibold text-lg">North-East</h1>
           <div className="mx-auto w-fit text-center mb-4">
             <img className="w-[180px]" src={MosiarRahman} alt="MosiarRahman" />
