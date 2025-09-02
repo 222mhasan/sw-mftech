@@ -1,7 +1,7 @@
 import CircularSection from "../components/CircularSection";
 import Slider from "../components/Slider";
 import TOs from "../components/TOs";
-import HomeImage from "../../public/HomeImage/Animated Dashboards.json";
+import HomeImage from "../../src/images/HomeImage/AnimatedDashboards.json";
 import Lottie from "lottie-react";
 // import MonthlyReport from "./MonthlyReport";
 
