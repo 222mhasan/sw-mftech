@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
-// Use your deployed Web App URL here
-const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbzDCT5XsPeXG959SZ3UPrKSy0J6HqdKJcDEb9VHZqLjXWQ7Pp2slZchm3NCmtFkCo7oTQ/exec";
+const GOOGLE_SHEET_API =
+  "https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec";
 
 const NonCRM = () => {
-  const { user, userPin, setUserPin } = useContext(AuthContext);
+  const { user, userPin, setUserPin } = useContext(AuthContext); // Make sure AuthContext provides setUserPin
   const [formData, setFormData] = useState({
     phone: "",
     designation: "",
@@ -16,25 +16,19 @@ const NonCRM = () => {
   const [pinInput, setPinInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Submit data to Google Sheet
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user || !userPin) return;
-
     setLoading(true);
-    setError("");
-    setMessage("");
 
     const dataToSend = {
-      name: user.displayName,
-      email: user.email,
-      pin: userPin,
+      name: user?.displayName || "",
+      email: user?.email || "",
+      pin: userPin || "",
       phone: formData.phone,
       designation: formData.designation,
       program: formData.program,
@@ -42,31 +36,33 @@ const NonCRM = () => {
     };
 
     try {
-      const response = await fetch(GOOGLE_SHEET_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend),
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzpQtMe8Zm6wzCOL1DNTGBTkxvOM7AaeTBfGCXgi13a3N5BDBi1Q0E5TJ883mN5eaUXDQ/exec",
+        {
+          method: "POST",
+          mode: "no-cors", // Bypass CORS
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
+
+      // alert("✅ Data submitted Successfully !");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Data Sumitted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
       });
 
-      const result = await response.json();
-
-      if (result.status === "success") {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Data Submitted Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        setFormData({ phone: "", designation: "", program: "", comments: "" });
-      } else {
-        setError("❌ Submission failed: " + result.message);
-      }
-    } catch (err) {
-      setError("❌ Submission failed: " + err.message);
-    } finally {
-      setLoading(false);
+      setFormData({ phone: "", designation: "", program: "", comments: "" });
+    } catch (error) {
+      setMessage("❌ Submission failed: " + error.message);
     }
+
+    setLoading(false);
   };
 
   const handlePinSubmit = (e) => {
@@ -77,6 +73,7 @@ const NonCRM = () => {
     }
   };
 
+  // 👉 Show PIN entry page if PIN is missing
   if (!userPin) {
     return (
       <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
@@ -98,22 +95,41 @@ const NonCRM = () => {
     );
   }
 
+  // 👉 Main form once PIN is available
   return (
     <div className="max-w-lg mx-auto p-6 font-poppins">
-      <h1 className="text-2xl font-semibold text-center mb-4">Non-CRM Data Entry</h1>
+      <h1 className="text-2xl font-semibold text-center mb-4">
+        Non-CRM Data Entry
+      </h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 mx-auto bg-gray-200 w-fit border-gray-400 shadow-xl rounded-md px-3 py-5 border-1"
+        className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1"
       >
+        {/* <input
+          type="text"
+          value={user?.displayName || ""}
+          readOnly
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+        /> */}
+
+        {/* <input
+          type="email"
+          value={user?.email || ""}
+          readOnly
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+        /> */}
+
         <input type="hidden" name="pin" value={userPin || ""} />
 
         <input
           type="tel"
           name="phone"
           placeholder="Phone Number"
+          // pattern="01[0-9]{9}"
           className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
           value={formData.phone}
           onChange={handleChange}
+          // required
         />
 
         <input
@@ -144,15 +160,21 @@ const NonCRM = () => {
           onChange={handleChange}
         ></textarea>
 
-        <button type="submit" className="btn btn-accent w-full text-md" disabled={loading}>
+        <button
+          type="submit"
+          className="btn btn-accent w-full text-md"
+          disabled={loading}
+        >
           {loading ? "Submitting..." : "Submit"}
         </button>
       </form>
 
-      {error && <p className="mt-4 text-red-600">{error}</p>}
       {message && <p className="mt-4 text-green-600">{message}</p>}
     </div>
   );
 };
 
 export default NonCRM;
+
+
+// https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec

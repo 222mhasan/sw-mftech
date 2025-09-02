@@ -6,7 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { registerUserWithPin, updateUserProfile, setUserPin } = useContext(AuthContext);
+  const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,11 +27,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
     const { name, email, password, confirmPassword, pin } = formData;
     const normalizedEmail = email.trim().toLowerCase();
 
-    // Validation
     if (!name || !email || !password || !confirmPassword || !pin) {
       setError("All fields are required");
       return;
@@ -47,23 +45,17 @@ const Register = () => {
       return;
     }
 
-    if (!/^\d+$/.test(pin)) {
-      setError("PIN must be numeric only");
+    if (!/^\d{4,}$/.test(pin)) {
+      setError("PIN must be at least 4 digits and numeric only");
       return;
     }
 
     try {
-      // Register user and save PIN in Firestore
       const res = await registerUserWithPin(normalizedEmail, password, pin);
-
-      // Update display name
       await updateUserProfile(name);
 
-      // Save PIN in context/localStorage for NonCRM page
-      setUserPin(pin);
-      localStorage.setItem("userPin", pin);
+      // sweet alert
 
-      // Sweet Alert
       Swal.fire({
         position: "center",
         icon: "success",
@@ -79,10 +71,14 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen mt-12 flex justify-center items-start">
-      <section className="mx-auto max-w-lg bg-gradient-to-l from-gray-200 to-gray-100 border-gray-400 shadow-xl rounded-md px-6 py-8 border">
-        <h1 className="font-semibold mb-6 text-center text-2xl">Register Here</h1>
-        <form onSubmit={handleSubmit} className="space-y-4 font-semibold">
+    <div className="min-h-screen mt-12">
+      
+      <section className="mx-auto max-w-lg bg-linear-to-l from-gray-200 to-gray-100 border-gray-400 shadow-xl rounded-md px-3 py-5 border  ">
+        <h1 className="font-semibold mb-4 text-center text-2xl">Register Here</h1>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-3 font-semibold "
+        >
           <input
             name="name"
             placeholder="Name"
@@ -90,6 +86,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
+
           <input
             name="email"
             type="email"
@@ -99,7 +96,7 @@ const Register = () => {
             required
           />
 
-          {/* Password */}
+          {/* Password Field */}
           <div className="relative">
             <input
               name="password"
@@ -117,7 +114,7 @@ const Register = () => {
             </span>
           </div>
 
-          {/* Confirm Password */}
+          {/* Confirm Password Field */}
           <div className="relative">
             <input
               name="confirmPassword"
@@ -135,11 +132,12 @@ const Register = () => {
             </span>
           </div>
 
-          {/* PIN */}
+          {/* PIN Field */}
           <input
             name="pin"
             type="tel"
-            placeholder="BRAC PIN"
+            placeholder="BRAC PIN "
+            pattern="\d{4,}"
             inputMode="numeric"
             className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             onChange={handleChange}
@@ -148,13 +146,13 @@ const Register = () => {
 
           <button className="btn btn-primary text-lg w-full">Register</button>
 
-          {error && <p className="text-red-500 mt-1">{error}</p>}
+          {error && <p className="text-red-500">{error}</p>}
 
-          <p className="mt-2 text-center text-sm">
+          <p>
             Already have an account?{" "}
             <Link
               to="/auth/login"
-              className="underline text-blue-500 font-semibold"
+              className="underline text-blue-500 font-semibold text-md"
             >
               Login Here
             </Link>
