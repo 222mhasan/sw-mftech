@@ -3,9 +3,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyb6NMBAl9pWFJdanDGkLl-ZFNOymEmdg3FDKRSVe_WMzTaHfIobO_vlXJ73ojYkYSY/exec";
-
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -22,49 +19,35 @@ const Register = () => {
     const confirmPassword = form.confirmPassword.value;
     const pin = form.pin.value.trim();
 
-    // ✅ Validation
-    if (!name || !email || !password || !confirmPassword || !pin) {
-      setError("All fields are required");
-      return;
-    }
-
-    if (!email.endsWith("@brac.net")) {
-      setError("Please use your official BRAC email");
-      return;
-    }
-
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    if (!/^\d{4,}$/.test(pin)) {
-      setError("PIN must be at least 4 digits and numeric only");
-      return;
-    }
-
     try {
-      // 🔹 Firebase registration + save PIN in Firestore
+      // Firebase registration + Firestore PIN save
       const res = await registerUserWithPin(email, password, pin);
 
-      // 🔹 Update display name
+      // Update display name
       await updateUserProfile(name);
 
-      // 🔹 Use PIN as sheet name
+      // ✅ Use PIN as sheet name
       const sheetName = pin;
 
-      // 🔹 Create sheet for user in Google Sheets
-      await fetch(APPS_SCRIPT_URL, {
+      // Call proxy to create sheet in Google Sheets
+      await fetch("/api/proxy", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "createUserSheet",
-          uid: sheetName, // sheet name = PIN
+          uid: sheetName,
           email,
+          name,
+          pin,
         }),
-        headers: { "Content-Type": "application/json" },
       });
 
-      // 🔹 Reset form
+      // Reset form
       form.reset();
 
       navigate("/noncrm");
@@ -82,47 +65,15 @@ const Register = () => {
       >
         <h2 className="text-2xl font-semibold text-center">Register</h2>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email (BRAC Only)"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Retype Password"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="text"
-          name="pin"
-          placeholder="PIN"
-          className="input input-bordered w-full"
-          required
-        />
+        <input type="text" name="name" placeholder="Full Name" className="input input-bordered w-full" required />
+        <input type="email" name="email" placeholder="Email (BRAC Only)" className="input input-bordered w-full" required />
+        <input type="password" name="password" placeholder="Password" className="input input-bordered w-full" required />
+        <input type="password" name="confirmPassword" placeholder="Retype Password" className="input input-bordered w-full" required />
+        <input type="text" name="pin" placeholder="PIN" className="input input-bordered w-full" required />
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button type="submit" className="btn btn-primary w-full">
-          Register
-        </button>
+        <button type="submit" className="btn btn-primary w-full">Register</button>
       </form>
     </div>
   );
