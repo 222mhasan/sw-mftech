@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [userPin, setUserPin] = useState("");
 
-  // Save PIN to Firestore
+  // 🔹 Save PIN to Firestore
   const savePinToFirestore = async (uid, pin) => {
     try {
       await setDoc(doc(db, "users", uid), { pin });
@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Fetch PIN from Firestore
+  // 🔹 Fetch PIN from Firestore
   const fetchPinFromFirestore = async (uid) => {
     try {
       const docSnap = await getDoc(doc(db, "users", uid));
@@ -48,23 +48,23 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Create new user
+  // 🔹 Create new user
   const createNewUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // Login user
+  // 🔹 Login user
   const userLogin = async (email, password) => {
     setLoading(true);
     await setPersistence(auth, browserSessionPersistence);
     const res = await signInWithEmailAndPassword(auth, email, password);
-    const pin = await fetchPinFromFirestore(res.user.uid);
-    setUserPin(pin); // ensure it's set immediately
+    const pin = await fetchPinFromFirestore(res.user.uid); // Fetch PIN on login
+    setUserPin(pin); // ensure PIN is available in context immediately
     return { user: res.user, pin };
   };
 
-  // Update profile
+  // 🔹 Update profile
   const updateUserProfile = (name) => {
     if (auth.currentUser) {
       return updateProfile(auth.currentUser, { displayName: name }).then(() => {
@@ -73,29 +73,29 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  // Save PIN after registration
+  // 🔹 Register user and save PIN
   const registerUserWithPin = async (email, password, pin) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
-    await savePinToFirestore(res.user.uid, pin);
-    setUserPin(pin); // immediately set
+    await savePinToFirestore(res.user.uid, pin); // Save PIN
+    setUserPin(pin); // set immediately in context
     return { user: res.user, pin }; // return pin as well
   };
 
-  // Logout
+  // 🔹 Logout
   const logOut = () => {
     setLoading(true);
     return signOut(auth).then(() => {
-      setUserPin("");
+      setUserPin(""); // clear PIN on logout
     });
   };
 
-  // Auth Observer
+  // 🔹 Auth Observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
         const pin = await fetchPinFromFirestore(currentUser.uid);
-        setUserPin(pin);
+        setUserPin(pin); // always keep PIN up to date
       }
       setLoading(false);
     });
