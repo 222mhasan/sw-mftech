@@ -4,7 +4,8 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyMHQlIPcwQfbUY1atm9x18eFj-mGQu_I4CmbmFaqJnIRy-T6Nt2YA8V3SS_bDuDsDD6w/exec";
+  "https://script.google.com/macros/s/AKfycbwmtWNOpaN6RUNiAeXLOM8Of826URUlergcCrf3Evz5U4GxvTh-CKGo30DYvzcZ9EXVtw/exec";
+
 
 const NonCrm = () => {
   const { user, userPin } = useContext(AuthContext);
