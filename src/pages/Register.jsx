@@ -3,13 +3,14 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyMHQlIPcwQfbUY1atm9x18eFj-mGQu_I4CmbmFaqJnIRy-T6Nt2YA8V3SS_bDuDsDD6w/exec";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -18,48 +19,29 @@ const Register = () => {
 
     const form = e.target;
     const name = form.name.value;
-    const email = form.email.value.trim().toLowerCase();
+    const email = form.email.value;
     const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
     const pin = form.pin.value;
 
-    // ✅ Validation
-    if (!name || !email || !password || !confirmPassword || !pin) {
-      setError("All fields are required");
-      return;
-    }
-    if (!email.endsWith("@brac.net")) {
-      setError("Please use your Official Email (*****@brac.net)");
-      return;
-    }
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-    if (!/^\d{4,}$/.test(pin)) {
-      setError("PIN must be at least 4 digits and numeric only");
-      return;
-    }
-
     try {
-      // ✅ Firebase registration + Firestore PIN save
+      // Firebase registration + Firestore PIN
       const res = await registerUserWithPin(email, password, pin);
-
-      // ✅ Update display name
       await updateUserProfile(name);
 
-      // ✅ Tell Google Apps Script to create sheet via Vercel proxy
-      await fetch("/api/proxy", {
+      // Create sheet for this user in Google Sheets
+      const response = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "createUserSheet",
           uid: res.user.uid,
           email,
         }),
+        headers: { "Content-Type": "application/json" },
       });
 
-      // ✅ Show success alert
+      const result = await response.json();
+      console.log("Sheet creation response:", result);
+
       Swal.fire({
         position: "center",
         icon: "success",
@@ -71,76 +53,56 @@ const Register = () => {
       navigate("/noncrm");
     } catch (err) {
       console.error(err);
-      setError("Registration failed: " + err.message);
+      setError(err.message);
     }
   };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-50">
-      <form
-        onSubmit={handleRegister}
-        className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4"
-      >
-        <h2 className="text-2xl font-semibold text-center">Register</h2>
-
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          className="input input-bordered w-full"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email (BRAC Only)"
-          className="input input-bordered w-full"
-          required
-        />
-        <div className="relative">
+      <section className="mx-auto max-w-lg bg-gradient-to-l from-gray-200 to-gray-100 border-gray-400 shadow-xl rounded-md px-6 py-6 border">
+        <h1 className="font-semibold mb-6 text-center text-2xl">Register Here</h1>
+        <form onSubmit={handleRegister} className="space-y-4 font-semibold">
           <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            className="input input-bordered w-full pr-10"
+            name="name"
+            placeholder="Name"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             required
           />
-          <span
-            className="absolute right-3 top-3 cursor-pointer text-gray-600"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
-        <div className="relative">
           <input
-            type={showConfirmPassword ? "text" : "password"}
-            name="confirmPassword"
-            placeholder="Re-type Password"
-            className="input input-bordered w-full pr-10"
+            name="email"
+            type="email"
+            placeholder="Email (BRAC Only)"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
             required
           />
-          <span
-            className="absolute right-3 top-3 cursor-pointer text-gray-600"
-            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-          >
-            {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
-        <input
-          type="text"
-          name="pin"
-          placeholder="PIN"
-          className="input input-bordered w-full"
-          required
-        />
-
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-
-        <button type="submit" className="btn btn-primary w-full">
-          Register
-        </button>
-      </form>
+          <div className="relative">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
+              required
+            />
+            <span
+              className="absolute right-3 top-3 text-gray-600 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </span>
+          </div>
+          <input
+            name="pin"
+            type="tel"
+            placeholder="BRAC PIN"
+            pattern="\d{4,}"
+            inputMode="numeric"
+            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+            required
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          <button className="btn btn-primary text-lg w-full">Register</button>
+        </form>
+      </section>
     </div>
   );
 };
