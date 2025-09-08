@@ -16,26 +16,41 @@ const Register = () => {
     setError("");
 
     const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim().toLowerCase();
     const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
     const pin = form.pin.value;
+
+    // ✅ Basic validation
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
 
     try {
       // Firebase registration + Firestore PIN save
       const res = await registerUserWithPin(email, password, pin);
+
+      // Update display name
       await updateUserProfile(name);
+
+      // Use display name as sheet name (replace spaces with underscores)
+      const sheetName = name.replace(/\s+/g, "_");
 
       // Create sheet for user in Google Sheets
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify({
           action: "createUserSheet",
-          uid: res.user.uid,
+          uid: sheetName,
           email,
         }),
         headers: { "Content-Type": "application/json" },
       });
+
+      // ✅ Reset form
+      form.reset();
 
       navigate("/noncrm");
     } catch (err) {
@@ -70,6 +85,13 @@ const Register = () => {
           type="password"
           name="password"
           placeholder="Password"
+          className="input input-bordered w-full"
+          required
+        />
+        <input
+          type="password"
+          name="confirmPassword"
+          placeholder="Retype Password"
           className="input input-bordered w-full"
           required
         />
