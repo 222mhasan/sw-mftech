@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbzYtFXC2gpFOqA-dau7V3JDHkuzbT3-U2ltmBFVjUgQuLz3YCl5S_1kRmnTPPUSxySF/exec";
+  "https://script.google.com/macros/s/AKfycbyb6NMBAl9pWFJdanDGkLl-ZFNOymEmdg3FDKRSVe_WMzTaHfIobO_vlXJ73ojYkYSY/exec";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
