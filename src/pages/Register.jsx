@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx5uIxOzNi4cPWs09WoeXC0m68H-qLY07IAIjlsmzASBX52IM2aG4YVTGm7STViPXRK/exec";
+  "https://script.google.com/macros/s/AKfycbzYtFXC2gpFOqA-dau7V3JDHkuzbT3-U2ltmBFVjUgQuLz3YCl5S_1kRmnTPPUSxySF/exec";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
@@ -20,36 +20,51 @@ const Register = () => {
     const email = form.email.value.trim().toLowerCase();
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    const pin = form.pin.value;
+    const pin = form.pin.value.trim();
 
-    // ✅ Basic validation
+    // ✅ Validation
+    if (!name || !email || !password || !confirmPassword || !pin) {
+      setError("All fields are required");
+      return;
+    }
+
+    if (!email.endsWith("@brac.net")) {
+      setError("Please use your official BRAC email");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
+    if (!/^\d{4,}$/.test(pin)) {
+      setError("PIN must be at least 4 digits and numeric only");
+      return;
+    }
+
     try {
-      // Firebase registration + Firestore PIN save
+      // 🔹 Firebase registration + save PIN in Firestore
       const res = await registerUserWithPin(email, password, pin);
 
-      // Update display name
+      // 🔹 Update display name
       await updateUserProfile(name);
 
-      // Use display name as sheet name (replace spaces with underscores)
-      const sheetName = name.replace(/\s+/g, "_");
+      // 🔹 Use PIN as sheet name
+      const sheetName = pin;
 
-      // Create sheet for user in Google Sheets
+      // 🔹 Create sheet for user in Google Sheets
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify({
           action: "createUserSheet",
-          uid: sheetName,
+          uid: sheetName, // sheet name = PIN
           email,
         }),
         headers: { "Content-Type": "application/json" },
       });
 
-      // ✅ Reset form
+      // 🔹 Reset form
       form.reset();
 
       navigate("/noncrm");

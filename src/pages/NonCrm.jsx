@@ -1,25 +1,26 @@
 // NonCrm.jsx
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbx5uIxOzNi4cPWs09WoeXC0m68H-qLY07IAIjlsmzASBX52IM2aG4YVTGm7STViPXRK/exec";
+  "https://script.google.com/macros/s/AKfycbzYtFXC2gpFOqA-dau7V3JDHkuzbT3-U2ltmBFVjUgQuLz3YCl5S_1kRmnTPPUSxySF/exec";
 
 const NonCrm = () => {
   const { user, userPin } = useContext(AuthContext);
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
+    setLoading(true);
 
     const form = e.target;
-    const data = {
+    const dataToSend = {
       action: "saveNonCrmData",
-      uid: user?.uid,
-      email: user?.email,
-      pin: userPin,
+      uid: userPin, // sheet name = PIN
       name: user?.displayName || "",
+      email: user?.email || "",
+      pin: userPin,
       phone: form.phone.value,
       designation: form.designation.value,
       program: form.program.value,
@@ -29,17 +30,38 @@ const NonCrm = () => {
     try {
       await fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", // necessary for Apps Script
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataToSend),
         headers: { "Content-Type": "application/json" },
       });
-      setMessage("✅ Data saved successfully!");
+
+      Swal.fire({
+        icon: "success",
+        title: "Data Submitted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
       form.reset();
     } catch (err) {
       console.error(err);
-      setMessage("❌ Failed to save data.");
+      Swal.fire({
+        icon: "error",
+        title: "Submission Failed",
+        text: err.message,
+      });
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (!userPin) {
+    return (
+      <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+        <h2 className="text-xl font-semibold mb-4">Enter your PIN</h2>
+        <p className="text-gray-600">PIN is required to submit NonCRM data.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -47,12 +69,12 @@ const NonCrm = () => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4"
       >
-        <h2 className="text-2xl font-semibold text-center">NonCrm Form</h2>
+        <h2 className="text-2xl font-semibold text-center">NonCRM Data Entry</h2>
 
         <input
-          type="tel"
+          type="text"
           name="phone"
-          placeholder="Phone Number"
+          placeholder="Phone"
           className="input input-bordered w-full"
           required
         />
@@ -72,15 +94,17 @@ const NonCrm = () => {
         />
         <textarea
           name="comments"
-          placeholder="Comments / Problem Details"
+          placeholder="Problem Details"
           className="input input-bordered w-full h-24"
         ></textarea>
 
-        <button type="submit" className="btn btn-primary w-full">
-          Save
+        <button
+          type="submit"
+          className={`btn btn-primary w-full ${loading ? "loading" : ""}`}
+          disabled={loading}
+        >
+          {loading ? "Submitting..." : "Submit"}
         </button>
-
-        {message && <p className="text-center text-sm">{message}</p>}
       </form>
     </div>
   );
