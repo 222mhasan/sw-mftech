@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       body: JSON.stringify(req.body),
     });
 
+    // Try parsing JSON from Apps Script
     const text = await response.text();
     let data;
     try {
