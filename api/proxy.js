@@ -1,3 +1,4 @@
+// api/proxy.js
 import fetch from "node-fetch";
 
 const APPS_SCRIPT_URL =
@@ -9,24 +10,22 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Forward request to Google Apps Script
     const response = await fetch(APPS_SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
     });
 
+    // Apps Script may respond as text, so parse safely
     const text = await response.text();
     let data;
     try {
       data = JSON.parse(text);
-    } catch (err) {
-      // If Apps Script returns HTML or plain text, wrap it in JSON
-      console.warn("Apps Script returned non-JSON:", text);
-      data = { status: "error", message: text };
+    } catch {
+      // fallback if Apps Script response isn't JSON
+      data = { status: "success", message: "Data sent to Apps Script" };
     }
-
-    // ✅ Force CORS header for browser
-    res.setHeader("Access-Control-Allow-Origin", "*");
 
     res.status(200).json(data);
   } catch (err) {

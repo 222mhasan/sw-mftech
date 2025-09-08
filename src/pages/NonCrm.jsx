@@ -2,9 +2,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 
-const APPS_SCRIPT_URL =
-  "/api/proxy"; // Using local proxy to avoid CORS issues
-
 const NonCrm = () => {
   const { user, userPin } = useContext(AuthContext);
   const [message, setMessage] = useState("");
@@ -14,9 +11,11 @@ const NonCrm = () => {
     setMessage("");
 
     const form = e.target;
+
+    // Data to send
     const data = {
       action: "saveNonCrmData",
-      pin: userPin, // sheet name
+      pin: userPin, // sheet name = user's PIN
       name: form.name.value || "",
       email: user?.email || "",
       phone: form.phone.value || "",
@@ -26,13 +25,14 @@ const NonCrm = () => {
     };
 
     try {
-      const res = await fetch(APPS_SCRIPT_URL, {
+      const res = await fetch("/api/proxy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       const result = await res.json();
+
       if (result.status === "success") {
         setMessage("✅ Data saved successfully!");
         form.reset();
@@ -40,7 +40,7 @@ const NonCrm = () => {
         setMessage("❌ Failed to save data.");
       }
     } catch (err) {
-      console.error(err);
+      console.error("NonCrm submission error:", err);
       setMessage("❌ Failed to save data.");
     }
   };
@@ -53,39 +53,13 @@ const NonCrm = () => {
       >
         <h2 className="text-2xl font-semibold text-center">NonCrm Form</h2>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="input input-bordered w-full"
-        />
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          className="input input-bordered w-full"
-        />
-        <input
-          type="text"
-          name="designation"
-          placeholder="Designation"
-          className="input input-bordered w-full"
-        />
-        <input
-          type="text"
-          name="program"
-          placeholder="Program"
-          className="input input-bordered w-full"
-        />
-        <textarea
-          name="comments"
-          placeholder="Comments"
-          className="textarea textarea-bordered w-full"
-        />
+        <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" />
+        <input type="text" name="phone" placeholder="Phone" className="input input-bordered w-full" />
+        <input type="text" name="designation" placeholder="Designation" className="input input-bordered w-full" />
+        <input type="text" name="program" placeholder="Program" className="input input-bordered w-full" />
+        <textarea name="comments" placeholder="Comments" className="textarea textarea-bordered w-full" />
 
-        <button type="submit" className="btn btn-primary w-full">
-          Save
-        </button>
+        <button type="submit" className="btn btn-primary w-full">Save</button>
 
         {message && <p className="text-center text-sm">{message}</p>}
       </form>

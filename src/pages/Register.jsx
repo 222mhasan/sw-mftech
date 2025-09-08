@@ -3,9 +3,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwbdiYrcaA6XwNNzYS4fkG8bZfQ9_v3bVlXRHV3RXywTxe7Mar0vzbyDB1AvJHkkTLb/exec";
-
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -34,16 +31,19 @@ const Register = () => {
       // Update display name
       await updateUserProfile(name);
 
-      // Create user sheet in Apps Script using PIN as sheet name
-      await fetch(APPS_SCRIPT_URL, {
+      // ✅ Use proxy route to create user sheet
+      const response = await fetch("/api/proxy", {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "createUserSheet",
-          pin, // sheet name = PIN
+          pin,   // sheet name = PIN
           email,
         }),
-        headers: { "Content-Type": "application/json" },
       });
+
+      const data = await response.json();
+      console.log("Apps Script response:", data);
 
       form.reset();
       navigate("/noncrm");
