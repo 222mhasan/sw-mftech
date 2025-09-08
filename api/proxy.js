@@ -1,21 +1,22 @@
 // api/proxy.js
-import fetch from "node-fetch";
-
-const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwbdiYrcaA6XwNNzYS4fkG8bZfQ9_v3bVlXRHV3RXywTxe7Mar0vzbyDB1AvJHkkTLb/exec";
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
+  const APPS_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycby5Kf1RV02nKugLm6FgOIbh03I-fHRTBBtlTQpCtEGHxVHLSpfmLJvc6HNsYH_AXxk/exec";
+
   try {
     const response = await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(req.body),
     });
 
+    // Apps Script sometimes returns plain text, parse safely
     const text = await response.text();
     let data;
     try {
