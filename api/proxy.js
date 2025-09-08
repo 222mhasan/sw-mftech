@@ -1,4 +1,3 @@
-// api/proxy.js
 import fetch from "node-fetch";
 
 const APPS_SCRIPT_URL =
@@ -12,9 +11,7 @@ export default async function handler(req, res) {
   try {
     const response = await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
     });
 
@@ -22,9 +19,14 @@ export default async function handler(req, res) {
     let data;
     try {
       data = JSON.parse(text);
-    } catch {
-      data = { status: "success", message: "Data sent to Apps Script" };
+    } catch (err) {
+      // If Apps Script returns HTML or plain text, wrap it in JSON
+      console.warn("Apps Script returned non-JSON:", text);
+      data = { status: "error", message: text };
     }
+
+    // ✅ Force CORS header for browser
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     res.status(200).json(data);
   } catch (err) {
