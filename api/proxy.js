@@ -12,19 +12,15 @@ export default async function handler(req, res) {
   try {
     const response = await fetch(APPS_SCRIPT_URL, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(req.body),
     });
 
-    // ✅ Try to parse JSON response from Apps Script
     const text = await response.text();
     let data;
     try {
       data = JSON.parse(text);
     } catch {
-      // If Apps Script returns no CORS-friendly response
       data = { status: "success", message: "Data sent to Apps Script" };
     }
 

@@ -17,7 +17,7 @@ const Register = () => {
     const email = form.email.value.trim().toLowerCase();
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
-    const pin = form.pin.value.trim();
+    const pin = form.pin.value;
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -25,31 +25,18 @@ const Register = () => {
     }
 
     try {
-      // Firebase registration + Firestore PIN save
+      // Firebase + Firestore PIN
       const res = await registerUserWithPin(email, password, pin);
-
-      // Update display name
       await updateUserProfile(name);
 
-      // ✅ Use PIN as sheet name
-      const sheetName = pin;
-
-      // Call proxy to create sheet in Google Sheets
+      // Create user sheet in Apps Script
       await fetch("/api/proxy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          action: "createUserSheet",
-          uid: sheetName,
-          email,
-          name,
-          pin,
-        }),
+        body: JSON.stringify({ action: "createUserSheet", uid: pin, email }),
       });
 
-      // Reset form
       form.reset();
-
       navigate("/noncrm");
     } catch (err) {
       console.error(err);
@@ -59,10 +46,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <form
-        onSubmit={handleRegister}
-        className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4"
-      >
+      <form onSubmit={handleRegister} className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4">
         <h2 className="text-2xl font-semibold text-center">Register</h2>
 
         <input type="text" name="name" placeholder="Full Name" className="input input-bordered w-full" required />

@@ -13,10 +13,10 @@ const NonCrm = () => {
     const form = e.target;
     const data = {
       action: "saveNonCrmData",
-      uid: userPin,       // ✅ Use PIN as sheet name
+      uid: userPin, // sheet name = PIN
+      pin: userPin,
       name: user?.displayName || "",
       email: user?.email || "",
-      pin: userPin,
       phone: form.phone.value,
       designation: form.designation.value,
       program: form.program.value,
@@ -29,7 +29,6 @@ const NonCrm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-
       setMessage("✅ Data saved successfully!");
       form.reset();
     } catch (err) {
@@ -38,19 +37,15 @@ const NonCrm = () => {
     }
   };
 
-  if (!userPin) {
-    return <p className="text-center mt-10">PIN is missing. Please re-login.</p>;
-  }
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4">
-        <h2 className="text-2xl font-semibold text-center">NonCrm Form</h2>
+        <h2 className="text-2xl font-semibold text-center">NonCRM Form</h2>
 
         <input type="tel" name="phone" placeholder="Phone Number" className="input input-bordered w-full" required />
         <input type="text" name="designation" placeholder="Designation" className="input input-bordered w-full" required />
         <input type="text" name="program" placeholder="Program" className="input input-bordered w-full" required />
-        <textarea name="comments" placeholder="Problem Details" className="input input-bordered w-full" rows={4}></textarea>
+        <textarea name="comments" placeholder="Comments" className="input input-bordered w-full" />
 
         <button type="submit" className="btn btn-primary w-full">Save</button>
         {message && <p className="text-center text-sm">{message}</p>}
