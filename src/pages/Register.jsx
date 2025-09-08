@@ -3,6 +3,8 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
+const APPS_SCRIPT_URL = "/api/proxy";
+
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
@@ -25,30 +27,24 @@ const Register = () => {
     }
 
     try {
-      // Firebase registration + save PIN
       const { user } = await registerUserWithPin(email, password, pin);
-
-      // Update display name
       await updateUserProfile(name);
 
-      // ✅ Use proxy route to create user sheet
-      const response = await fetch("/api/proxy", {
+      // Create user sheet via proxy
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "createUserSheet",
-          pin,   // sheet name = PIN
+          pin, // Sheet name = PIN
           email,
         }),
       });
 
-      const data = await response.json();
-      console.log("Apps Script response:", data);
-
       form.reset();
       navigate("/noncrm");
     } catch (err) {
-      console.error(err);
+      console.error("Registration error:", err);
       setError(err.message);
     }
   };
@@ -92,7 +88,7 @@ const Register = () => {
         <input
           type="text"
           name="pin"
-          placeholder="PIN (will be your sheet name)"
+          placeholder="PIN (sheet name)"
           className="input input-bordered w-full"
           required
         />
