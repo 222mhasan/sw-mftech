@@ -2,7 +2,7 @@
 import fetch from "node-fetch";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbz6AsJXK81tJ-S7Y1MR19-XBJ2707n1jqdfCvO9yP5aco3pXsYjApvVqsnY5qY8OfV-yA/exec";
+  "https://script.google.com/macros/s/AKfycbx5uIxOzNi4cPWs09WoeXC0m68H-qLY07IAIjlsmzASBX52IM2aG4YVTGm7STViPXRK/exec";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

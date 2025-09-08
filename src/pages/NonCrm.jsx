@@ -1,29 +1,25 @@
 // NonCrm.jsx
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import Swal from "sweetalert2";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwmtWNOpaN6RUNiAeXLOM8Of826URUlergcCrf3Evz5U4GxvTh-CKGo30DYvzcZ9EXVtw/exec";
-
+  "https://script.google.com/macros/s/AKfycbx5uIxOzNi4cPWs09WoeXC0m68H-qLY07IAIjlsmzASBX52IM2aG4YVTGm7STViPXRK/exec";
 
 const NonCrm = () => {
   const { user, userPin } = useContext(AuthContext);
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-    setLoading(true);
 
     const form = e.target;
     const data = {
       action: "saveNonCrmData",
       uid: user?.uid,
-      name: user?.displayName || "",
-      email: user?.email || "",
+      email: user?.email,
       pin: userPin,
+      name: user?.displayName || "",
       phone: form.phone.value,
       designation: form.designation.value,
       program: form.program.value,
@@ -31,84 +27,60 @@ const NonCrm = () => {
     };
 
     try {
-      const response = await fetch(APPS_SCRIPT_URL, {
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors", // necessary for Apps Script
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
       });
-
-      const result = await response.json();
-      console.log("Data submission response:", result);
-
-      if (result.status === "success") {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Data Submitted Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        form.reset();
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Submission Failed",
-          text: result.message,
-        });
-      }
+      setMessage("✅ Data saved successfully!");
+      form.reset();
     } catch (err) {
       console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Submission Failed",
-        text: err.message,
-      });
+      setMessage("❌ Failed to save data.");
     }
-
-    setLoading(false);
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-2xl shadow-xl w-96 space-y-4"
+        className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4"
       >
-        <h2 className="text-2xl font-semibold text-center mb-4">Non-CRM Data Entry</h2>
+        <h2 className="text-2xl font-semibold text-center">NonCrm Form</h2>
 
         <input
           type="tel"
           name="phone"
           placeholder="Phone Number"
-          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="input input-bordered w-full"
           required
         />
         <input
           type="text"
           name="designation"
           placeholder="Designation"
-          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="input input-bordered w-full"
           required
         />
         <input
           type="text"
           name="program"
           placeholder="Program"
-          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          className="input input-bordered w-full"
           required
         />
         <textarea
           name="comments"
-          placeholder="Problem Details"
-          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-          required
+          placeholder="Comments / Problem Details"
+          className="input input-bordered w-full h-24"
         ></textarea>
 
-        <button type="submit" className="btn btn-accent w-full" disabled={loading}>
-          {loading ? "Submitting..." : "Submit"}
+        <button type="submit" className="btn btn-primary w-full">
+          Save
         </button>
 
-        {message && <p className="text-center text-sm mt-2">{message}</p>}
+        {message && <p className="text-center text-sm">{message}</p>}
       </form>
     </div>
   );

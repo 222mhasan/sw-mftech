@@ -2,15 +2,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 
 const APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyMHQlIPcwQfbUY1atm9x18eFj-mGQu_I4CmbmFaqJnIRy-T6Nt2YA8V3SS_bDuDsDD6w/exec";
+  "https://script.google.com/macros/s/AKfycbx5uIxOzNi4cPWs09WoeXC0m68H-qLY07IAIjlsmzASBX52IM2aG4YVTGm7STViPXRK/exec";
 
 const Register = () => {
   const { registerUserWithPin, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -24,12 +22,12 @@ const Register = () => {
     const pin = form.pin.value;
 
     try {
-      // Firebase registration + Firestore PIN
+      // Firebase registration + Firestore PIN save
       const res = await registerUserWithPin(email, password, pin);
       await updateUserProfile(name);
 
-      // Create sheet for this user in Google Sheets
-      const response = await fetch(APPS_SCRIPT_URL, {
+      // Create sheet for user in Google Sheets
+      await fetch(APPS_SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify({
           action: "createUserSheet",
@@ -37,17 +35,6 @@ const Register = () => {
           email,
         }),
         headers: { "Content-Type": "application/json" },
-      });
-
-      const result = await response.json();
-      console.log("Sheet creation response:", result);
-
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Registration Successful",
-        showConfirmButton: false,
-        timer: 1500,
       });
 
       navigate("/noncrm");
@@ -58,51 +45,48 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-50">
-      <section className="mx-auto max-w-lg bg-gradient-to-l from-gray-200 to-gray-100 border-gray-400 shadow-xl rounded-md px-6 py-6 border">
-        <h1 className="font-semibold mb-6 text-center text-2xl">Register Here</h1>
-        <form onSubmit={handleRegister} className="space-y-4 font-semibold">
-          <input
-            name="name"
-            placeholder="Name"
-            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-            required
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="Email (BRAC Only)"
-            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-            required
-          />
-          <div className="relative">
-            <input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300 pr-10"
-              required
-            />
-            <span
-              className="absolute right-3 top-3 text-gray-600 cursor-pointer"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? "🙈" : "👁️"}
-            </span>
-          </div>
-          <input
-            name="pin"
-            type="tel"
-            placeholder="BRAC PIN"
-            pattern="\d{4,}"
-            inputMode="numeric"
-            className="bg-white p-2 w-full border-b-2 rounded-md border-transparent focus:border-gray-500 outline-none transition-all duration-300"
-            required
-          />
-          {error && <p className="text-red-500 text-sm">{error}</p>}
-          <button className="btn btn-primary text-lg w-full">Register</button>
-        </form>
-      </section>
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <form
+        onSubmit={handleRegister}
+        className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4"
+      >
+        <h2 className="text-2xl font-semibold text-center">Register</h2>
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          className="input input-bordered w-full"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email (BRAC Only)"
+          className="input input-bordered w-full"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          className="input input-bordered w-full"
+          required
+        />
+        <input
+          type="text"
+          name="pin"
+          placeholder="PIN"
+          className="input input-bordered w-full"
+          required
+        />
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
+        <button type="submit" className="btn btn-primary w-full">
+          Register
+        </button>
+      </form>
     </div>
   );
 };
