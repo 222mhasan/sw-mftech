@@ -1,75 +1,180 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
-const APPS_SCRIPT_URL = "/api/proxy";
+const GOOGLE_SHEET_API =
+  "https://script.google.com/macros/s/AKfycbwR9obnlc3-pg8e00_BM8F2U_KT4nt6mguZClPMr6mmFIVTA293QsGfj0GzQ5PdMxlK/exec";
 
-const NonCrm = () => {
-  const { user, userPin } = useContext(AuthContext);
+const NonCRM = () => {
+  const { user, userPin, setUserPin } = useContext(AuthContext); // Make sure AuthContext provides setUserPin
+  const [formData, setFormData] = useState({
+    phone: "",
+    designation: "",
+    program: "",
+    comments: "",
+  });
+  const [pinInput, setPinInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
+    setLoading(true);
 
-    if (!userPin) {
-      setMessage("❌ User PIN not found. Please log in again.");
-      return;
-    }
-
-    const form = e.target;
-    const data = {
-      action: "saveNonCrmData",
-      pin: userPin,
-      name: form.name.value || "",
+    const dataToSend = {
+      name: user?.displayName || "",
       email: user?.email || "",
-      phone: form.phone.value || "",
-      designation: form.designation.value || "",
-      program: form.program.value || "",
-      comments: form.comments.value || "",
+      pin: userPin || "",
+      phone: formData.phone,
+      designation: formData.designation,
+      program: formData.program,
+      comments: formData.comments,
     };
 
     try {
-      const res = await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbwR9obnlc3-pg8e00_BM8F2U_KT4nt6mguZClPMr6mmFIVTA293QsGfj0GzQ5PdMxlK/exec",
+        {
+          method: "POST",
+          mode: "no-cors", // Bypass CORS
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
+
+      // alert("✅ Data submitted Successfully !");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Data Sumitted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
       });
 
-      let result;
-      try {
-        result = await res.json();
-      } catch {
-        result = { status: "success", message: "Data sent to Apps Script" };
-      }
+      setFormData({ phone: "", designation: "", program: "", comments: "" });
+    } catch (error) {
+      setMessage("❌ Submission failed: " + error.message);
+    }
 
-      if (result.status === "success") {
-        setMessage("✅ Data saved successfully!");
-        form.reset();
-      } else {
-        setMessage(`❌ Failed to save data: ${result.message}`);
-      }
-    } catch (err) {
-      console.error("NonCrm submission error:", err);
-      setMessage(`❌ Failed to save data: ${err.message}`);
+    setLoading(false);
+  };
+
+  const handlePinSubmit = (e) => {
+    e.preventDefault();
+    if (pinInput.trim()) {
+      localStorage.setItem("userPin", pinInput.trim());
+      setUserPin(pinInput.trim());
     }
   };
 
+  // 👉 Show PIN entry page if PIN is missing
+  if (!userPin) {
+    return (
+      <div className="max-w-md mx-auto mt-10 p-6 border rounded-lg shadow">
+        <h2 className="text-xl font-semibold mb-4">Enter your PIN</h2>
+        <form onSubmit={handlePinSubmit} className="space-y-4">
+          <input
+            type="password"
+            className="input input-bordered w-full"
+            placeholder="Enter your PIN"
+            value={pinInput}
+            onChange={(e) => setPinInput(e.target.value)}
+            required
+          />
+          <button type="submit" className="btn btn-primary w-full">
+            Continue
+          </button>
+        </form>
+      </div>
+    );
+  }
+
+  // 👉 Main form once PIN is available
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-md w-96 space-y-4">
-        <h2 className="text-2xl font-semibold text-center">NonCrm Form</h2>
+    <div className="max-w-lg mx-auto p-6 font-poppins">
+      <h1 className="text-2xl font-semibold text-center mb-4">
+        Non-CRM Data Entry
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 mx-auto bg-gray-200 w-fit  border-gray-400 shadow-xl rounded-md  px-3 py-5 border-1"
+      >
+        {/* <input
+          type="text"
+          value={user?.displayName || ""}
+          readOnly
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+        /> */}
 
-        <input type="text" name="name" placeholder="Name" className="input input-bordered w-full" />
-        <input type="text" name="phone" placeholder="Phone" className="input input-bordered w-full" />
-        <input type="text" name="designation" placeholder="Designation" className="input input-bordered w-full" />
-        <input type="text" name="program" placeholder="Program" className="input input-bordered w-full" />
-        <textarea name="comments" placeholder="Comments" className="textarea textarea-bordered w-full" />
+        {/* <input
+          type="email"
+          value={user?.email || ""}
+          readOnly
+          className="bg-white rounded-md text-gray-500 p-2 w-full border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+        /> */}
 
-        <button type="submit" className="btn btn-primary w-full">Save</button>
-        {message && <p className="text-center text-sm">{message}</p>}
+        <input type="hidden" name="pin" value={userPin || ""} />
+
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone Number"
+          // pattern="01[0-9]{9}"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          value={formData.phone}
+          onChange={handleChange}
+          // required
+        />
+
+        <input
+          type="text"
+          name="designation"
+          placeholder="Designation"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          value={formData.designation}
+          onChange={handleChange}
+          required
+        />
+
+        <input
+          type="text"
+          name="program"
+          placeholder="Program"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          value={formData.program}
+          onChange={handleChange}
+          required
+        />
+
+        <textarea
+          name="comments"
+          placeholder="Problem Details"
+          className="bg-white p-2 w-full rounded-md border-b-2 border-transparent focus:border-gray-500 outline-none transition-all duration-300"
+          value={formData.comments}
+          onChange={handleChange}
+        ></textarea>
+
+        <button
+          type="submit"
+          className="btn btn-accent w-full text-md"
+          disabled={loading}
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
       </form>
+
+      {message && <p className="mt-4 text-green-600">{message}</p>}
     </div>
   );
 };
 
-export default NonCrm;
+export default NonCRM;
+
+
+// https://script.google.com/macros/s/AKfycbyrxvWK--EXM3-cmaBPhmIkzKPCXDS97201Kri23Wqr1Cf-RxJl5VIIjs8EKRQ3cKcp8w/exec

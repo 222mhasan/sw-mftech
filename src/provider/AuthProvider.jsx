@@ -11,12 +11,12 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore"; // 👈 Firestore imports
 
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
-const db = getFirestore(app);
+const db = getFirestore(app); // 👈 Initialize Firestore
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -39,12 +39,9 @@ const AuthProvider = ({ children }) => {
       if (docSnap.exists()) {
         const data = docSnap.data();
         setUserPin(data.pin || "");
-        return data.pin || "";
       }
-      return "";
     } catch (error) {
       console.error("Error fetching PIN:", error);
-      return "";
     }
   };
 
@@ -57,35 +54,36 @@ const AuthProvider = ({ children }) => {
   // 🔹 Login user
   const userLogin = async (email, password) => {
     setLoading(true);
-    await setPersistence(auth, browserSessionPersistence);
+    await setPersistence(auth, browserSessionPersistence); // 🔐 Set session-only
     const res = await signInWithEmailAndPassword(auth, email, password);
-    const pin = await fetchPinFromFirestore(res.user.uid); // Fetch PIN on login
-    setUserPin(pin); // ensure PIN is available in context immediately
-    return { user: res.user, pin };
+    await fetchPinFromFirestore(res.user.uid);
+    return res;
   };
 
   // 🔹 Update profile
   const updateUserProfile = (name) => {
     if (auth.currentUser) {
-      return updateProfile(auth.currentUser, { displayName: name }).then(() => {
+      return updateProfile(auth.currentUser, {
+        displayName: name,
+      }).then(() => {
         setUser({ ...auth.currentUser, displayName: name });
       });
     }
   };
 
-  // 🔹 Register user and save PIN
+  // 🔹 Save PIN after registration
   const registerUserWithPin = async (email, password, pin) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
-    await savePinToFirestore(res.user.uid, pin); // Save PIN
-    setUserPin(pin); // set immediately in context
-    return { user: res.user, pin }; // return pin as well
+    await savePinToFirestore(res.user.uid, pin); // 👈 Save PIN to Firestore
+    setUserPin(pin);
+    return res;
   };
 
   // 🔹 Logout
   const logOut = () => {
     setLoading(true);
     return signOut(auth).then(() => {
-      setUserPin(""); // clear PIN on logout
+      setUserPin(""); // Clear PIN on logout
     });
   };
 
@@ -94,8 +92,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
-        const pin = await fetchPinFromFirestore(currentUser.uid);
-        setUserPin(pin); // always keep PIN up to date
+        await fetchPinFromFirestore(currentUser.uid); // 👈 Fetch PIN on reload
       }
       setLoading(false);
     });
@@ -106,7 +103,7 @@ const AuthProvider = ({ children }) => {
     user,
     setUser,
     createNewUser,
-    registerUserWithPin,
+    registerUserWithPin, // 👈 Expose for use in Registration
     userLogin,
     updateUserProfile,
     userPin,
@@ -115,7 +112,9 @@ const AuthProvider = ({ children }) => {
     loading,
   };
 
-  return <AuthContext.Provider value={AuthInfo}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={AuthInfo}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
