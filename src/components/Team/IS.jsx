@@ -92,7 +92,7 @@ const IS = () => {
           <div className="mx-auto w-fit text-center mb-4">
             <img className="w-[180px]" src={AzmirMahmood} alt="AzmirMahmood" />
             <h1 className="font-semibold text-xl">Azmir Mahmud</h1>
-            <h1 className="font-semibold text-md">Deputy Manager, NW-Zone</h1>
+            <h1 className="font-semibold text-md">Manager, NW-Zone</h1>
           </div>
         </div>
         {/* North-West end */}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Hand from "../images/hand.gif";
 import Envelope from "../images/envelope.gif";
+import GoogleDrive from "../images/googleDrive.png"
 
 const Templates = () => {
   const [pdfs, setPdfs] = useState([]);
@@ -49,12 +50,12 @@ const Templates = () => {
             pdfs.map((pdf) => (
               <div key={pdf.id}>
                 <a
-                  className="text-blue-600 underline flex items-center gap-1"
+                  className="text-blue-700 font-poppins text-md underline flex items-center gap-1"
                   href={pdf.link}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img className="w-[20px]" src={Hand} alt="" /> {pdf.title}
+                  <img className="w-[20px]" src={GoogleDrive} alt="" /> {pdf.title}
                 </a>
               </div>
             ))
@@ -84,7 +85,7 @@ const Templates = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img className="w-[20px]" src={Envelope} alt="" />{" "}
+                    <img className="w-[20px]" src={GoogleDrive} alt="" />{" "}
                     {format.title}
                   </a>
                 </div>

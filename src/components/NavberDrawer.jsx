@@ -24,28 +24,54 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/ourTeam" onClick={closeDrawer} className={getNavLinkClass}>
-          Our Team
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/baseLocation" onClick={closeDrawer} className={getNavLinkClass}>
-          Base Location
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/templates" onClick={closeDrawer} className={getNavLinkClass}>
-          Templates
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/monthlyReport" onClick={closeDrawer} className={getNavLinkClass}>
+        <NavLink
+          to="/monthlyReport"
+          onClick={closeDrawer}
+          className={getNavLinkClass}
+        >
           Reports
         </NavLink>
       </li>
       <li>
+        <NavLink
+          to="/templates"
+          onClick={closeDrawer}
+          className={getNavLinkClass}
+        >
+          Templates
+        </NavLink>
+      </li>
+{/* 
+      <li>
         <NavLink to="/nonCRM" onClick={closeDrawer} className={getNavLinkClass}>
           Non-CRM
+        </NavLink>
+      </li> */}
+      <li>
+        <NavLink
+          to="/ourTeam"
+          onClick={closeDrawer}
+          className={getNavLinkClass}
+        >
+          Our Team
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/baseLocation"
+          onClick={closeDrawer}
+          className={getNavLinkClass}
+        >
+          Base Location
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/gallery"
+          onClick={closeDrawer}
+          className={getNavLinkClass}
+        >
+          Gallery
         </NavLink>
       </li>
     </>
@@ -81,14 +107,18 @@ const Navbar = () => {
             </div>
             <div className="navbar-start">
               <Link to="/">
-                <img src={HomeLogo} alt="Home Logo" className="w-[50px] hidden md:block" />
+                <img
+                  src={HomeLogo}
+                  alt="Home Logo"
+                  className="w-[50px] hidden md:block"
+                />
               </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1 gap-3">{links}</ul>
             </div>
             <div className="navbar-end gap-2">
-              <div className="text-green-500 text-sm">
+              {/* <div className="text-green-500 text-sm">
                 {user?.displayName ? user.displayName : user?.email}
               </div>
               {user && user?.email ? (
@@ -99,17 +129,23 @@ const Navbar = () => {
                 <Link to="/auth/login">
                   <button className="btn btn-outline btn-info">Login</button>
                 </Link>
-              )}
+              )} */}
             </div>
           </div>
         </div>
 
         {/* Drawer sidebar for mobile */}
         <div className="drawer-side">
-          <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-          
+          <label
+            htmlFor="my-drawer-3"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+
           <ul className="menu p-4 w-80 min-h-full bg-base-200 font-poppins text-base pt-10">
-            <NavLink to='/'><img src={HomeLogo} alt="Menu" /></NavLink>
+            <NavLink to="/">
+              <img src={HomeLogo} alt="Menu" />
+            </NavLink>
             {links}
           </ul>
         </div>

@@ -13,7 +13,7 @@ const TOs = () => {
 
   return (
     <div className="">
-      <h1 className="text-xl font-semibold text-center mb-1 text-black bg-sky-300 font-montserrat">
+      <h1 className="text-xl font-semibold text-center mb-1 py-1 text-black bg-sky-300 font-montserrat">
         Our Team
       </h1>
       {/* Parvez Bhai */}

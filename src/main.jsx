@@ -17,6 +17,7 @@ import BaseLocation from "./pages/BaseLocation.jsx";
 import Templates from "./components/Templates.jsx";
 import OurTeam from "./pages/OurTeam.jsx";
 import IS from "./components/Team/IS.jsx";
+import Gallery from "./pages/Gallery.jsx";
 
 
 const router = createBrowserRouter([
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/nonCrm",
         element: <PrivateRoute><NonCrm/></PrivateRoute>
+      },
+      {
+        path: "/gallery",
+        element: <Gallery/>
       },
       {
         path: "/ourTeam/IS",

@@ -19,7 +19,7 @@ const CircularSection = () => {
   }, []);
 
   return (
-    <div>
+    <div className="pb-5">
       {/* special tasks section start */}
       <SpecialTasks>
         
@@ -27,7 +27,7 @@ const CircularSection = () => {
       {/* special tasks section end */}
       {/* Circulars Section start */}
       <div>
-        <h1 className="text-xl font-semibold text-center mb-1 text-black bg-sky-300 font-montserrat">
+        <h1 className="text-xl font-semibold text-center mb-1 py-1 text-black bg-sky-300 font-montserrat">
           All Circulars
         </h1>
         {/* All circulars */}
@@ -35,13 +35,13 @@ const CircularSection = () => {
           {circulars.slice(0, visible).map((circular) => (
             <div key={circular.id}>
               <a
-                className="text-blue-500 text-sm py-1 underline flex gap-2"
+                className="text-blue-700 font-semibold py-1 underline flex gap-2"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={circular.link}
               >
                 <span>
-                  <FaArrowRight className="font-bold text-lg text-gray-500" />
+                  <FaArrowRight className="font-bold mt-1 text-lg text-gray-700" />
                 </span>{" "}
                 {circular.title}
               </a>
