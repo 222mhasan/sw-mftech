@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import HomeLogo from "../images/Home-logo.svg";
 
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -88,7 +89,7 @@ const Navbar = () => {
               <label
                 htmlFor="my-drawer-3"
                 aria-label="open sidebar"
-                className="btn btn-ghost btn-square"
+                className="btn btn-ghost btn-square font-bold text-pink-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -105,20 +106,24 @@ const Navbar = () => {
                 </svg>
               </label>
             </div>
-            <div className="navbar-start">
-              <Link to="/">
+            <div className="mx-2 flex-1 px-2">
+              <div>
+                <Link className="flex gap-2 items-center" to="/">
                 <img
                   src={HomeLogo}
                   alt="Home Logo"
                   className="w-[50px] hidden md:block"
                 />
+                <p className=" text-gray-700 text-xl  font-semibold">South-West Zone</p>
               </Link>
+              </div>
             </div>
-            <div className="navbar-center hidden lg:flex">
+            <div className="hidden flex-none lg:block">
               <ul className="menu menu-horizontal px-1 gap-3">{links}</ul>
             </div>
-            <div className="navbar-end gap-2">
-              {/* <div className="text-green-500 text-sm">
+            {/* <div className="navbar-end gap-2">
+              <p className="block lg:hidden">SW</p>
+              <div className="text-green-500 text-sm">
                 {user?.displayName ? user.displayName : user?.email}
               </div>
               {user && user?.email ? (
@@ -129,8 +134,8 @@ const Navbar = () => {
                 <Link to="/auth/login">
                   <button className="btn btn-outline btn-info">Login</button>
                 </Link>
-              )} */}
-            </div>
+              )}
+            </div> */}
           </div>
         </div>
 

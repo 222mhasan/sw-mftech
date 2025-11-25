@@ -23,9 +23,9 @@ const TOs = () => {
           <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
       </div>
       <div>
-        <div className="h-[610px] overflow-x-auto">
+        <div className="h-[610px] overflow-x-auto ">
           <table className="table table-pin-rows bg-base-200">
-            <div className=" flex flex-col justify-center ">
+            <div className=" flex flex-col justify-center pt-4 border-t-2 border-gray-300">
               {officers.map((officer) => (
                 <div className="mx-auto w-fit mb-3" key={officer.id}>
                   <img

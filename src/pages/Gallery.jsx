@@ -5,8 +5,6 @@ const Gallery = () => {
     return (
         <div>
             <Slider />
-
-            <img src="https://i.postimg.cc/wxDk6q6j/google_Sheets.png" alt="photo" />
         </div>
     );
 };
