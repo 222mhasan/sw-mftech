@@ -14,7 +14,7 @@ const Home = () => {
           <CircularSection></CircularSection>
         </div>
         <div className="col-span-3 border-gray-400 shadow-2xl bg-white rounded-md">
-          <h1 className="text-center my-2 font-semibold text-xl underline">
+          <h1 className="text-center my-2 font-semibold text-xl underline text-black">
             History of BRAC Microfinance Technology
           </h1>
           <div className="mx-auto w-fit" style={{ width: 300, height: 300 }}>

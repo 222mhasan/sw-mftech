@@ -29,13 +29,13 @@ const Templates = () => {
 
   return (
     <div className="min-h-screen px-4">
-      <h1 className="text-center font-semibold text-2xl my-3 underline">
+      <h1 className="text-center font-semibold text-2xl my-3 underline text-black">
         All Manual & Templates
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Knowledge Sharing File */}
         <div className="lg:border-r-2 border-gray-500 p-2">
-          <h2 className="text-xl font-semibold underline mb-3">
+          <h2 className="text-xl font-semibold underline mb-3 text-black">
             Knowledge Sharings
           </h2>
           {loadingPDFs ? (
@@ -64,7 +64,7 @@ const Templates = () => {
 
         {/* Mail Communication Format */}
         <div className="p-2">
-          <h2 className="text-xl font-semibold underline my-2">
+          <h2 className="text-xl font-semibold underline my-2 text-black">
             Mail Communication
           </h2>
           {loadingFormats ? (

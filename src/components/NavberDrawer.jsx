@@ -2,10 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import HomeLogo from "../images/Home-logo.svg";
-
+import { Typewriter } from "react-simple-typewriter";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  // const { user, logOut } = useContext(AuthContext);
 
   const closeDrawer = () => {
     const drawerCheckbox = document.getElementById("my-drawer-3");
@@ -42,7 +42,7 @@ const Navbar = () => {
           Templates
         </NavLink>
       </li>
-{/* 
+      {/* 
       <li>
         <NavLink to="/nonCRM" onClick={closeDrawer} className={getNavLinkClass}>
           Non-CRM
@@ -109,13 +109,23 @@ const Navbar = () => {
             <div className="mx-2 flex-1 px-2">
               <div>
                 <Link className="flex gap-2 items-center" to="/">
-                <img
-                  src={HomeLogo}
-                  alt="Home Logo"
-                  className="w-[50px] hidden md:block"
-                />
-                <p className=" text-gray-700 text-xl  font-semibold">South-West Zone</p>
-              </Link>
+                  <img
+                    src={HomeLogo}
+                    alt="Home Logo"
+                    className="w-[50px] hidden md:block"
+                  />
+                
+                  <p className="text-xl text-gray-700 font-semibold">
+                    <Typewriter
+                      words={["South-West Zone"]}
+                      loop={true} // infinite loop
+                      cursor={false} // cursor off (set true if you want blinking)
+                      typeSpeed={100} // typing speed
+                      deleteSpeed={50} // deleting speed
+                      delaySpeed={1000} // wait before restart
+                    />
+                  </p>
+                </Link>
               </div>
             </div>
             <div className="hidden flex-none lg:block">

@@ -7,7 +7,7 @@ import Man from "/WingsHead/man.jpg";
 const OurTeam = () => {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-center my-3">Our Team</h1>
+      <h1 className="text-2xl font-semibold text-center text-black my-3">Our Team</h1>
       {/* Head of Technology */}
       <div className="w-fit mx-auto">
         <div className="card bg-base-100 w-60 shadow-sm">
@@ -45,7 +45,7 @@ const OurTeam = () => {
                 </h1>
               </div>
               <Link to="/ourTeam/IS" className="text-center mb-3">
-                <button className="btn btn-outline btn-info text-black">
+                <button className="btn btn-outline btn-info text-black bg-white">
                   View Details
                 </button>
               </Link>
@@ -68,7 +68,7 @@ const OurTeam = () => {
                 </h1>
               </div>
               <Link className="text-center mb-3">
-                <button className="btn btn-outline btn-info text-black">
+                <button className="btn btn-outline btn-info text-black bg-white">
                   View Details
                 </button>
               </Link>
@@ -92,7 +92,7 @@ const OurTeam = () => {
               </div>
 
               <Link className="text-center mb-3">
-                <button className="btn btn-outline btn-info text-black">
+                <button className="btn btn-outline btn-info bg-white text-black">
                   View Details
                 </button>
               </Link>
@@ -114,7 +114,7 @@ const OurTeam = () => {
               </div>
 
               <Link className="text-center mb-3">
-                <button className="btn btn-outline btn-info text-black">
+                <button className="btn btn-outline btn-info bg-white text-black">
                   View Details
                 </button>
               </Link>

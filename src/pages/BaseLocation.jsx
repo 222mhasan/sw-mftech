@@ -18,14 +18,22 @@ const BaseLocation = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold text-center my-3">Base Location</h1>
+      <h1 className="text-3xl font-semibold text-center my-3 text-black">
+        Base Location
+      </h1>
 
       {/* Parvez Bhai */}
       <div className="mx-auto w-fit text-center mb-6 bg-gray-200 border-gray-300 border p-5 rounded-md shadow-2xl">
-        <img className="w-[180px] mx-auto" src={ParvezBhai} alt="Parvez Mosarrof" />
-        <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
-        <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
-        <p className="font-semibold">BLC Jessore</p>
+        <img
+          className="w-[180px] mx-auto"
+          src={ParvezBhai}
+          alt="Parvez Mosarrof"
+        />
+        <div className="text-black">
+          <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
+          <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
+          <p className="font-semibold">BLC Jessore</p>
+        </div>
       </div>
 
       {/* Main Grid */}
@@ -40,7 +48,6 @@ const BaseLocation = () => {
                 <div className="h-4 bg-gray-300 rounded mb-2 w-3/4 mx-auto"></div>
                 <div className="h-4 bg-gray-300 rounded mb-2 w-1/2 mx-auto"></div>
                 <div className="h-4 bg-gray-300 rounded mb-2 w-2/3 mx-auto"></div>
-                
               </div>
             ))
           : locations.map((location) => (
@@ -55,7 +62,7 @@ const BaseLocation = () => {
                       />
                     </figure>
                   </div>
-                  <div className=" mt-2 text-center ">
+                  <div className=" mt-2 text-center bg-white text-black">
                     <h2 className="font-semibold">{location.name}</h2>
                     <h3>PIN-{location.pin}</h3>
                     <h4 className="flex items-center justify-center">

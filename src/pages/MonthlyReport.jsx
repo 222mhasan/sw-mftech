@@ -14,11 +14,11 @@ const MonthlyReport = () => {
 
   return (
     <div className="min-h-screen">
-      <h1 className="text-center font-semibold text-2xl  underline  my-3">
+      <h1 className="text-center font-semibold text-2xl  underline text-black my-3">
         All Reports
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 bg-white">
         {monthlyReports.map((item) => (
           <div key={item.id} className=" shadow-xl rounded-md p-2">
             <div className=" bg-base-100 rounded-md">
