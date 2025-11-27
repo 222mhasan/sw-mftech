@@ -1,0 +1,93 @@
+[
+  {
+    "id": "1",
+    "name": "Md. Abdur Rohim",
+    "phone": "tel:+8801726071452",
+    "responsibilities": {
+      "responsibility-1": "Loan proposal & disbursement Related Issue",
+      "responsibility-2": "All UAT joined",
+      "responsibility-3": "AM, RAM Training"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Biplob Kumar Biswas",
+    "phone": "tel:+8801729070382",
+    "responsibilities": {
+      "responsibility-1": "Branch and Project open/close",
+      "responsibility-2": "Loan Disbursement modification and deletion",
+      "responsibility-3": "UAT joined",
+      "responsibility-4": "AM, RAM Training joined"
+    }
+  },
+  {
+    "id": "3",
+    "name": "Kamrul Hasan",
+    "phone": "tel:+8801313794440",
+    "responsibilities": {
+      "responsibility-1": "Micro-insurance related issue",
+      "responsibility-2": "Crop Insurance related issue",
+      "responsibility-3": "All UAT joined",
+      "responsibility-4": "AM, RAM Training",
+      "responsibility-5": "Prepared program release Communication guideline"
+    }
+  },
+  {
+    "id": "4",
+    "name": "Md. Ariful Islam",
+    "phone": "tel:+8801321210980",
+    "responsibilities": {
+      "responsibility-1": "ERP User Access issues",
+      "responsibility-2": "Report related issue",
+      "responsibility-3": "UAT joined",
+      "responsibility-4": "Prepared program release Communication guideline"
+    }
+  },
+  {
+    "id": "5",
+    "name": "Lutfun Nahar",
+    "phone": "tel:+8801324737225",
+    "responsibilities": {
+      "responsibility-1": "Loan installment collection & Modification issue",
+      "responsibility-2": "bKash UID ERP Related Issues"
+    }
+  },
+  {
+    "id": "6",
+    "name": "Nargish Akhter",
+    "phone": "tel:+8801321210979",
+    "responsibilities": {
+      "responsibility-1": "VO/Member Profile update Related issue"
+    }
+  },
+  {
+    "id": "7",
+    "name": "Lipi Singha",
+    "phone": "tel:+8801321210983",
+    "responsibilities": {
+      "responsibility-1": "ERP Server related issue",
+      "responsibility-2": "Overdue related issue",
+      "responsibility-3": "Loan write off related work"
+    }
+  },
+  {
+    "id": "8",
+    "name": "Krishnendhu Kumar",
+    "phone": "tel:+8801321210982",
+    "responsibilities": {
+      "responsibility-1": "VO Member transfer, Received, Migration related issue",
+      "responsibility-2": "Service Territory (ST) Mapping"
+    }
+  },
+  {
+    "id": "9",
+    "name": "Nazma Akter",
+    "phone": "tel:+8801321210981 ",
+    "responsibilities": {
+      "responsibility-1": "Compulsory Savings collection & Modification issue",
+      "responsibility-2": "Special Savings collection & Modification issue",
+      "responsibility-3": "Amar Hishab Current savings account",
+      "responsibility-4": "bKash UID Special Savings collection & modification issue"
+    }
+  }
+]
