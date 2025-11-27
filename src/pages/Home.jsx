@@ -3,12 +3,12 @@ import Slider from "../components/Slider";
 import TOs from "../components/TOs";
 import HomeImage from "../../src/images/HomeImage/AnimatedDashboards.json";
 import Lottie from "lottie-react";
+import EmergencyContacts from "../components/EmergencyContacts";
 // import MonthlyReport from "./MonthlyReport";
 
 const Home = () => {
   return (
     <div>
-      
       <div className="grid grid-cols-1 md:grid-cols-7 gap-2 mt-2">
         <div className="border-gray-400 shadow-2xl col-span-2 bg-white rounded-md">
           <CircularSection></CircularSection>
@@ -28,7 +28,8 @@ const Home = () => {
           </p>
         </div>
         <div className="rounded-md col-span-2 border-gray-400 shadow-2xl">
-          <TOs></TOs>
+          {/* <TOs></TOs> */}
+          <EmergencyContacts/>
         </div>
       </div>
     </div>
