@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import Arrow2 from "../images/arrow2.gif";
-import SpecialTasks from "./SpecialTasks";
+import SpecialTasks from "./OngoingTasks.";
+import GoogleDrive from "../images/googleDrive.png"
 
 const CircularSection = () => {
   const [circulars, setCirculars] = useState([]);
@@ -21,9 +22,7 @@ const CircularSection = () => {
   return (
     <div className="pb-5">
       {/* special tasks section start */}
-      <SpecialTasks>
-        
-      </SpecialTasks>
+      <SpecialTasks></SpecialTasks>
       {/* special tasks section end */}
       {/* Circulars Section start */}
       <div>
@@ -40,9 +39,11 @@ const CircularSection = () => {
                 rel="noopener noreferrer"
                 href={circular.link}
               >
-                <span>
-                  <FaArrowRight className="font-bold mt-1 text-lg text-gray-700" />
-                </span>{" "}
+                <img
+                  className="w-4 h-4 object-contain mt-1" // ensures consistent size and keeps aspect ratio
+                  src={GoogleDrive}
+                  alt=""
+                />
                 {circular.title}
               </a>
             </div>

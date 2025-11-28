@@ -3,7 +3,7 @@ import Slider from "../components/Slider";
 
 const Gallery = () => {
     return (
-        <div>
+        <div className='min-h-screen'>
             <Slider />
         </div>
     );

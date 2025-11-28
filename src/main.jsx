@@ -6,7 +6,6 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import MonthlyReport from "./pages/MonthlyReport.jsx";
 import AuthLayout from "./layout/AuthLayout.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
@@ -18,6 +17,7 @@ import Templates from "./components/Templates.jsx";
 import OurTeam from "./pages/OurTeam.jsx";
 import IS from "./components/Team/IS.jsx";
 import Gallery from "./pages/Gallery.jsx";
+import Reports from "./pages/Reports.jsx";
 
 
 const router = createBrowserRouter([
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/monthlyReport",
-        element: <MonthlyReport />,
+        element: <Reports />,
       },
       {
         path: "/nonCrm",

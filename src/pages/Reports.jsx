@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GoogleSheet from "../images/googleSheets.png";
 
-const MonthlyReport = () => {
+const Reports = () => {
   const [monthlyReports, setMonthlyReports] = useState([]);
 
   useEffect(() => {
@@ -12,6 +12,17 @@ const MonthlyReport = () => {
       });
   });
 
+  //https://drive.google.com/file/d/1TqHIY60g77JDu9MkMWLDXKyEOYaz8OgG/view?usp=sharing
+
+
+  // useEffect(() => {
+  //   fetch(
+  //     "https://drive.google.com/uc?export=download&id=1TqHIY60g77JDu9MkMWLDXKyEOYaz8OgG"
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => setMonthlyReports(data));
+  // }, []);
+
   return (
     <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl  underline text-black my-3">
@@ -20,7 +31,7 @@ const MonthlyReport = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 bg-white">
         {monthlyReports.map((item) => (
-          <div key={item.id} className=" shadow-xl rounded-md p-2">
+          <div key={item.id} className=" shadow-xl rounded-md p-2 bg-white">
             <div className=" bg-base-100 rounded-md">
               <div className="flex items-center gap-3">
                 <img className="w-[50px]" src={GoogleSheet} alt="logo" />
@@ -40,4 +51,4 @@ const MonthlyReport = () => {
   );
 };
 
-export default MonthlyReport;
+export default Reports;

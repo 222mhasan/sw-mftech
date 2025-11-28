@@ -50,7 +50,7 @@ const Templates = () => {
             pdfs.map((pdf) => (
               <div key={pdf.id}>
                 <a
-                  className="text-blue-700 font-poppins text-md underline flex items-center gap-1"
+                  className="text-blue-700 font-poppins text-lg underline flex items-center gap-1"
                   href={pdf.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -80,7 +80,7 @@ const Templates = () => {
               {formats.map((format) => (
                 <div key={format.id}>
                   <a
-                    className="text-blue-600 underline flex items-center gap-1"
+                    className="text-blue-600 underline flex text-lg items-center gap-1"
                     href={format.link}
                     target="_blank"
                     rel="noopener noreferrer"
