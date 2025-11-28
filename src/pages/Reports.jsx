@@ -12,16 +12,6 @@ const Reports = () => {
       });
   });
 
-  //https://drive.google.com/file/d/1TqHIY60g77JDu9MkMWLDXKyEOYaz8OgG/view?usp=sharing
-
-
-  // useEffect(() => {
-  //   fetch(
-  //     "https://drive.google.com/uc?export=download&id=1TqHIY60g77JDu9MkMWLDXKyEOYaz8OgG"
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setMonthlyReports(data));
-  // }, []);
 
   return (
     <div className="min-h-screen">
@@ -31,10 +21,10 @@ const Reports = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 bg-white">
         {monthlyReports.map((item) => (
-          <div key={item.id} className=" shadow-xl rounded-md p-2 bg-white">
+          <div key={item.id} className=" shadow-xl rounded-md p-2 ">
             <div className=" bg-base-100 rounded-md">
-              <div className="flex items-center gap-3">
-                <img className="w-[50px]" src={GoogleSheet} alt="logo" />
+              <div className="flex items-center gap-3 bg-white">
+                <img className="w-[30px] md:w-[40px]" src={GoogleSheet} alt="logo" />
                 <a
                   className="text-lg  text-blue-700 underline font-poppins"
                   target="_blank"

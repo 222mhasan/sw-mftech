@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import PaulPurification from "/WingsHead/Paul_Purification.webp";
 import { Link } from "react-router-dom";
 import ParvezVai from "/ZonalLeads/parvez-bhai.webp";
@@ -7,14 +7,6 @@ import AzmirMahmood from "/ZonalLeads/AzmirMahmood.webp";
 import MosiarRahman from "/ZonalLeads/MosiarRahman.webp";
 
 const IS = () => {
-  const [officers, setOfficers] = useState([]);
-
-  useEffect(() => {
-    fetch("/officers.json")
-      .then((response) => response.json())
-      .then((data) => setOfficers(data));
-  }, []);
-
   return (
     <div>
       <h1 className="text-center font-semibold my-2 text-2xl">I&S Team</h1>
@@ -41,7 +33,7 @@ const IS = () => {
         <div className="border-1 border-gray-400 rounded-sm">
           <h1 className="text-center font-semibold text-lg">South-West</h1>
 
-          <div className="px-1">
+          <div className="px-1 mb-2">
             <div className="mx-auto w-fit text-center mb-4">
               <img
                 className="w-[180px]"
@@ -51,26 +43,12 @@ const IS = () => {
               <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
               <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
             </div>
-            <div className="h-[610px] overflow-x-auto ">
-              <table className="table table-pin-rows bg-base-200 ">
-                {officers.map((officer) => (
-                  <div key={officer.id}>
-                    <div className="card text-black bg-gray-300 w-full mb-2">
-                      <div className="card-body">
-                        <h2 className="card-title">{officer.name}</h2>
-                        <div className="space-y-0">
-                          <p>R/O-{officer.base}</p>
-                          <p>{officer.phone}</p>
-                          <p className="text-blue-600 underline">
-                            {officer.email}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </table>
-            </div>
+            {/* show details link */}
+            <Link to="/ourTeam/IS/southWest" className="text-center mb-3">
+              <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
         {/* South-West end */}
@@ -83,6 +61,12 @@ const IS = () => {
             <h1 className="font-semibold text-xl">Osman Sarwar</h1>
             <h1 className="font-semibold text-md">Manager, SE-Zone</h1>
           </div>
+          {/* show details link */}
+          <Link to="/ourTeam/IS/southEast" className="text-center mb-3">
+            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
+              View Details
+            </button>
+          </Link>
         </div>
         {/* South-East end */}
 
@@ -94,6 +78,12 @@ const IS = () => {
             <h1 className="font-semibold text-xl">Azmir Mahmud</h1>
             <h1 className="font-semibold text-md">Manager, NW-Zone</h1>
           </div>
+           {/* show details link */}
+          <Link to="/ourTeam/IS/northWest" className="text-center mb-3">
+            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
+              View Details
+            </button>
+          </Link>
         </div>
         {/* North-West end */}
         {/* North-East start */}
@@ -104,6 +94,12 @@ const IS = () => {
             <h1 className="font-semibold text-xl">Md. Mosiar Rahman</h1>
             <h1 className="font-semibold text-md">Manager, NE-Zone</h1>
           </div>
+           {/* show details link */}
+          <Link to="/ourTeam/IS/northEast" className="text-center mb-3">
+            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
+              View Details
+            </button>
+          </Link>
         </div>
         {/* North-East end */}
       </section>

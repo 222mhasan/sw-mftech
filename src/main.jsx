@@ -15,9 +15,14 @@ import PrivateRoute from "./routes/PrivateRoute.jsx";
 import BaseLocation from "./pages/BaseLocation.jsx";
 import Templates from "./components/Templates.jsx";
 import OurTeam from "./pages/OurTeam.jsx";
-import IS from "./components/Team/IS.jsx";
+import IS from "./components/Team/IS/IS.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import Reports from "./pages/Reports.jsx";
+import SouthWest from "./components/Team/IS/SouthWest.jsx";
+import SouthEast from "./components/Team/IS/SouthEast.jsx";
+import NorthWest from "./components/Team/IS/NorthWest.jsx";
+import NorthEast from "./components/Team/IS/NorthEast.jsx";
+
 
 
 const router = createBrowserRouter([
@@ -57,6 +62,22 @@ const router = createBrowserRouter([
       {
         path: "/ourTeam/IS",
         element: <IS/>
+      },
+      {
+        path: "/ourTeam/IS/southWest",
+        element: <SouthWest/>
+      },
+      {
+        path: "/ourTeam/IS/southEast",
+        element: <SouthEast/>
+      },
+      {
+        path: "/ourTeam/IS/northEast",
+        element: <NorthEast/>
+      },
+      {
+        path: "/ourTeam/IS/northWest",
+        element: <NorthWest/>
       },
       {
         path: "/auth",
