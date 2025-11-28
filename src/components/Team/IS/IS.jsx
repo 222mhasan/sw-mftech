@@ -30,11 +30,11 @@ const IS = () => {
 
       <section className="grid grid-cols-1 md:grid-cols-4 gap-2 my-3">
         {/* South-West start */}
-        <div className="border-1 border-gray-400 rounded-sm">
+        <div className="border-1 border-gray-400 rounded-sm text-black">
           <h1 className="text-center font-semibold text-lg">South-West</h1>
 
           <div className="px-1 mb-2">
-            <div className="mx-auto w-fit text-center mb-4">
+            <div className="mx-auto w-fit text-center mb-4 ">
               <img
                 className="w-[180px]"
                 src={ParvezVai}
@@ -54,9 +54,9 @@ const IS = () => {
         {/* South-West end */}
 
         {/* South-East start */}
-        <div className="border-1 border-gray-400 rounded-sm">
+        <div className="border-1 border-gray-400 rounded-sm text-black">
           <h1 className="text-center font-semibold text-lg">South-East</h1>
-          <div className="mx-auto w-fit text-center mb-4">
+          <div className="mx-auto w-fit text-center mb-4 ">
             <img className="w-[180px]" src={OsmanSarwar} alt="OsmanSarwar" />
             <h1 className="font-semibold text-xl">Osman Sarwar</h1>
             <h1 className="font-semibold text-md">Manager, SE-Zone</h1>
@@ -71,14 +71,14 @@ const IS = () => {
         {/* South-East end */}
 
         {/* North-West start */}
-        <div className="border-1 border-gray-400 rounded-sm">
+        <div className="border-1 border-gray-400 rounded-sm text-black">
           <h1 className="text-center font-semibold text-lg">North-West</h1>
           <div className="mx-auto w-fit text-center mb-4">
             <img className="w-[180px]" src={AzmirMahmood} alt="AzmirMahmood" />
             <h1 className="font-semibold text-xl">Azmir Mahmud</h1>
             <h1 className="font-semibold text-md">Manager, NW-Zone</h1>
           </div>
-           {/* show details link */}
+          {/* show details link */}
           <Link to="/ourTeam/IS/northWest" className="text-center mb-3">
             <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
               View Details
@@ -87,14 +87,14 @@ const IS = () => {
         </div>
         {/* North-West end */}
         {/* North-East start */}
-        <div className="border-1 border-gray-400 rounded-sm">
+        <div className="border-1 border-gray-400 rounded-sm text-black">
           <h1 className="text-center font-semibold text-lg">North-East</h1>
-          <div className="mx-auto w-fit text-center mb-4">
+          <div className="mx-auto w-fit text-center mb-4 ">
             <img className="w-[180px]" src={MosiarRahman} alt="MosiarRahman" />
             <h1 className="font-semibold text-xl">Md. Mosiar Rahman</h1>
             <h1 className="font-semibold text-md">Manager, NE-Zone</h1>
           </div>
-           {/* show details link */}
+          {/* show details link */}
           <Link to="/ourTeam/IS/northEast" className="text-center mb-3">
             <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
               View Details
