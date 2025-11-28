@@ -37,7 +37,7 @@ const BaseLocation = () => {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-white">
         {loading
           ? Array.from({ length: 6 }).map((_, index) => (
               <div

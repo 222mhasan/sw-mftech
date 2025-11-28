@@ -9,7 +9,7 @@ import MosiarRahman from "/ZonalLeads/MosiarRahman.webp";
 const IS = () => {
   return (
     <div>
-      <h1 className="text-center font-semibold my-2 text-2xl">I&S Team</h1>
+      <h1 className="text-center font-semibold my-2 text-2xl text-black">I&S Team</h1>
       {/* Paul Purification  start*/}
       <div className="w-fit mx-auto ">
         <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
