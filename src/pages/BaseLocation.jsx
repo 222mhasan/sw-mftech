@@ -51,8 +51,8 @@ const BaseLocation = () => {
               </div>
             ))
           : locations.map((location) => (
-              <div className="shadow-xl bg-white" key={location.id}>
-                <div className="flex gap-2 bg-base-100 shadow-sm p-2">
+              <div className="shadow-xl" key={location.id}>
+                <div className="flex gap-2 bg-white shadow-sm p-2">
                     <figure>
                       <img
                         className="w-[160px]"
