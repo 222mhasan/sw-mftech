@@ -30,18 +30,47 @@ const EmergencyContacts = () => {
         Emergency Contacts
       </h1>
       {/* Brac Net start*/}
-      <div className="bg-gray-300 border-2 text-center -space-y-1 rounded-md">
-        <h1 className="text-lg font-semibold text-black">BracNet Hotline</h1>
-        <a
-          href="tel:+8809677111222"
-          className="text-blue-600 text-md font-bold underline hover:text-blue-800"
-        >
-          +8809677111222
-        </a>
+      <div className="my-1 rounded-md">
+        <div className="bg-base-100 border-base-300 collapse border">
+          <input type="checkbox" className="peer" />
+          <div className="collapse-title  text-black bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content">
+            <div className="flex justify-between text-black">
+              <h2 className="text-lg font-semibold ">BracNet</h2>
+              <h2>+</h2>
+            </div>
+          </div>
+          <div className="collapse-content text-center text-black">
+            {/* hotline */}
+            <div className="mb-2  py-2 shadow-md">
+              <h1 className="text-lg font-semibold text-black">
+                BracNet Hotline
+              </h1>
+              <a
+                href="tel:+8809677111222"
+                className="text-blue-600 text-md font-bold underline hover:text-blue-800"
+              >
+                +8809677111222
+              </a>
+            </div>
+            {/* Md.Rakibul Islam */}
+            <div className="mb-2  py-2 shadow-md">
+              <h1 className="text-lg font-semibold text-black">
+                Md.Rakibul Islam
+              </h1>
+              <h3 className="text-md ">Assistant Manager | Team Lead</h3>
+              <a
+                href="tel:+8801847364381"
+                className="text-blue-600 text-md font-bold underline hover:text-blue-800"
+              >
+                +8801847364381
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       {/* Brac Net end*/}
       {/* Central lab start*/}
-      <div className="my-1 border-2 rounded-md">
+      <div className="my-1 rounded-md">
         <div className="bg-base-100 border-base-300 collapse border">
           <input type="checkbox" className="peer" />
           <div className="collapse-title  text-black bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content">
@@ -60,7 +89,7 @@ const EmergencyContacts = () => {
                 >
                   <div className="card-body -space-y-3 text-lg text-center">
                     <h2 className=" font-semibold text-center">{lab.name}</h2>
-                    <h3>{lab.role}</h3>
+                    <h3 className="text-md">{lab.role}</h3>
                     <a
                       href={lab.phone}
                       className="text-blue-600 text-md font-bold underline hover:text-blue-800"
@@ -76,12 +105,12 @@ const EmergencyContacts = () => {
       </div>
       {/* Central lab end*/}
       {/* ERP Team  start*/}
-      <div className="my-1 border-2 rounded-md">
+      <div className="my-1 rounded-md">
         <div className="bg-base-100 border-base-300 collapse border">
           <input type="checkbox" className="peer" />
           <div className="collapse-title  text-black bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content">
             <div className="flex justify-between text-black">
-              <h2 className="text-lg font-semibold ">ERP</h2>
+              <h2 className="text-lg font-semibold ">EA Team</h2>
               <h2>+</h2>
             </div>
           </div>
@@ -95,7 +124,7 @@ const EmergencyContacts = () => {
                 >
                   <div className="card-body -space-y-3 text-lg text-center">
                     <h2 className=" font-semibold text-center">{erp.name}</h2>
-                    <h3>{erp.role}</h3>
+                    <h3 className="text-md">{erp.role}</h3>
                     <a
                       href={erp.phone}
                       className="text-blue-600 text-md font-bold underline hover:text-blue-800"
@@ -111,15 +140,13 @@ const EmergencyContacts = () => {
       </div>
       {/* ERP Team  end*/}
       {/* CRM Responsibility start */}
-      <div className="my-1 border-2 rounded-md">
+      <div className="my-1 rounded-md">
         <div className="bg-base-100 border-base-300 collapse border">
           <input type="checkbox" className="peer" />
 
           <div className="collapse-title text-black bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content">
             <div className="flex justify-between text-black">
-              <h2 className="text-md font-semibold">
-                CRM Support Responsibility (FAO)
-              </h2>
+              <h2 className="text-md font-semibold">ERP Team</h2>
               <h2>+</h2>
             </div>
           </div>
@@ -133,7 +160,7 @@ const EmergencyContacts = () => {
                 >
                   <div className="card-body -space-y-3 text-lg text-center">
                     <h2 className=" font-semibold text-center">{crm.name}</h2>
-                    <h3>{crm.role}</h3>
+                    <h3 className="text-md">{crm.role}</h3>
                     <a
                       href={crm.phone}
                       className="text-blue-600 text-md font-bold underline hover:text-blue-800"
