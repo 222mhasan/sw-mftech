@@ -2,6 +2,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@import "leaflet/dist/leaflet.css";
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+
 
 /* #root {
   max-width: 1280px;

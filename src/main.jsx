@@ -22,6 +22,7 @@ import SouthWest from "./components/Team/IS/SouthWest.jsx";
 import SouthEast from "./components/Team/IS/SouthEast.jsx";
 import NorthWest from "./components/Team/IS/NorthWest.jsx";
 import NorthEast from "./components/Team/IS/NorthEast.jsx";
+import Baselocations from "./pages/Baselocations.jsx";
 
 
 
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/baseLocation",
         element: <BaseLocation/>
+      },
+      {
+        path: "mapLocation",
+        element: <Baselocations/>
       },
       {
         path: "/templates",

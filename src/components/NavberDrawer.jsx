@@ -59,7 +59,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/baseLocation"
+          to="/mapLocation"
           onClick={closeDrawer}
           className={getNavLinkClass}
         >

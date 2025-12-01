@@ -7,7 +7,9 @@ import Man from "/WingsHead/man.jpg";
 const OurTeam = () => {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-center text-black my-3">Our Team</h1>
+      <h1 className="text-2xl font-semibold text-center text-black my-3">
+        Our Team
+      </h1>
       {/* Head of Technology */}
       <div className="w-fit mx-auto">
         <div className="card bg-base-100 w-60 shadow-sm">
@@ -87,7 +89,7 @@ const OurTeam = () => {
               <div className="card-body items-center text-center">
                 <h2 className="card-title">FA</h2>
                 <h1 className="font-montserrat font-semibold">
-                  Sachindra Nath Ghosh
+                  Sochindra Nath Datta
                 </h1>
               </div>
 
@@ -110,7 +112,9 @@ const OurTeam = () => {
               </figure>
               <div className="card-body items-center text-center">
                 <h2 className="card-title">DWR</h2>
-                <h1 className="font-montserrat font-semibold">Shomir Ghosh</h1>
+                <h1 className="font-montserrat font-semibold">
+                  Samir Baran Bhuiyan
+                </h1>
               </div>
 
               <Link className="text-center mb-3">
