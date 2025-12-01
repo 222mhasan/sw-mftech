@@ -9,10 +9,12 @@ import MosiarRahman from "/ZonalLeads/MosiarRahman.webp";
 const IS = () => {
   return (
     <div>
-      <h1 className="text-center font-semibold my-2 text-2xl text-black">I&S Team</h1>
+      <h1 className="text-center font-semibold my-2 text-2xl text-black">
+        I&S Team
+      </h1>
       {/* Paul Purification  start*/}
       <div className="w-fit mx-auto ">
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
+        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
           <figure className="px-2 pt-5">
             <img
               src={PaulPurification}
@@ -29,25 +31,24 @@ const IS = () => {
       {/* Paul Purification  end*/}
 
       <section className="grid grid-cols-1 md:grid-cols-4 gap-2 my-3">
-        {/* South-West start */}
-        <div className="border-1 border-gray-400 rounded-sm text-black py-2">
-          <h1 className="text-center font-semibold text-lg">South-West</h1>
+        {/* North-East start */}
+        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
+          <h1 className="text-center font-semibold text-lg">North-East</h1>
           <div className="mx-auto w-fit text-center mb-3 ">
-            <img className="w-[180px]" src={ParvezVai} alt="Parvez Mosarrof" />
-            <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
-            <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
+            <img className="w-[180px]" src={MosiarRahman} alt="MosiarRahman" />
+            <h1 className="font-semibold text-xl">Md. Mosiar Rahman</h1>
+            <h1 className="font-semibold text-md">Manager, NE-Zone</h1>
           </div>
           {/* show details link */}
-          <Link to="/ourTeam/IS/southWest" className="text-center">
+          <Link to="/ourTeam/IS/northEast" className="text-center">
             <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
               View Details
             </button>
           </Link>
         </div>
-        {/* South-West end */}
-
+        {/* North-East end */}
         {/* South-East start */}
-        <div className="border-1 border-gray-400 rounded-sm text-black py-2">
+        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
           <h1 className="text-center font-semibold text-lg">South-East</h1>
           <div className="mx-auto w-fit text-center mb-3 ">
             <img className="w-[180px]" src={OsmanSarwar} alt="OsmanSarwar" />
@@ -64,7 +65,7 @@ const IS = () => {
         {/* South-East end */}
 
         {/* North-West start */}
-        <div className="border-1 border-gray-400 rounded-sm text-black py-2">
+        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
           <h1 className="text-center font-semibold text-lg">North-West</h1>
           <div className="mx-auto w-fit text-center mb-3">
             <img className="w-[180px]" src={AzmirMahmood} alt="AzmirMahmood" />
@@ -79,22 +80,22 @@ const IS = () => {
           </Link>
         </div>
         {/* North-West end */}
-        {/* North-East start */}
-        <div className="border-1 border-gray-400 rounded-sm text-black py-2">
-          <h1 className="text-center font-semibold text-lg">North-East</h1>
+        {/* South-West start */}
+        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
+          <h1 className="text-center font-semibold text-lg">South-West</h1>
           <div className="mx-auto w-fit text-center mb-3 ">
-            <img className="w-[180px]" src={MosiarRahman} alt="MosiarRahman" />
-            <h1 className="font-semibold text-xl">Md. Mosiar Rahman</h1>
-            <h1 className="font-semibold text-md">Manager, NE-Zone</h1>
+            <img className="w-[180px]" src={ParvezVai} alt="Parvez Mosarrof" />
+            <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
+            <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
           </div>
           {/* show details link */}
-          <Link to="/ourTeam/IS/northEast" className="text-center">
+          <Link to="/ourTeam/IS/southWest" className="text-center">
             <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
               View Details
             </button>
           </Link>
         </div>
-        {/* North-East end */}
+        {/* South-West end */}
       </section>
     </div>
   );

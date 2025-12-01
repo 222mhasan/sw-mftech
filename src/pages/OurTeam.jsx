@@ -7,12 +7,12 @@ import Man from "/WingsHead/man.jpg";
 const OurTeam = () => {
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-center text-black my-3">
+      <h1 className="text-2xl font-semibold  text-center text-black my-3">
         Our Team
       </h1>
       {/* Head of Technology */}
       <div className="w-fit mx-auto">
-        <div className="card bg-base-100 w-60 shadow-sm">
+        <div className="card bg-base-200 w-72 shadow-md">
           <figure className="px-2 pt-10">
             <img
               src={Man}
@@ -29,10 +29,10 @@ const OurTeam = () => {
 
       {/* 4 Units Section */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mt-5 ">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-0 mt-5 ">
           {/* I&S */}
           <div className="w-fit mx-auto">
-            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
+            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
                   src={PaulPurification}
@@ -55,7 +55,7 @@ const OurTeam = () => {
           </div>
           {/* EA */}
           <div className="w-fit mx-auto">
-            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
+            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
                   src={AnirbanSaha}
@@ -78,7 +78,7 @@ const OurTeam = () => {
           </div>
           {/* FA */}
           <div className="w-fit mx-auto">
-            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
+            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
                   src={Man}
@@ -102,7 +102,7 @@ const OurTeam = () => {
           </div>
           {/* DWR */}
           <div className="w-fit mx-auto">
-            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-60 shadow-xl">
+            <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
                   src={Man}

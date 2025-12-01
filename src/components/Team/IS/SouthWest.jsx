@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 
 const SouthWest = () => {
   const [officers, setOfficers] = useState([]);
+  console.log(officers);
 
   useEffect(() => {
-    fetch("/officers.json")
+    fetch("/swOfficers.json")
       .then((response) => response.json())
       .then((data) => setOfficers(data));
   }, []);
@@ -20,7 +21,13 @@ const SouthWest = () => {
                 <h2 className="card-title">{officer.name}</h2>
                 <div className="space-y-0">
                   <p>R/O-{officer.base}</p>
-                  <p>{officer.phone}</p>
+                  <a
+                    href={officer.phone}
+                    className="text-blue-600 text-md font-bold underline hover:text-blue-800"
+                  >
+                    {officer.phone.replace("tel:", "")}
+                  </a>
+                  {/* <a href={officer.email}>{officer.email}</a> */}
                   <p className="text-blue-600 underline">{officer.email}</p>
                 </div>
               </div>

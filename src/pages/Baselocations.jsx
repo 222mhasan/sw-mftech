@@ -8,7 +8,7 @@ const Baselocations = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <header className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-bold text-center mb-2">
+        <h1 className="text-2xl font-semibold text-center mb-2">
           Base Locations
         </h1>
        
