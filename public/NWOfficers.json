@@ -3,200 +3,275 @@
     "id": 1,
     "name": "Md. Harun Or Rashid",
     "pin": 190371,
-    "base": "Bagura",
+    "base": "R/O-Bagura",
     "email": "to.bogura@brac.net",
-    "phone": "1708913773"
+    "mailto": "mailto:to.bogura@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.bogura@brac.net",
+    "phone": "tel:+881708913773",
+    "image": ""
   },
   {
     "id": 2,
     "name": "Rafi Ahmed",
     "pin": 114395,
-    "base": "Chapainawabgong",
+    "base": "R/O-Chapainawabgong",
     "email": "to.chapainawabgong@brac.net",
-    "phone": "1708913755"
+    "mailto": "mailto:to.chapainawabgong@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.chapainawabgong@brac.net",
+    "phone": "tel:+881708913755",
+    "image": ""
   },
   {
     "id": 3,
     "name": "Rehana Pervin",
     "pin": 279574,
-    "base": "Dhupcachia-Bagura",
+    "base": "R/O-Dhupcachia-Bagura",
     "email": "to.dupchachia-bogura@brac.net",
-    "phone": "1332943770"
+    "mailto": "mailto:to.dupchachia-bogura@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.dupchachia-bogura@brac.net",
+    "phone": "tel:+881332943770",
+    "image": ""
   },
   {
     "id": 4,
     "name": "Md. Golam Mortuza",
     "pin": 259496,
-    "base": "Dinajpur",
+    "base": "R/O-Dinajpur",
     "email": "to.dinajpur@brac.net",
-    "phone": "1313795076"
+    "mailto": "mailto:to.dinajpur@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.dinajpur@brac.net",
+    "phone": "tel:+881313795076",
+    "image": ""
   },
   {
     "id": 5,
     "name": "Md. Tanjirul Islam",
     "pin": 157072,
-    "base": "Fulbari-Dinajpur",
+    "base": "R/O-Fulbari-Dinajpur",
     "email": "to.fulbari-dinajpur@brac.net",
-    "phone": "1313795075"
+    "mailto": "mailto:to.fulbari-dinajpur@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.fulbari-dinajpur@brac.net",
+    "phone": "tel:+881313795075",
+    "image": ""
   },
   {
     "id": 6,
     "name": "Fahomid Al Farid Hasan",
     "pin": 261854,
-    "base": "Gabindaganj-Gaibandha",
+    "base": "R/O-Gabindaganj-Gaibandha",
     "email": "to.gobindagonj-gaibandha@brac.net",
-    "phone": "1332943773"
+    "mailto": "mailto:to.gobindagonj-gaibandha@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.gobindagonj-gaibandha@brac.net",
+    "phone": "tel:+881332943773",
+    "image": ""
   },
   {
     "id": 7,
     "name": "Md. Kamrul Hasan",
     "pin": 282148,
-    "base": "Gaibandha",
+    "base": "R/O-Gaibandha",
     "email": "to.gaibandha@brac.net",
-    "phone": "1708913764"
+    "mailto": "mailto:to.gaibandha@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.gaibandha@brac.net",
+    "phone": "tel:+881708913764",
+    "image": ""
   },
   {
     "id": 8,
     "name": "Md. Abu Basher",
     "pin": 1549328,
-    "base": "Hatibandha-Lalmonirhat",
+    "base": "R/O-Hatibandha-Lalmonirhat",
     "email": "to.hatibandah-lalmonirhat@brac.net",
-    "phone": "1332943765"
+    "mailto": "mailto:to.hatibandah-lalmonirhat@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.hatibandah-lalmonirhat@brac.net",
+    "phone": "tel:+881332943765",
+    "image": ""
   },
   {
     "id": 9,
     "name": "Enayet Noby Nishan",
     "pin": 265349,
-    "base": "Joypurhat",
+    "base": "R/O-Joypurhat",
     "email": "to.joypurhat@brac.net",
-    "phone": "1708913776"
+    "mailto": "mailto:to.joypurhat@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.joypurhat@brac.net",
+    "phone": "tel:+881708913776",
+    "image": ""
   },
   {
     "id": 10,
     "name": "Kamrun Nahar Shampa",
     "pin": 1552204,
-    "base": "Kahaloo-Bagura",
+    "base": "R/O-Kahaloo-Bagura",
     "email": "to.kahaloo-bogura@brac.net",
-    "phone": "1332943771"
+    "mailto": "mailto:to.kahaloo-bogura@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.kahaloo-bogura@brac.net",
+    "phone": "tel:+881332943771",
+    "image": ""
   },
   {
     "id": 11,
     "name": "Md. Abu Raihan Sarker",
     "pin": 190578,
-    "base": "Kurigram",
+    "base": "R/O-Kurigram",
     "email": "to.kurigram@brac.net",
-    "phone": "1708913768"
+    "mailto": "mailto:to.kurigram@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.kurigram@brac.net",
+    "phone": "tel:+881708913768",
+    "image": ""
   },
   {
     "id": 12,
     "name": "MD. ABDUL KARIM",
     "pin": 279332,
-    "base": "Lalmonirhat",
+    "base": "R/O-Lalmonirhat",
     "email": "to.lalmonirhat@brac.net",
-    "phone": "1332838271"
+    "mailto": "mailto:to.lalmonirhat@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.lalmonirhat@brac.net",
+    "phone": "tel:+881332838271",
+    "image": ""
   },
   {
     "id": 13,
     "name": "Md. Imran Hossain",
     "pin": 252695,
-    "base": "Naogaon",
+    "base": "R/O-Naogaon",
     "email": "to.naogaon@brac.net",
-    "phone": "1708913760"
+    "mailto": "mailto:to.naogaon@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.naogaon@brac.net",
+    "phone": "tel:+881708913760",
+    "image": ""
   },
   {
     "id": 14,
     "name": "Most. Sabrina Nuzhat",
     "pin": 191680,
-    "base": "Natore",
+    "base": "R/O-Natore",
     "email": "to.natore@brac.net",
-    "phone": "1708913757"
+    "mailto": "mailto:to.natore@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.natore@brac.net",
+    "phone": "tel:+881708913757",
+    "image": ""
   },
   {
     "id": 15,
     "name": "Md. Mostafijur Rahman",
     "pin": 1567430,
-    "base": "Nilphamari",
+    "base": "R/O-Nilphamari",
     "email": "to.nilphamari@brac.net",
-    "phone": "1313795086"
+    "mailto": "mailto:to.nilphamari@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.nilphamari@brac.net",
+    "phone": "tel:+881313795086",
+    "image": ""
   },
   {
     "id": 16,
     "name": "Md.Robiul Islam",
     "pin": 260266,
-    "base": "Niyamatpur-Naogaon",
+    "base": "R/O-Niyamatpur-Naogaon",
     "email": "to.niamotpur-naogaon@brac.net",
-    "phone": "1332943758"
+    "mailto": "mailto:to.niamotpur-naogaon@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.niamotpur-naogaon@brac.net",
+    "phone": "tel:+881332943758",
+    "image": ""
   },
   {
     "id": 17,
     "name": "Md. Ualiullah Khan",
     "pin": 191675,
-    "base": "Pabna",
+    "base": "R/O-Pabna",
     "email": "to.pabna@brac.net",
-    "phone": "1708913761"
+    "mailto": "mailto:to.pabna@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.pabna@brac.net",
+    "phone": "tel:+881708913761",
+    "image": ""
   },
   {
     "id": 18,
     "name": "Md. Nur Hamza",
     "pin": 1549486,
-    "base": "Panchagor",
+    "base": "R/O-Panchagor",
     "email": "to.panchagor@brac.net",
-    "phone": "1332943766"
+    "mailto": "mailto:to.panchagor@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.panchagor@brac.net",
+    "phone": "tel:+881332943766",
+    "image": ""
   },
   {
     "id": 19,
     "name": "Md. Moniruzzaman",
     "pin": 114394,
-    "base": "Rajshahi",
+    "base": "R/O-Rajshahi",
     "email": "to.rajshahi@brac.net",
-    "phone": "1708913774"
+    "mailto": "mailto:to.rajshahi@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.rajshahi@brac.net",
+    "phone": "tel:+881708913774",
+    "image": ""
   },
   {
     "id": 20,
     "name": "Hossain Md Ramzan Ali Sunny",
     "pin": 73678,
-    "base": "Rangpur",
+    "base": "R/O-Rangpur",
     "email": "to.rangpur@brac.net",
-    "phone": "1730348222"
+    "mailto": "mailto:to.rangpur@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.rangpur@brac.net",
+    "phone": "tel:+881730348222",
+    "image": ""
   },
   {
     "id": 21,
     "name": "SM. Moshiur Rahman",
     "pin": 169915,
-    "base": "Sirajgonj",
+    "base": "R/O-Sirajgonj",
     "email": "to.sirajgonj@brac.net",
-    "phone": "1313795072"
+    "mailto": "mailto:to.sirajgonj@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.sirajgonj@brac.net",
+    "phone": "tel:+881313795072",
+    "image": ""
   },
   {
     "id": 22,
     "name": "Md. Humayun Kabir",
     "pin": 112377,
-    "base": "Sujanagar-Pabna",
+    "base": "R/O-Sujanagar-Pabna",
     "email": "to.sujanagar-pabna@brac.net",
-    "phone": "1332838264"
+    "mailto": "mailto:to.sujanagar-pabna@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.sujanagar-pabna@brac.net",
+    "phone": "tel:+881332838264",
+    "image": ""
   },
   {
     "id": 23,
     "name": "Shambhu Kumar Roy",
     "pin": 197510,
-    "base": "Syedpur",
+    "base": "R/O-Syedpur",
     "email": "to.syedpur@brac.net",
-    "phone": "1332838267"
+    "mailto": "mailto:to.syedpur@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.syedpur@brac.net",
+    "phone": "tel:+881332838267",
+    "image": ""
   },
   {
     "id": 24,
     "name": "Md. Roni Kujjaman",
     "pin": 201010,
-    "base": "Thakurgaon",
+    "base": "R/O-Thakurgaon",
     "email": "to.thakurgaon@brac.net",
-    "phone": "1313795079"
+    "mailto": "mailto:to.thakurgaon@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.thakurgaon@brac.net",
+    "phone": "tel:+881313795079",
+    "image": ""
   },
   {
     "id": 25,
     "name": "Md. Khairul Islam",
     "pin": 125736,
-    "base": "Ullapara-Sirajgonj",
+    "base": "R/O-Ullapara-Sirajgonj",
     "email": "to.ullapara-sirajgonj@brac.net",
-    "phone": "1729071231"
+    "mailto": "mailto:to.ullapara-sirajgonj@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=to.ullapara-sirajgonj@brac.net",
+    "phone": "tel:+881729071231",
+    "image": ""
   }
 ]

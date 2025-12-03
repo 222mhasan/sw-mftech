@@ -3,10 +3,10 @@ import Forward from "/slider-icon/fast-forward.gif";
 import Backward from "/slider-icon/fast-backward.gif";
 import { TypeAnimation } from "react-type-animation";
 
-import Team1 from "/teamPhoto/team1.webp";
-import Team2 from "/teamPhoto/team2.webp";
-import Team4 from "/teamPhoto/team4.webp";
-import Team5 from "/teamPhoto/team5.webp";
+import Team1 from "/teamPhoto/team1.jpg";
+import Team2 from "/teamPhoto/team2.jpg";
+import Team4 from "/teamPhoto/team3.jpg";
+import Team5 from "/teamPhoto/team4.jpg";
 
 const images = [Team1, Team2, Team4, Team5];
 
