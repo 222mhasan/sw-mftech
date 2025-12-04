@@ -69,7 +69,7 @@ const OurTeam = () => {
                   Anirban Saha Ananda
                 </h1>
               </div>
-              <Link className="text-center mb-3">
+              <Link to="/ourTeam/EA" className="text-center mb-3">
                 <button className="btn btn-outline btn-info text-black bg-white">
                   View Details
                 </button>
@@ -93,7 +93,7 @@ const OurTeam = () => {
                 </h1>
               </div>
 
-              <Link className="text-center mb-3">
+              <Link to="/ourTeam/FA" className="text-center mb-3">
                 <button className="btn btn-outline btn-info bg-white text-black">
                   View Details
                 </button>
@@ -117,7 +117,7 @@ const OurTeam = () => {
                 </h1>
               </div>
 
-              <Link className="text-center mb-3">
+              <Link to="/ourTeam/DW" className="text-center mb-3">
                 <button className="btn btn-outline btn-info bg-white text-black">
                   View Details
                 </button>

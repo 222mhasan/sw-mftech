@@ -23,6 +23,9 @@ import SouthEast from "./components/Team/IS/SouthEast.jsx";
 import NorthWest from "./components/Team/IS/NorthWest.jsx";
 import NorthEast from "./components/Team/IS/NorthEast.jsx";
 import Baselocations from "./pages/Baselocations.jsx";
+import FA from "./components/Team/FA/FA.jsx";
+import DW from "./components/Team/DW/DW.jsx";
+import EA from "./components/Team/EA/EA.jsx";
 
 
 
@@ -63,6 +66,18 @@ const router = createBrowserRouter([
       {
         path: "/gallery",
         element: <Gallery/>
+      },
+      {
+        path: "/ourTeam/FA",
+        element: <FA/>
+      },
+      {
+        path: "/ourTeam/EA",
+        element: <EA/>
+      },
+      {
+        path: "/ourTeam/DW",
+        element: <DW/>
       },
       {
         path: "/ourTeam/IS",

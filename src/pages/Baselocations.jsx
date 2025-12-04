@@ -4,11 +4,13 @@ import MapModal from "./../components/MapModal";
 
 const Baselocations = () => {
   const MAP_ID = "18mBajJ4q4huVnfceb-HDCYaWDnk67Fk"; // ✔ fixed
+   // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 ">
       <header className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-semibold text-center mb-2">
+        <h1 className="text-2xl font-semibold text-center py-3">
           Base Locations
         </h1>
        

@@ -10,6 +10,8 @@ const Reports = () => {
       .then((data) => {
         setMonthlyReports(data);
       });
+      // Scroll to top when the component mounts
+    window.scrollTo(0, 0);
   });
 
 

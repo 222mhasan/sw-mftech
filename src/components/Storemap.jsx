@@ -5,7 +5,7 @@ const Storemap = ({ mapId, className = "" }) => {
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="w-full  mx-auto h-[70vh] sm:h-[500px] rounded-xl overflow-hidden shadow-lg border">
+      <div className="w-full  mx-auto h-[70vh] sm:h-[600px] rounded-md overflow-hidden shadow-lg border">
         <iframe
           title="Store branches & service zones"
           src={src}

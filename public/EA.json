@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1,
+    "name": "Anirban Saha Ananda",
+    "pin": 252240,
+    "designation": "Assistant General Manager",
+    "base": "Head Office",
+    "email": "anirban.ananda@brac.net",
+    "mailto": "mailto:anirban.ananda@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=anirban.ananda@brac.net",
+    "phone": "tel:+881710338631",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "name": "Joydeb Kumar Sarkar",
+    "pin": 127517,
+    "designation": "Manager",
+    "base": "UTC",
+    "email": "joydeb.kumar@brac.net",
+    "mailto": "mailto:joydeb.kumar@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=joydeb.kumar@brac.net",
+    "phone": "tel:+881729071580",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "name": "Md. Rakebul Hasan",
+    "pin": 197246,
+    "designation": "Manager",
+    "base": "Head Office",
+    "email": "rakebul.hasan@brac.net",
+    "mailto": "mailto:rakebul.hasan@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=rakebul.hasan@brac.net",
+    "phone": "tel:+881796584193",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "Md. Tanvir Alam Sifat",
+    "pin": 250273,
+    "designation": "Manager",
+    "base": "Head Office",
+    "email": "tanvir.sifat@brac.net",
+    "mailto": "mailto:tanvir.sifat@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=tanvir.sifat@brac.net",
+    "phone": "tel:+881729071260",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "Pramit Ganguly",
+    "pin": 192086,
+    "designation": "Deputy Manager",
+    "base": "Head Office",
+    "email": "pramit.ganguly@brac.net",
+    "mailto": "mailto:pramit.ganguly@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=pramit.ganguly@brac.net",
+    "phone": "tel:+881682002212",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Shafiul Gani",
+    "pin": 274474,
+    "designation": "Deputy Manager",
+    "base": "Head Office",
+    "email": "shafiul.gani@brac.net",
+    "mailto": "mailto:shafiul.gani@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=shafiul.gani@brac.net",
+    "phone": "tel:+881677233176",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "name": "Asif Iqbal",
+    "pin": 285310,
+    "designation": "Deputy Manager",
+    "base": "Head Office",
+    "email": "asif.iqbal@brac.net",
+    "mailto": "mailto:asif.iqbal@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=asif.iqbal@brac.net",
+    "phone": "tel:+881775915366",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Jarin Tasnim",
+    "pin": 270116,
+    "designation": "Deputy Manager",
+    "base": "Head Office",
+    "email": "tasnim.jarin@brac.net",
+    "mailto": "mailto:tasnim.jarin@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=tasnim.jarin@brac.net",
+    "phone": "tel:+881763661913",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Sumaya Mahbub",
+    "pin": 261027,
+    "designation": "Deputy Manager",
+    "base": "Head Office",
+    "email": "sumaya.mahbub@brac.net",
+    "mailto": "mailto:sumaya.mahbub@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=sumaya.mahbub@brac.net",
+    "phone": "tel:+881787653542",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "name": "Chiranjib Ghatak",
+    "pin": 164022,
+    "designation": "Deputy Manager",
+    "base": "UTC",
+    "email": "chiranjib.ghatak@brac.net",
+    "mailto": "mailto:chiranjib.ghatak@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=chiranjib.ghatak@brac.net",
+    "phone": "tel:+881916565079",
+    "image": ""
+  },
+
+  {
+    "id": 13,
+    "name": "Md. Golam Rabbanie Babu",
+    "pin": 198603,
+    "designation": "Deputy Manager",
+    "base": "UTC",
+    "email": "golam.babu@brac.net",
+    "mailto": "mailto:golam.babu@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=golam.babu@brac.net",
+    "phone": "tel:+881642486798",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Sunehra Islam",
+    "pin": 271508,
+    "designation": "Senior Officer",
+    "base": "Head Office",
+    "email": "sunehra.islam@brac.net",
+    "mailto": "mailto:sunehra.islam@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=sunehra.islam@brac.net",
+    "phone": "tel:+881407959451",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Rubana Nasrin",
+    "pin": 259440,
+    "designation": "Senior Officer",
+    "base": "UTC",
+    "email": "rubana.nasrin@brac.net",
+    "mailto": "mailto:rubana.nasrin@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=rubana.nasrin@brac.net",
+    "phone": "tel:+881755195280",
+    "image": ""
+  },
+
+  {
+    "id": 11,
+    "name": "Md. Ashab Bin Rayhan",
+    "pin": 261297,
+    "designation": "Senior Officer",
+    "base": "Head Office",
+    "email": "ashab.r@brac.net",
+    "mailto": "mailto:ashab.r@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=ashab.r@brac.net",
+    "phone": "tel:+881774526244",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "name": "Abu Kowshir Bitto",
+    "pin": 287671,
+    "designation": "Senior Officer",
+    "base": "Head Office",
+    "email": "kowshir.bitto@brac.net",
+    "mailto": "mailto:kowshir.bitto@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=kowshir.bitto@brac.net",
+    "phone": "tel:+881706159566",
+    "image": ""
+  },
+
+  {
+    "id": 16,
+    "name": "Md. Raju Ahmed",
+    "pin": 189283,
+    "designation": "Senior Officer",
+    "base": "UTC",
+    "email": "raju.a@brac.net",
+    "mailto": "mailto:raju.a@brac.net",
+    "gmailLink": "https://mail.google.com/mail/?view=cm&fs=1&to=raju.a@brac.net",
+    "phone": "tel:+881767878685",
+    "image": ""
+  }
+]
