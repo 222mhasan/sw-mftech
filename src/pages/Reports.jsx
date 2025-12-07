@@ -11,7 +11,7 @@ const Reports = () => {
         setMonthlyReports(data);
       });
       // Scroll to top when the component mounts
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
   });
 
 
