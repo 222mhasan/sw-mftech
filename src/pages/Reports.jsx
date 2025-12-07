@@ -28,7 +28,7 @@ const Reports = () => {
               <div className="flex items-center gap-3 bg-white">
                 <img className="w-[30px] md:w-[40px]" src={GoogleSheet} alt="logo" />
                 <a
-                  className="text-lg  text-blue-700 underline font-poppins"
+                  className="text-md  text-blue-700 underline font-poppins"
                   target="_blank"
                   href={item.link}
                 >
