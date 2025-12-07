@@ -29,7 +29,7 @@ const OurTeam = () => {
 
       {/* 4 Units Section */}
       <section>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-1 md:gap-2 mt-5 ">
+        <div className="flex flex-col md:flex-row mt-5 gap-2 justify-center items-center ">
           {/* I&S */}
           <div className="w-fit mx-auto">
             <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">

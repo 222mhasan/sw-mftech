@@ -45,7 +45,7 @@ const EmergencyContacts = () => {
           onClick={() => toggleSection("BracNet")}
         >
           <h2 className="text-lg font-semibold text-black">BracNet</h2>
-          <h2>{openSection === "BracNet" ? "-" : "+"}</h2>
+          <h2 className="text-black">{openSection === "BracNet" ? "-" : "+"}</h2>
         </div>
         {openSection === "BracNet" && (
           <div className="bg-white text-center text-black p-2">
@@ -120,7 +120,7 @@ const EmergencyContacts = () => {
           onClick={() => toggleSection("CentralLab")}
         >
           <h2 className="text-lg font-semibold text-black">Central Lab</h2>
-          <h2>{openSection === "CentralLab" ? "-" : "+"}</h2>
+          <h2 className="text-black">{openSection === "CentralLab" ? "-" : "+"}</h2>
         </div>
         {openSection === "CentralLab" && (
           <div className="bg-white text-black p-2">
@@ -152,7 +152,7 @@ const EmergencyContacts = () => {
           onClick={() => toggleSection("EATeam")}
         >
           <h2 className="text-lg font-semibold text-black">EA Team</h2>
-          <h2>{openSection === "EATeam" ? "-" : "+"}</h2>
+          <h2 className="text-black">{openSection === "EATeam" ? "-" : "+"}</h2>
         </div>
         {openSection === "EATeam" && (
           <div className="bg-white text-black p-2">
@@ -184,7 +184,7 @@ const EmergencyContacts = () => {
           onClick={() => toggleSection("CRM")}
         >
           <h2 className="text-md font-semibold text-black">CRM Responsibilities</h2>
-          <h2>{openSection === "CRM" ? "-" : "+"}</h2>
+          <h2 className="text-black">{openSection === "CRM" ? "-" : "+"}</h2>
         </div>
         {openSection === "CRM" && (
           <div className="bg-white text-black p-2">
