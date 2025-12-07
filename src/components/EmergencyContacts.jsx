@@ -44,7 +44,7 @@ const EmergencyContacts = () => {
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("BracNet")}
         >
-          <h2 className="text-lg font-semibold">BracNet</h2>
+          <h2 className="text-lg font-semibold text-black">BracNet</h2>
           <h2>{openSection === "BracNet" ? "-" : "+"}</h2>
         </div>
         {openSection === "BracNet" && (
@@ -119,7 +119,7 @@ const EmergencyContacts = () => {
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("CentralLab")}
         >
-          <h2 className="text-lg font-semibold">Central Lab</h2>
+          <h2 className="text-lg font-semibold text-black">Central Lab</h2>
           <h2>{openSection === "CentralLab" ? "-" : "+"}</h2>
         </div>
         {openSection === "CentralLab" && (
@@ -151,7 +151,7 @@ const EmergencyContacts = () => {
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("EATeam")}
         >
-          <h2 className="text-lg font-semibold">EA Team</h2>
+          <h2 className="text-lg font-semibold text-black">EA Team</h2>
           <h2>{openSection === "EATeam" ? "-" : "+"}</h2>
         </div>
         {openSection === "EATeam" && (
@@ -183,7 +183,7 @@ const EmergencyContacts = () => {
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("CRM")}
         >
-          <h2 className="text-md font-semibold">CRM Responsibilities</h2>
+          <h2 className="text-md font-semibold text-black">CRM Responsibilities</h2>
           <h2>{openSection === "CRM" ? "-" : "+"}</h2>
         </div>
         {openSection === "CRM" && (
