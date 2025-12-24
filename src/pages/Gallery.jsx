@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from "../components/Slider";
-import OngoingLinks from '../components/OngoingLinks';
+import OngoingLinks from '../components/OngoingReports';
 
 const Gallery = () => {
 

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
+import OngoingReports from "../components/OngoingReports";
 import GoogleSheet from "../images/googleSheets.png";
-import OngoingLinks from "../components/OngoingLinks";
+
 
 const Reports = () => {
   // const [monthlyReports, setMonthlyReports] = useState([]);
@@ -17,7 +18,7 @@ const Reports = () => {
 
   return (
     <div>
-      <OngoingLinks />
+      <OngoingReports/>
     </div>
   );
 };
