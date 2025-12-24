@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from "react";
 import GoogleSheet from "../images/googleSheets.png";
+import OngoingLinks from "../components/OngoingLinks";
 
 const Reports = () => {
-  const [monthlyReports, setMonthlyReports] = useState([]);
+  // const [monthlyReports, setMonthlyReports] = useState([]);
 
-  useEffect(() => {
-    fetch("monthlyReport.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setMonthlyReports(data);
-      });
-      // Scroll to top when the component mounts
-    // window.scrollTo(0, 0);
-  });
-
+  // useEffect(() => {
+  //   fetch("monthlyReport.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setMonthlyReports(data);
+  //     });
+  //     // Scroll to top when the component mounts
+  //   // window.scrollTo(0, 0);
+  // });
 
   return (
-    <div className="min-h-screen">
+    <div>
+      <OngoingLinks />
+    </div>
+  );
+};
+
+export default Reports;
+
+{
+  /* <div className="min-h-screen">
       <h1 className="text-center font-semibold text-2xl  underline text-black my-3">
         All Reports
       </h1>
@@ -39,8 +48,5 @@ const Reports = () => {
           </div>
         ))}
       </div>
-    </div>
-  );
-};
-
-export default Reports;
+    </div> */
+}
