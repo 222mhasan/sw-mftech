@@ -1,21 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
-import Arrow2 from "../images/arrow2.gif";
 import GoogleSheet from "../images/googleSheets.png";
+import { fetchSheetData } from "../utils/fetchSheetData";
+import Arrow2 from "../images/arrow2.gif";
 
 const OngoingTasks = () => {
-  const [tasks, setTasks] = useState([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(5);
 
   const showMore = () => {
-    setVisible(tasks.length); // show all items
+    setVisible(data.length); // show all items
   };
 
   useEffect(() => {
-    fetch("/ongoingTask.json")
-      .then((response) => response.json())
-      .then((data) => setTasks(data));
+    const fetchData = () => {
+      fetchSheetData("OngoingTasks")
+        .then((res) => setData(res))
+        .finally(() => setLoading(false));
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 300000); // refresh every 5 min
+    return () => clearInterval(interval);
   }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
 
   return (
     <div className="mb-5">
@@ -23,26 +34,25 @@ const OngoingTasks = () => {
         Ongoing Tasks
       </h1>
       <div className="px-1 space-x-1">
-        {tasks.slice(0, visible).map((task) => (
-          <div key={task.id}>
+        {data.slice(0, visible).map((item) => (
+          <div key={item.ID} className="flex">
+            <img
+              className="w-6 h-6 object-contain" // ensures consistent size and keeps aspect ratio
+              src={GoogleSheet}
+              alt=""
+            />
             <a
-              className="text-blue-700 font-outfit text-lg underline flex gap-2"
+              href={item.Link}
               target="_blank"
               rel="noopener noreferrer"
-              href={task.link}
+              className="text-lg font-semibold text-blue-600 underline hover:text-blue-800 ml-1"
             >
-              <img
-                className="w-6 h-6 object-contain" // ensures consistent size and keeps aspect ratio
-                src={GoogleSheet}
-                alt=""
-              />
-
-              {task.title}
+              {item.Title}
             </a>
           </div>
         ))}
         {/* Show more button */}
-        {visible < tasks.length && (
+        {visible < data.length && (
           <button
             className="text-black border-1 border-gray-500  mt-3 flex items-center px-1 mx-auto pr-3 font-semibold rounded-md text-md hover:bg-gray-500 hover:text-white transition-all duration-300"
             onClick={showMore}

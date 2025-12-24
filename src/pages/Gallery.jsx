@@ -10,9 +10,9 @@ const Gallery = () => {
         <div className='min-h-screen'>
             <Slider />
 
-            <div>
+            {/* <div>
                 <OngoingLinks />
-            </div>
+            </div> */}
         </div>
     );
 };

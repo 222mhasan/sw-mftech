@@ -8,15 +8,14 @@ const OngoingReports = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      fetchSheetData()
+      fetchSheetData("AllReports")
         .then((res) => setData(res))
         .finally(() => setLoading(false));
     };
 
-    fetchData(); // Initial fetch
-
-    const interval = setInterval(fetchData, 200000); // Fetch every 5 minutes
-    return () => clearInterval(interval); // Cleanup on unmount
+    fetchData();
+    const interval = setInterval(fetchData, 300000); // refresh every 5 min
+    return () => clearInterval(interval);
   }, []);
 
   if (loading) {
