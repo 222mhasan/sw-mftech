@@ -62,7 +62,7 @@ const SouthWest = () => {
                   </div>
                   <div className="flex-shrink-0">
                     <img
-                      className="w-32 h-32 object-contain"
+                      className="w-28 h-28 object-contain"
                       src={officer.image}
                       alt="officer"
                     />
