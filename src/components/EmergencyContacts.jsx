@@ -6,6 +6,7 @@ const EmergencyContacts = () => {
   const [centralLabs, setCentralLabs] = useState([]);
   const [erpTeams, setErpTeams] = useState([]);
   const [crmResponsibilities, setCrmResponsibilities] = useState([]);
+  const [backupSupports, setBackupSupports] = useState([]);
   const [openSection, setOpenSection] = useState(""); // Track which section is open
 
   useEffect(() => {
@@ -26,9 +27,14 @@ const EmergencyContacts = () => {
       .then((data) => setCrmResponsibilities(data));
   }, []);
 
+  useEffect(() => {
+    fetch("/backupSupport.json")
+      .then((res) => res.json())
+      .then((data) => setBackupSupports(data));
+  }, []);
+
   const toggleSection = (sectionName) => {
     setOpenSection(openSection === sectionName ? "" : sectionName);
-    
   };
 
   return (
@@ -39,13 +45,14 @@ const EmergencyContacts = () => {
 
       {/* BracNet */}
       <div className="my-1 rounded-md border bg-base-100 border-base-300 collapse ">
-      
         <div
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("BracNet")}
         >
           <h2 className="text-lg font-semibold text-black">BracNet</h2>
-          <h2 className="text-black">{openSection === "BracNet" ? "-" : "+"}</h2>
+          <h2 className="text-black">
+            {openSection === "BracNet" ? "-" : "+"}
+          </h2>
         </div>
         {openSection === "BracNet" && (
           <div className="bg-white text-center text-black p-2">
@@ -88,7 +95,9 @@ const EmergencyContacts = () => {
 
             {/* Shiyam Talukder */}
             <div className="mb-2 py-2 shadow-md">
-              <h1 className="text-lg font-semibold text-black">Shiyam Talukder</h1>
+              <h1 className="text-lg font-semibold text-black">
+                Shiyam Talukder
+              </h1>
               <h3 className="text-md ">
                 Internet Connection, Bandwidth Upgradation, Migration
               </h3>
@@ -120,7 +129,9 @@ const EmergencyContacts = () => {
           onClick={() => toggleSection("CentralLab")}
         >
           <h2 className="text-lg font-semibold text-black">Central Lab</h2>
-          <h2 className="text-black">{openSection === "CentralLab" ? "-" : "+"}</h2>
+          <h2 className="text-black">
+            {openSection === "CentralLab" ? "-" : "+"}
+          </h2>
         </div>
         {openSection === "CentralLab" && (
           <div className="bg-white text-black p-2">
@@ -183,7 +194,9 @@ const EmergencyContacts = () => {
           className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
           onClick={() => toggleSection("CRM")}
         >
-          <h2 className="text-md font-semibold text-black">CRM Responsibilities</h2>
+          <h2 className="text-lg font-semibold text-black">
+            CRM Responsibilities
+          </h2>
           <h2 className="text-black">{openSection === "CRM" ? "-" : "+"}</h2>
         </div>
         {openSection === "CRM" && (
@@ -203,12 +216,48 @@ const EmergencyContacts = () => {
                     {crm.phone.replace("tel:", "")}
                   </a>
                   <ul className="text-left mx-auto w-fit text-gray-800">
-                    {Object.entries(crm.responsibilities).map(([key, value], idx) => (
-                      <li key={key} className="leading-tight">
-                        {idx + 1}. {value}
-                      </li>
-                    ))}
+                    {Object.entries(crm.responsibilities).map(
+                      ([key, value], idx) => (
+                        <li key={key} className="leading-tight">
+                          {idx + 1}. {value}
+                        </li>
+                      )
+                    )}
                   </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      {/* Backup Support */}
+      <div className="my-1 rounded-md border bg-base-100 border-base-300 collapse">
+        <div
+          className="flex justify-between items-center cursor-pointer p-4 collapse-title bg-gray-300 peer-checked:bg-secondary peer-checked:text-secondary-content"
+          onClick={() => toggleSection("BackupSupport")}
+        >
+          <h2 className="text-lg font-semibold text-black">Backup Support</h2>
+          <h2 className="text-black">
+            {openSection === "BackupSupport" ? "-" : "+"}
+          </h2>
+        </div>
+        {openSection === "BackupSupport" && (
+          <div className="bg-white text-black p-2">
+            {backupSupports.map((backupSupport) => (
+              <div
+                className="card w-full bg-white text-black card-md shadow-sm rounded-none border-gray-300 border-b my-1"
+                key={backupSupport.id}
+              >
+                <div className="card-body -space-y-3 text-lg text-center">
+                  <h2 className="font-semibold text-center">{backupSupport.name}</h2>
+                  <p>{backupSupport.role}</p>
+                  <a
+                    href={backupSupport.phone}
+                    className="text-blue-600 text-md font-bold underline hover:text-blue-800"
+                  >
+                    {backupSupport.phone.replace("tel:", "")}
+                  </a>
+                  
                 </div>
               </div>
             ))}
