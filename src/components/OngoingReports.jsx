@@ -14,7 +14,7 @@ const OngoingReports = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 300000); // refresh every 5 min
+    const interval = setInterval(fetchData, 200000); // refresh every 5 min
     return () => clearInterval(interval);
   }, []);
 

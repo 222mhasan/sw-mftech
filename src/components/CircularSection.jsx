@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import Arrow2 from "../images/arrow2.gif";
 import SpecialTasks from "./OngoingTasks.";
-import GoogleDrive from "../images/googleDrive.png"
+import GoogleDrive from "../images/googleDrive.png";
+import { fetchSheetData } from "../utils/fetchSheetData";
 
 const CircularSection = () => {
   const [circulars, setCirculars] = useState([]);
   console.log(circulars);
+  const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(6);
 
   const showMore = () => {
@@ -14,10 +16,20 @@ const CircularSection = () => {
   };
 
   useEffect(() => {
-    fetch("/circular.json")
-      .then((res) => res.json())
-      .then((data) => setCirculars(data));
+    const fetchData = () => {
+      fetchSheetData("Circulars")
+        .then((res) => setCirculars(res))
+        .finally(() => setLoading(false));
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 200000); // refresh every 5 min
+    return () => clearInterval(interval);
   }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
 
   return (
     <div className="pb-5">
@@ -32,19 +44,19 @@ const CircularSection = () => {
         {/* All circulars */}
         <div className="mx-1">
           {circulars.slice(0, visible).map((circular) => (
-            <div key={circular.id}>
+            <div key={circular.ID}>
               <a
                 className="text-blue-700 font-semibold py-1 underline flex gap-2"
                 target="_blank"
                 rel="noopener noreferrer"
-                href={circular.link}
+                href={circular.Link}
               >
                 <img
                   className="w-4 h-4 object-contain mt-1" // ensures consistent size and keeps aspect ratio
                   src={GoogleDrive}
                   alt=""
                 />
-                {circular.title}
+                {circular.Title}
               </a>
             </div>
           ))}
