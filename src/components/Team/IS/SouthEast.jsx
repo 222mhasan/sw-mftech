@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import mobile from "../../../images/mobile.png";
 import gmail from "../../../images/gmail.png";
-import man from "../../../images/man.png";
+// import man from "../../../images/man.png";
 import back from "../../../images/back.png";
 import { Link } from "react-router-dom";
 
