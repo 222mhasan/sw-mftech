@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div className="min-h-screen bg-[url('/bg-image.jpg')] bg-cover ">
-        <div className="px-2 md:mx-36 mx-auto">
+        <div className="px-2 max-w-full md:mx-36 mx-auto">
           {/* Header Area */}
           {/* <div className="text-center mb-1 py-3 md:py-5 font-semibold font-eagle bg-pink-400 ">
             <h1 className="text-3xl    ">MF-Technology</h1>

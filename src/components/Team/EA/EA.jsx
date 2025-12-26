@@ -4,19 +4,36 @@ import gmail from "../../../images/gmail.png";
 import man from "../../../images/man.png";
 import back from "../../../images/back.png";
 import { Link } from "react-router-dom";
+import { fetchSheetData } from "../../../utils/fetchSheetData";
 
 const EA = () => {
+  const [officers, setOfficers] = useState([]);
+  console.log(officers);
+  const [loading, setLoading] = useState(true);
 
-    const [officers, setOfficers] = useState([]);
-      console.log(officers);
-    
-      useEffect(() => {
-        fetch("/EA.json")
-          .then((response) => response.json())
-          .then((data) => setOfficers(data));
-        // Scroll to top when the component mounts
-        window.scrollTo(0, 0);
-      }, []);
+  // useEffect(() => {
+  //   fetch("/EA.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setOfficers(data));
+  //   // Scroll to top when the component mounts
+  //   window.scrollTo(0, 0);
+  // }, []);
+
+  useEffect(() => {
+    const fetchData = () => {
+      fetchSheetData("EA-Team")
+        .then((res) => setOfficers(res))
+        .finally(() => setLoading(false));
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 200000); // refresh every 5 min
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
 
   return (
     <div>
@@ -29,7 +46,7 @@ const EA = () => {
 
           {/* Centered Text */}
           <h1 className="mx-auto font-semibold text-2xl underline text-black my-6 text-center">
-            Welcome to FA Team
+            Welcome to EA Team
           </h1>
         </div>
 
@@ -45,8 +62,9 @@ const EA = () => {
                           {officer.name}
                         </h2>
                         <h3>
-                          {officer.designation} | {officer.team}
+                          {officer.designation} 
                         </h3>
+                        <h3> {officer.team}</h3>
                       </div>
                       <p className="text-md font-medium">{officer.base}</p>
                       <div className="flex gap-1 items-center">

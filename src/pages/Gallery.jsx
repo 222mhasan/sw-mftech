@@ -30,34 +30,7 @@ const Gallery = () => {
     <div className="min-h-screen">
       <Slider />
 
-      {/* <div>
-                <OngoingLinks />
-            </div> */}
-
-      <div>
-        <h1 className="text-center font-semibold text-2xl  underline text-black my-3">
-          All Reports
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 bg-white">
-          {data.map((item) => (
-            <div
-              key={item.ID}
-              className="shadow-xl rounded-md p-2 hover:bg-gray-50"
-            >
-              <div className=" items-center gap-3 bg-white">
-                <h1>{item.name}</h1>
-                <p>{item.pin}</p>
-                <p>{item.base}</p>
-                <p>{item.phone}</p>
-                <p>{item.mail}</p>
-                <img src={item.imageURL} alt="" />
-              </div>
-
-              {/* <p className="text-sm text-gray-500 mt-1 break-words">{item.Link}</p> */}
-            </div>
-          ))}
-        </div>
-      </div>
+      
     </div>
   );
 };

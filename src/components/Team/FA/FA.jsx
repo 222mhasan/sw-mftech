@@ -1,21 +1,40 @@
 import React, { useEffect, useState } from "react";
 import mobile from "../../../images/mobile.png";
 import gmail from "../../../images/gmail.png";
-import man from "../../../images/man.png";
 import back from "../../../images/back.png";
 import { Link } from "react-router-dom";
+import { fetchSheetData } from "../../../utils/fetchSheetData";
+
+import man from "../../../images/man.png";
 
 const FA = () => {
   const [officers, setOfficers] = useState([]);
   console.log(officers);
+  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   fetch("/FATeam.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setOfficers(data));
+  //   // Scroll to top when the component mounts
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   useEffect(() => {
-    fetch("/FATeam.json")
-      .then((response) => response.json())
-      .then((data) => setOfficers(data));
-    // Scroll to top when the component mounts
-    window.scrollTo(0, 0);
+    const fetchData = () => {
+      fetchSheetData("FA-Team")
+        .then((res) => setOfficers(res))
+        .finally(() => setLoading(false));
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 200000); // refresh every 5 min
+    return () => clearInterval(interval);
   }, []);
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
 
   return (
     <div>
