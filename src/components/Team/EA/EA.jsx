@@ -89,8 +89,8 @@ const EA = () => {
                     <div className="flex-shrink-0">
                       <img
                         className="w-32 h-32 object-contain"
-                        src={man}
-                        alt={man}
+                        src={officer.image}
+                        alt={officer.name}
                       />
                     </div>
                   </div>

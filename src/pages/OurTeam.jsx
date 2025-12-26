@@ -82,7 +82,7 @@ const OurTeam = () => {
             <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
-                  src={Man}
+                  src={SomirDada}
                   alt="image"
                   className="rounded-full w-[150px] h-[150px]"
                 />
@@ -106,7 +106,7 @@ const OurTeam = () => {
             <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
               <figure className="px-2 pt-5">
                 <img
-                  src={SomirDada}
+                  src={Man}
                   alt="image"
                   className="rounded-full w-[150px] h-[150px]"
                 />
