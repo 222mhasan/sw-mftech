@@ -6,7 +6,7 @@ const MapModal = ({ mapId }) => {
 
   return (
     <div>
-      <div className="flex items-center gap-3 my-4 justify-center">
+      {/* <div className="flex items-center gap-3 my-4 justify-center">
         <button
           onClick={() => setOpen(true)}
           className="px-4 py-2 bg-blue-600 text-white rounded-md shadow"
@@ -22,7 +22,7 @@ const MapModal = ({ mapId }) => {
         >
           Open in Google My Maps
         </a>
-      </div>
+      </div> */}
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">

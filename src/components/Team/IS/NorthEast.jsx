@@ -56,12 +56,13 @@ const NorthEast = () => {
                 <div className="flex items-start justify-between gap-4 h-full">
                   {/* Info */}
                   <div className="space-y-2 flex-1">
-                    <h2 className="card-title text-lg font-bold">
-                      {officer.name}
-                    </h2>
+                    <div className="-space-y-1">
+                      <h2 className="card-title text-lg font-bold">
+                        {officer.name}
+                      </h2>
 
-                    <p className="text-md font-medium">{officer.BaseLocation}</p>
-
+                      <p className="text-md font-medium">{officer.base}</p>
+                    </div>
                     {officer.phone && (
                       <div className="flex gap-1 items-center">
                         <img src={mobile} alt="mobile" className="w-5 h-5" />
@@ -120,8 +121,13 @@ const NorthEast = () => {
                 onError={(e) => (e.target.src = man)}
               />
 
-              <h2 className="text-xl font-bold">{selectedOfficer.name}</h2>
-              <p className="font-medium">{selectedOfficer.BaseLocation}</p>
+              <div className="-space-y-1">
+                <h2 className="card-title text-lg font-bold">
+                  {selectedOfficer.name}
+                </h2>
+
+                <p className="text-md font-medium">{selectedOfficer.base}</p>
+              </div>
 
               {selectedOfficer.phone && (
                 <a
