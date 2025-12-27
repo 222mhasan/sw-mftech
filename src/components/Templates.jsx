@@ -4,6 +4,7 @@ import Envelope from "../images/envelope.gif";
 import GoogleDrive from "../images/googleDrive.png";
 import Excel from "../images/excel.png";
 import Pdf from "../images/pdf.png";
+import { fetchSheetData } from "../utils/fetchSheetData";
 
 const Templates = () => {
   const [pdfs, setPdfs] = useState([]);
@@ -11,15 +12,32 @@ const Templates = () => {
   const [loadingPDFs, setLoadingPDFs] = useState(true);
   const [loadingFormats, setLoadingFormats] = useState(true);
 
+  // useEffect(() => {
+  //   fetch("/pdf.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setPdfs(data);
+  //       setLoadingPDFs(false);
+  //     });
+  // }, []);
+
+
+
+// for Knowledge Sharing PDFs
   useEffect(() => {
-    fetch("/pdf.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setPdfs(data);
-        setLoadingPDFs(false);
-      });
+    const fetchData = () => {
+      fetchSheetData("Knowledge_Sharing_Files")
+        .then((res) => setPdfs(res))
+        .finally(() => setLoadingPDFs(false));
+    };
+
+    fetchData();
+    const interval = setInterval(fetchData, 200000); // refresh every ~5 min
+    return () => clearInterval(interval);
   }, []);
 
+
+  // Mail Communication Formats
   useEffect(() => {
     fetch("/mailformat.json")
       .then((res) => res.json())
@@ -52,12 +70,12 @@ const Templates = () => {
                 <div key={pdf.id}>
                   <a
                     className="text-blue-700 font-poppins text-md underline flex items-center gap-1"
-                    href={pdf.link}
+                    href={pdf.Link}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img className="w-[20px]" src={GoogleDrive} alt="" />{" "}
-                    {pdf.title}
+                    {pdf.Title}
                   </a>
                 </div>
               ))}
