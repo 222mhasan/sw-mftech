@@ -31,7 +31,7 @@ const Home = () => {
   if (loading) {
     return (
       <p className="text-center mt-10 text-gray-500 text-lg">
-        Loading History of MF-Tech...
+        <span className="loading loading-ring loading-2xl"></span>
       </p>
     );
   }
