@@ -19,7 +19,11 @@ const OngoingReports = () => {
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+    return (
+      <p className="text-center mt-10 text-gray-500 text-lg">
+        <span className="loading loading-ring loading-2xl"></span>
+      </p>
+    );
   }
 
   return (
