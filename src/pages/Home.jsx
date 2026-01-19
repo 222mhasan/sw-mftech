@@ -7,8 +7,6 @@ import EmergencyContacts from "../components/EmergencyContacts";
 import { fetchSheetData } from "../utils/fetchSheetData";
 import { useEffect, useState } from "react";
 
-// import MonthlyReport from "./MonthlyReport";
-
 const Home = () => {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -17,7 +15,7 @@ const Home = () => {
     const fetchData = () => {
       fetchSheetData("History_MF-Tech")
         .then((res) => {
-          console.log("Fetched data:", res); // <-- check this
+          console.log("Fetched data:", res);
           setDetails(res);
         })
         .finally(() => setLoading(false));
@@ -37,21 +35,26 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-7 gap-2 mt-2">
-        <div className="border-gray-400 shadow-2xl col-span-2 bg-white rounded-md">
-          <CircularSection></CircularSection>
+    <div className="px-4 py-2 space-y-6">
+      {/* Grid container */}
+      <div className="grid grid-cols-1 md:grid-cols-7 gap-1">
+        {/* Circular Section */}
+        <div className="md:col-span-2 bg-white rounded-xl shadow-xl p-2">
+          <CircularSection />
         </div>
-        <div className="col-span-3 border-gray-400 shadow-2xl bg-white rounded-md">
-          <h1 className="text-center my-2 font-semibold text-xl underline text-black">
+
+        {/* History Section */}
+        <div className="md:col-span-3 bg-white rounded-xl shadow-xl p-4 flex flex-col items-center">
+          <h1 className="text-center my-2 font-semibold text-xl md:text-2xl underline text-black">
             History of BRAC Microfinance Technology
           </h1>
-          <div className="mx-auto w-fit" style={{ width: 300, height: 300 }}>
+
+          <div className="w-full max-w-[300px] h-[300px] mb-4">
             <Lottie animationData={HomeImage} loop={true} />
           </div>
-          <div className="p-4 font-poppins text-gray-800 text-justify">
+
+          <div className="font-poppins text-gray-800 text-justify space-y-2 w-full">
             {details.map((item, idx) => {
-              // Find the key that contains 'history' (case-insensitive)
               const historyKey = Object.keys(item).find(
                 (k) => k.toLowerCase().trim() === "history"
               );
@@ -63,8 +66,9 @@ const Home = () => {
             })}
           </div>
         </div>
-        <div className="rounded-md col-span-2 border-gray-400 shadow-2xl">
-          {/* <TOs></TOs> */}
+
+        {/* Emergency Contacts */}
+        <div className="md:col-span-2 bg-white rounded-xl shadow-xl p-2">
           <EmergencyContacts />
         </div>
       </div>

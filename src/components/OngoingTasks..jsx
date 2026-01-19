@@ -2,14 +2,24 @@ import React, { useEffect, useState } from "react";
 import GoogleSheet from "../images/googleSheets.png";
 import { fetchSheetData } from "../utils/fetchSheetData";
 import Arrow2 from "../images/arrow2.gif";
+import AOS from "aos";
 
 const OngoingTasks = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(5);
 
+    // AOS Animation Initialization
+    useEffect(() => {
+      AOS.init({
+        duration: 700,
+        easing: "ease-out-cubic",
+        once: true, // animation happens only once
+      });
+    }, []);
+
   const showMore = () => {
-    setVisible(data.length); // show all items
+    setVisible(data.length);
   };
 
   useEffect(() => {
@@ -20,50 +30,59 @@ const OngoingTasks = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 300000); // refresh every 5 min
+    const interval = setInterval(fetchData, 300000);
     return () => clearInterval(interval);
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10 text-gray-500 text-lg">
-        <span className="loading loading-ring loading-3xl"></span>
-      </p>;
+    return (
+      <div className="flex justify-center py-6">
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
   }
 
   return (
-    <div className="mb-5">
-      <h1 className="text-xl font-semibold text-center mb-1 text-black py-1 bg-sky-300 font-montserrat">
+    <div className="flex flex-col gap-3 min-w-0">
+      {/* Header */}
+      <h1 className="text-lg md:text-xl font-semibold text-center text-black py-2 bg-sky-300 rounded-md font-montserrat">
         Ongoing Tasks
       </h1>
-      <div className="px-1 space-x-1">
+
+      {/* Task list */}
+      <div data-aos="fade-right" className="flex flex-col gap-2 min-w-0 px-1 ">
         {data.slice(0, visible).map((item) => (
-          <div key={item.ID} className="flex">
+          <a
+            key={item.ID}
+            href={item.Link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 min-w-0 text-blue-600 font-medium underline hover:text-blue-800 transition"
+          >
             <img
-              className="w-6 h-6 object-contain" // ensures consistent size and keeps aspect ratio
               src={GoogleSheet}
               alt=""
+              className="w-5 h-5 mt-1 flex-shrink-0"
             />
-            <a
-              href={item.Link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg font-semibold text-blue-600 underline hover:text-blue-800 ml-1"
-            >
+
+            {/* 🔥 TEXT FIX */}
+            <span className="block min-w-0 break-words whitespace-normal text-sm md:text-base">
               {item.Title}
-            </a>
-          </div>
+            </span>
+          </a>
         ))}
-        {/* Show more button */}
-        {visible < data.length && (
-          <button
-            className="text-black border-1 border-gray-500  mt-3 flex items-center px-1 mx-auto pr-3 font-semibold rounded-md text-md hover:bg-gray-500 hover:text-white transition-all duration-300"
-            onClick={showMore}
-          >
-            <img className="w-[30px]" src={Arrow2} alt="Show All" />
-            Show All
-          </button>
-        )}
       </div>
+
+      {/* Show All button */}
+      {visible < data.length && (
+        <button data-aos="fade-right"
+          onClick={showMore}
+          className="mt-3 mx-auto flex items-center gap-2 px-3 py-1 border border-gray-400 rounded-md text-sm font-semibold hover:bg-gray-600 hover:text-white transition"
+        >
+          <img className="w-6" src={Arrow2} alt="Show All" />
+          Show All
+        </button>
+      )}
     </div>
   );
 };

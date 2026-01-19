@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Hand from "../images/hand.gif";
-import Envelope from "../images/envelope.gif";
 import GoogleDrive from "../images/googleDrive.png";
 import Excel from "../images/excel.png";
 import Pdf from "../images/pdf.png";
@@ -12,18 +10,7 @@ const Templates = () => {
   const [loadingPDFs, setLoadingPDFs] = useState(true);
   const [loadingFormats, setLoadingFormats] = useState(true);
 
-  // useEffect(() => {
-  //   fetch("/pdf.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setPdfs(data);
-  //       setLoadingPDFs(false);
-  //     });
-  // }, []);
-
-
-
-// for Knowledge Sharing PDFs
+  // Knowledge Sharing PDFs
   useEffect(() => {
     const fetchData = () => {
       fetchSheetData("Knowledge_Sharing_Files")
@@ -32,10 +19,9 @@ const Templates = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 200000); // refresh every ~5 min
+    const interval = setInterval(fetchData, 200000);
     return () => clearInterval(interval);
   }, []);
-
 
   // Mail Communication Formats
   useEffect(() => {
@@ -48,106 +34,120 @@ const Templates = () => {
   }, []);
 
   return (
-    <div className="min-h-screen px-4">
-      <h1 className="text-center font-semibold text-2xl my-3 underline text-black">
+    <div className="min-h-screen px-4 py-6 pb-12 bg-base-300">
+      <h1 className="text-center font-semibold text-2xl mb-6 underline text-black">
         Manual & Templates
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-        {/* Knowledge Sharing File */}
-        <div className="lg:border-r-2 border-gray-500 p-2">
-          <h2 className="text-xl font-semibold underline mb-3 text-black">
+
+      {/* 🔥 FIXED GRID */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 auto-rows-auto md:auto-rows-fr">
+        {/* Knowledge Sharing */}
+        <div className="p-4 border border-gray-200 rounded-md min-w-0 bg-white">
+          <h2 className="text-xl font-semibold underline mb-4 text-black">
             Knowledge Sharings
           </h2>
+
           {loadingPDFs
-            ? // Skeleton for PDFs
-              Array.from({ length: 4 }).map((_, idx) => (
-                <div key={idx} className="flex gap-2 items-center mb-2">
+            ? Array.from({ length: 4 }).map((_, idx) => (
+                <div key={idx} className="flex gap-2 items-center mb-3">
                   <div className="skeleton w-5 h-5 rounded"></div>
                   <div className="skeleton h-4 w-full"></div>
                 </div>
               ))
             : pdfs.map((pdf) => (
-                <div key={pdf.id}>
+                <div key={pdf.id} className="mb-2 min-w-0">
                   <a
-                    className="text-blue-700 font-poppins text-md underline flex items-center gap-1"
                     href={pdf.Link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-start gap-2 min-w-0 text-blue-700 underline"
                   >
-                    <img className="w-[20px]" src={GoogleDrive} alt="" />{" "}
-                    {pdf.Title}
+                    <img
+                      className="w-[20px] mt-1 flex-shrink-0"
+                      src={GoogleDrive}
+                      alt=""
+                    />
+                    <span className="block min-w-0 break-all whitespace-normal">
+                      {pdf.Title}
+                    </span>
                   </a>
                 </div>
               ))}
         </div>
 
-        {/* Mail Communication Format */}
-        <div className="p-2 lg:border-r-2 border-gray-500">
-          <h2 className="text-xl font-semibold underline my-2 text-black">
+        {/* Mail Communication */}
+        <div className="p-4 border border-gray-200 rounded-md min-w-0 bg-white">
+          <h2 className="text-xl font-semibold underline mb-4 text-black">
             Mail Communication
           </h2>
-          {loadingFormats ? (
-            // Skeleton for Formats
-            Array.from({ length: 4 }).map((_, idx) => (
-              <div key={idx} className="flex gap-2 items-center mb-2">
-                <div className="skeleton w-5 h-5 rounded"></div>
-                <div className="skeleton h-4 w-full"></div>
-              </div>
-            ))
-          ) : (
-            <div className="pl-1">
-              {formats.map((format) => (
-                <div key={format.id}>
+
+          {loadingFormats
+            ? Array.from({ length: 4 }).map((_, idx) => (
+                <div key={idx} className="flex gap-2 items-center mb-3">
+                  <div className="skeleton w-5 h-5 rounded"></div>
+                  <div className="skeleton h-4 w-full"></div>
+                </div>
+              ))
+            : formats.map((format) => (
+                <div key={format.id} className="mb-2 min-w-0">
                   <a
-                    className="text-blue-600 underline flex font-poppins text-md items-center gap-1"
                     href={format.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-start gap-2 min-w-0 text-blue-600 underline"
                   >
-                    <img className="w-[20px]" src={GoogleDrive} alt="" />{" "}
-                    {format.title}
+                    <img
+                      className="w-[20px] mt-1 flex-shrink-0"
+                      src={GoogleDrive}
+                      alt=""
+                    />
+                    <span className="block min-w-0 break-all whitespace-normal">
+                      {format.title}
+                    </span>
                   </a>
                 </div>
               ))}
-            </div>
-          )}
         </div>
 
         {/* Necessary Formats */}
-        <div className="p-2">
-          <h2 className="text-xl font-semibold underline my-2 text-black">
+        <div className="p-4 border border-gray-200 rounded-md min-w-0 bg-white">
+          <h2 className="text-xl font-semibold underline mb-4 text-black">
             Necessary Formats
           </h2>
-          {loadingFormats ? (
-            // Skeleton for Formats
-            Array.from({ length: 4 }).map((_, idx) => (
-              <div key={idx} className="flex gap-2 items-center mb-2">
-                <div className="skeleton w-5 h-5 rounded"></div>
-                <div className="skeleton h-4 w-full"></div>
-              </div>
-            ))
-          ) : (
-            <div className="pl-1">
-              <div className="flex gap-1 items-center">
-                <img className="w-[20px] h-fit mt-1" src={Excel} alt="" />
-                <a
-                  className="text-blue-600 underline flex font-poppins text-md items-center gap-1"
-                  href="https://docs.google.com/spreadsheets/d/1BxWqaaVdJnb0dUBvzWA39VnDQaDGdYH1/edit?usp=sharing&ouid=114612891558867898297&rtpof=true&sd=true"
-                >
-                  Travelling Bill
-                </a>
-              </div>
-              <div className="flex gap-1 items-center">
-                <img className="w-[20px] h-fit mt-1" src={Pdf} alt="" />
-                <a
-                  className="text-blue-600 underline flex text-lg items-center gap-1"
-                  href="https://docs.google.com/spreadsheets/d/1BxWqaaVdJnb0dUBvzWA39VnDQaDGdYH1/edit?usp=sharing&ouid=114612891558867898297&rtpof=true&sd=true"
-                >
-                  Leave Application
-                </a>
-              </div>
+
+          <div className="space-y-3">
+            <div className="flex items-start gap-2 min-w-0">
+              <img
+                className="w-[20px] mt-1 flex-shrink-0"
+                src={Excel}
+                alt=""
+              />
+              <a
+                href="https://docs.google.com/spreadsheets/d/1BxWqaaVdJnb0dUBvzWA39VnDQaDGdYH1/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline break-all"
+              >
+                Travelling Bill
+              </a>
             </div>
-          )}
+
+            <div className="flex items-start gap-2 min-w-0">
+              <img
+                className="w-[20px] mt-1 flex-shrink-0"
+                src={Pdf}
+                alt=""
+              />
+              <a
+                href="https://docs.google.com/spreadsheets/d/1BxWqaaVdJnb0dUBvzWA39VnDQaDGdYH1/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline break-all"
+              >
+                Leave Application
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

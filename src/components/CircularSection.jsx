@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
 import Arrow2 from "../images/arrow2.gif";
 import SpecialTasks from "./OngoingTasks.";
 import GoogleDrive from "../images/googleDrive.png";
 import { fetchSheetData } from "../utils/fetchSheetData";
+import Aos from "aos";
 
 const CircularSection = () => {
   const [circulars, setCirculars] = useState([]);
-  console.log(circulars);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(6);
 
+  // AOS Animation Initialization
+  useEffect(() => {
+    Aos.init({
+      duration: 700,
+      easing: "ease-out-cubic",
+      once: true, // animation happens only once
+    });
+  }, []);
+
   const showMore = () => {
-    setVisible(circulars.length); // show all items
+    setVisible(circulars.length);
   };
 
   useEffect(() => {
@@ -23,56 +31,66 @@ const CircularSection = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 200000); // refresh every 5 min
+    const interval = setInterval(fetchData, 200000);
     return () => clearInterval(interval);
   }, []);
 
   if (loading) {
-    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+    return (
+      <p className="text-center py-6 text-gray-500">
+        <span className="loading loading-ring loading-md"></span>
+      </p>
+    );
   }
 
   return (
-    <div className="pb-5">
-      {/* special tasks section start */}
-      <SpecialTasks></SpecialTasks>
-      {/* special tasks section end */}
-      {/* Circulars Section start */}
-      <div>
-        <h1 className="text-xl font-semibold text-center mb-1 py-1 text-black bg-sky-300 font-montserrat">
+    <div className="flex flex-col gap-3 min-w-0">
+      {/* 🔥 Special Tasks */}
+      <div className="min-w-0">
+        <SpecialTasks />
+      </div>
+
+      {/* 🔥 Circulars */}
+      <div className="min-w-0">
+        <h1 className="text-lg font-semibold text-center py-2 text-black bg-sky-300 rounded-md">
           All Circulars
         </h1>
-        {/* All circulars */}
-        <div className="mx-1">
+
+        {/* Circular List */}
+        <div data-aos="fade-right" className="mt-2 space-y-2 min-w-0">
           {circulars.slice(0, visible).map((circular) => (
-            <div key={circular.ID}>
-              <a
-                className="text-blue-700 font-semibold py-1 underline flex gap-2"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={circular.Link}
-              >
-                <img
-                  className="w-4 h-4 object-contain mt-1" // ensures consistent size and keeps aspect ratio
-                  src={GoogleDrive}
-                  alt=""
-                />
+            <a
+              key={circular.ID}
+              href={circular.Link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2 text-blue-700 font-medium underline min-w-0"
+            >
+              <img
+                src={GoogleDrive}
+                alt=""
+                className="w-4 h-4 mt-1 flex-shrink-0"
+              />
+
+              {/* 🔥 TEXT FIX */}
+              <span className="block min-w-0 break-words whitespace-normal">
                 {circular.Title}
-              </a>
-            </div>
+              </span>
+            </a>
           ))}
         </div>
-        {/* Show more button */}
+
+        {/* Show More */}
         {visible < circulars.length && (
-          <button
-            className="text-black border-1 border-gray-500  mt-3 flex items-center px-1 mx-auto pr-3 font-semibold rounded-md text-md hover:bg-gray-500 hover:text-white transition-all duration-300"
+          <button data-aos="fade-right"
             onClick={showMore}
+            className="mt-4 mx-auto flex items-center gap-2 px-3 py-1 border border-gray-400 rounded-md text-sm font-semibold hover:bg-gray-600 hover:text-white transition"
           >
-            <img className="w-[30px]" src={Arrow2} alt="" />
+            <img src={Arrow2} alt="" className="w-6" />
             Show All
           </button>
         )}
       </div>
-      {/* Circulars Section end */}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { useContext } from "react";
+// import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import HomeLogo from "../images/Home-logo.svg";
 import { Typewriter } from "react-simple-typewriter";
@@ -13,8 +13,8 @@ const Navbar = () => {
   };
 
   const getNavLinkClass = ({ isActive }) =>
-    `px-2 relative text-lg after:content-[''] after:absolute after:h-[2px] after:left-0 after:bottom-0 after:bg-green-600 after:transition-all after:duration-300 hover:after:w-full ${
-      isActive ? "text-green-600 font-semibold after:w-full" : "after:w-0"
+    `px-2 relative text-lg after:content-[''] after:absolute after:h-[2px] after:left-0 after:bottom-0 after:bg-pink-400 after:transition-all after:duration-300 hover:after:w-full ${
+      isActive ? "text-pink-600 font-semibold after:w-full" : "after:w-0"
     }`;
 
   const links = (

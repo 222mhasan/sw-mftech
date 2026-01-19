@@ -1,6 +1,5 @@
-// import React, { useEffect, useState } from "react";
-import PaulPurification from "/WingsHead/Paul_Purification.webp";
 import { Link } from "react-router-dom";
+import PaulPurification from "/WingsHead/Paul_Purification.webp";
 import ParvezVai from "/ZonalLeads/parvez-bhai.webp";
 import OsmanSarwar from "/ZonalLeads/Osman_Sarwar.webp";
 import AzmirMahmood from "/ZonalLeads/AzmirMahmood.webp";
@@ -8,95 +7,100 @@ import MosiarRahman from "/ZonalLeads/MosiarRahman.webp";
 
 const IS = () => {
   return (
-    <div>
-      <h1 className="text-center font-semibold my-2 text-2xl text-black">
+    <div className="px-4 py-10 bg-gradient-to-b from-base-200 to-base-100 min-h-screen">
+      {/* Page Title */}
+      <h1 className="text-center text-2xl md:text-3xl font-semibold text-black mb-10">
         I&S Team
       </h1>
-      {/* Paul Purification  start*/}
-      <div className="w-fit mx-auto ">
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 shadow-xl">
-          <figure className="px-2 pt-5">
+
+      {/* Head Card */}
+      <div className="flex justify-center mb-14">
+        <div className="bg-white/80 backdrop-blur rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-1 border-primary overflow-hidden w-full max-w-[20rem]">
+          <div className="flex flex-col items-center px-6 py-8 text-center">
             <img
               src={PaulPurification}
-              alt="image"
-              className="rounded-full w-[150px] h-[150px]"
+              alt="Paul Purification"
+              className="w-[140px] h-[140px] rounded-full object-cover mb-4 ring-2 ring-primary/20"
             />
-          </figure>
-          <div className="card-body items-center text-center">
-            <h2 className="card-title">I&S</h2>
-            <h1 className="font-montserrat font-semibold">Paul Purification</h1>
+
+            <span className="text-sm text-gray-500 tracking-wide mb-1">
+              I&S
+            </span>
+            <h2 className="text-lg font-semibold text-gray-800">
+              Paul Purification
+            </h2>
           </div>
         </div>
       </div>
-      {/* Paul Purification  end*/}
 
-      <section className="grid grid-cols-1 md:grid-cols-4 gap-2 my-3">
-        {/* North-East start */}
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
-          <h1 className="text-center font-semibold text-lg">North-East</h1>
-          <div className="mx-auto w-fit text-center mb-3 ">
-            <img className="w-[180px]" src={MosiarRahman} alt="MosiarRahman" />
-            <h1 className="font-semibold text-xl">Md. Mosiar Rahman</h1>
-            <h1 className="font-semibold text-md">Manager, NE-Zone</h1>
-          </div>
-          {/* show details link */}
-          <Link to="/ourTeam/IS/northEast" className="text-center">
-            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
-              View Details
-            </button>
-          </Link>
-        </div>
-        {/* North-East end */}
-        {/* South-East start */}
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
-          <h1 className="text-center font-semibold text-lg">South-East</h1>
-          <div className="mx-auto w-fit text-center mb-3 ">
-            <img className="w-[180px]" src={OsmanSarwar} alt="OsmanSarwar" />
-            <h1 className="font-semibold text-xl">Osman Sarwar</h1>
-            <h1 className="font-semibold text-md">Manager, SE-Zone</h1>
-          </div>
-          {/* show details link */}
-          <Link to="/ourTeam/IS/southEast" className="text-center">
-            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
-              View Details
-            </button>
-          </Link>
-        </div>
-        {/* South-East end */}
+      {/* Zone Cards */}
+      <section className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ZoneCard
+            title="North-East"
+            image={MosiarRahman}
+            name="Md. Mosiar Rahman"
+            role="Manager, NE-Zone"
+            link="/ourTeam/IS/northEast"
+            accent="border-info"
+          />
 
-        {/* North-West start */}
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
-          <h1 className="text-center font-semibold text-lg">North-West</h1>
-          <div className="mx-auto w-fit text-center mb-3">
-            <img className="w-[180px]" src={AzmirMahmood} alt="AzmirMahmood" />
-            <h1 className="font-semibold text-xl">Azmir Mahmud</h1>
-            <h1 className="font-semibold text-md">Manager, NW-Zone</h1>
-          </div>
-          {/* show details link */}
-          <Link to="/ourTeam/IS/northWest" className="text-center">
-            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
-              View Details
-            </button>
-          </Link>
+          <ZoneCard
+            title="South-East"
+            image={OsmanSarwar}
+            name="Osman Sarwar"
+            role="Manager, SE-Zone"
+            link="/ourTeam/IS/southEast"
+            accent="border-success"
+          />
+
+          <ZoneCard
+            title="North-West"
+            image={AzmirMahmood}
+            name="Azmir Mahmud"
+            role="Manager, NW-Zone"
+            link="/ourTeam/IS/northWest"
+            accent="border-warning"
+          />
+
+          <ZoneCard
+            title="South-West"
+            image={ParvezVai}
+            name="Parvez Mosaraf"
+            role="Deputy Manager, SW-Zone"
+            link="/ourTeam/IS/southWest"
+            accent="border-secondary"
+          />
         </div>
-        {/* North-West end */}
-        {/* South-West start */}
-        <div className="card bg-base-300 border-b-2 border-1 border-gray-300 w-72 mx-auto shadow-xl text-black py-2">
-          <h1 className="text-center font-semibold text-lg">South-West</h1>
-          <div className="mx-auto w-fit text-center mb-3 ">
-            <img className="w-[180px]" src={ParvezVai} alt="Parvez Mosarrof" />
-            <h1 className="font-semibold text-xl">Parvez Mosaraf</h1>
-            <h1 className="font-semibold text-md">Deputy Manager, SW-Zone</h1>
-          </div>
-          {/* show details link */}
-          <Link to="/ourTeam/IS/southWest" className="text-center">
-            <button className="btn btn-outline block mx-auto btn-info text-black bg-white">
-              View Details
-            </button>
-          </Link>
-        </div>
-        {/* South-West end */}
       </section>
+    </div>
+  );
+};
+
+/* 🔹 Reusable Zone Card with bottom border accent */
+const ZoneCard = ({ title, image, name, role, link, accent }) => {
+  return (
+    <div
+      className={`bg-white/80 backdrop-blur rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border-1 ${accent} overflow-hidden flex flex-col`}
+    >
+      <div className="px-5 py-6 text-center flex flex-col h-full">
+        <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>
+
+        <img
+          src={image}
+          alt={name}
+          className="w-[150px] h-[150px] mx-auto rounded-lg object-cover mb-4 ring-2 ring-gray-200"
+        />
+
+        <h4 className="font-semibold text-gray-900 text-base">{name}</h4>
+        <p className="text-sm text-gray-600 mb-6">{role}</p>
+
+        <Link to={link} className="mt-auto">
+          <button className="btn btn-sm btn-outline btn-info w-full bg-white text-black text-md hover:bg-info/10 transition">
+            View Details
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
